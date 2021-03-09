@@ -6,16 +6,10 @@ class Content < ApplicationRecord
   # validation really light only to check the seed
 
   validates :title, presence: true
-
   validates :author, presence: true
-
   validates :date, presence: true
-
   validates :category, presence: true
-
   validates :duration, presence: true
-
   validates :url, presence: true
-
   validates :description, presence: true
 end

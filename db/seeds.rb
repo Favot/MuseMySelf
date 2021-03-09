@@ -17,7 +17,7 @@ puts "DB cleared"
 # Leçons de ténèbres
 # User
 
-is_cloudinary_active = false
+is_cloudinary_active = true
 
 # User
 puts 'Creating demo user'
@@ -29,10 +29,11 @@ lucas = User.new(
   # last_name: "Martin"
 )
 
-file = File.open(Rails.root.join('db/media/users/lucas.jpg'))
-if is_cloudinary_active
-  lucas.photo.attach(io: file, filename: 'lucas.jpg', content_type: 'images/jpeg')
-end
+# Photo is not implemented on User model yet
+# file = File.open(Rails.root.join('db/media/users/lucas.jpg'))
+# if is_cloudinary_active
+#   lucas.photo.attach(io: file, filename: 'lucas.jpg', content_type: 'images/jpeg')
+# end
 lucas.save!
 
 # Topic
@@ -199,30 +200,35 @@ music_19th.save!
 puts "Linking demo journey to content..."
 journey_content = JourneyContent.new(
   journey: music17th_journey,
-  content: music17th_1
+  content: music17th_1,
+  position: 1
 )
 journey_content.save!
 
 journey_content = JourneyContent.new(
   journey: music17th_journey,
-  content: music17th_2
+  content: music17th_2,
+  position: 2
 )
 journey_content.save!
 
 journey_content = JourneyContent.new(
   journey: music17th_journey,
-  content: music17th_3
+  content: music17th_3,
+  position: 3
 )
 journey_content.save!
 
 journey_content = JourneyContent.new(
   journey: music17th_journey,
-  content: music17th_4
+  content: music17th_4,
+  position: 4
 )
 journey_content.save!
 
 journey_content = JourneyContent.new(
   journey: music17th_journey,
-  content: music17th_5
+  content: music17th_5,
+  position: 5
 )
 journey_content.save!
