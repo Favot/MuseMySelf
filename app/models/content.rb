@@ -3,6 +3,8 @@ class Content < ApplicationRecord
 
   has_many :journey_contents
 
+  has_one_attached :photo
+
   # validation really light only to check the seed
 
   validates :title, presence: true
