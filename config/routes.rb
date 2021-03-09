@@ -5,10 +5,11 @@ Rails.application.routes.draw do
 
   resources :journeys, only: %i[index show] do
     resources :user_journeys, only: %i[create]
-
   end
   resources :user_journeys, only: %i[index show] do
-    patch :complete
+    member do
+      patch :complete
+    end
   end
   resources :user_journey_contents, only: %i[show edit update]
 end
