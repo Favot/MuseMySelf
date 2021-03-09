@@ -47,9 +47,9 @@ music.save!
 
 femmes = Topic.new(name: "Les femmes dans l'histoire de l'art")
 file = File.open(Rails.root.join('db/media/topics/women.jpg'))
-art_history = Topic.new(name: "L'histoire de l'art - partie 1")
+femmes = Topic.new(name: "L'histoire de l'art - partie 1")
 if is_cloudinary_active
-  art.photo.attach(io: file, filename: 'women.jpg', content_type: 'images/jpg')
+  femmes.photo.attach(io: file, filename: 'women.jpg', content_type: 'images/jpg')
 end
 femmes.save!
 
