@@ -74,7 +74,7 @@ music17th_1 = Content.new(
                 composée par Marc-Antoine Charpentier."
 )
 
-file = File.open(Rails.root.join('db/media/content/music17th_1.jpg'))
+file = File.open(Rails.root.join('db/media/contents/music17th_1.jpg'))
 if is_cloudinary_active
   music17th_1.photo.attach(io: file, filename: 'music17th_1.jpg', content_type: 'image/jpeg')
 end
@@ -91,7 +91,7 @@ music17th_2 = Content.new(
                 chef-d'oeuvre de la musique non religieuse du XVIIe."
 )
 
-file = File.open(Rails.root.join('db/media/content/music17th_2.jpg'))
+file = File.open(Rails.root.join('db/media/contents/music17th_2.jpg'))
 if is_cloudinary_active
   music17th_2.photo.attach(io: file, filename: 'music17th_2.jpg', content_type: 'image/jpeg')
 end
@@ -110,7 +110,7 @@ music17th_3 = Content.new(
                 a recherché en vain une perfection absolue dans son art, possède son apprenti."
 )
 
-file = File.open(Rails.root.join('db/media/content/music17th_3.jpg'))
+file = File.open(Rails.root.join('db/media/contents/music17th_3.jpg'))
 if is_cloudinary_active
   music17th_3.photo.attach(io: file, filename: 'music17th_3.jpg', content_type: 'image/jpeg')
 end
@@ -131,7 +131,7 @@ music17th_4 = Content.new(
                 les chants religieux de leurs compagnons."
 )
 
-file = File.open(Rails.root.join('db/media/content/music17th_4.jpg'))
+file = File.open(Rails.root.join('db/media/contents/music17th_4.jpg'))
 if is_cloudinary_active
   music17th_4.photo.attach(io: file, filename: 'music17th_4.jpg', content_type: 'image/jpeg')
 end
@@ -152,7 +152,7 @@ music17th_5 = Content.new(
                 les chants religieux de leurs compagnons."
 )
 
-file = File.open(Rails.root.join('db/media/content/music17th_5.jpg'))
+file = File.open(Rails.root.join('db/media/contents/music17th_5.jpg'))
 if is_cloudinary_active
   music17th_5.photo.attach(io: file, filename: 'music17th_5.jpg', content_type: 'image/jpeg')
 end
