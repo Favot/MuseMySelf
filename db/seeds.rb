@@ -166,6 +166,12 @@ music17th_journey = Journey.new(
     topic: music
 )
 
+file = File.open(Rails.root.join('db/media/journeys/music_17th.jpg'))
+if is_cloudinary_active
+  music17th_journey.photo.attach(io: file, filename: 'music_17th.jpg', content_type: 'image/jpg')
+end
+music17th_journey.save!
+
 music_18th = Journey.new(
   name: 'Opéra du XVIIIe siècle : Haendel & Mozart',
   summary: 'Découvrez l\'opéra baroque et classique à travers le Giulio Cesare de Haendel et le Don Giovanni de Mozart.',
