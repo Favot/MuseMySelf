@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_104010) do
+ActiveRecord::Schema.define(version: 2021_03_09_112822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_104010) do
   create_table "user_journey_contents", force: :cascade do |t|
     t.integer "rating"
     t.text "review"
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.integer "position"
     t.bigint "content_id", null: false
     t.bigint "user_journey_id", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_104010) do
   end
 
   create_table "user_journeys", force: :cascade do |t|
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.bigint "user_id", null: false
     t.bigint "journey_id", null: false
     t.datetime "created_at", precision: 6, null: false
