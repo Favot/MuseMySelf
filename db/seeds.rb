@@ -1,7 +1,8 @@
 
-puts "Cleaning all databases..."
-
+puts "Cleaning all databases (Journey Content, Journey, Content, User, Topic)..."
+JourneyContent.destroy_all
 Journey.destroy_all
+Topic.destroy_all
 Content.destroy_all
 User.destroy_all
 
@@ -14,8 +15,51 @@ puts "DB cleared"
 # Movie : (find a movie about Louis XIII, Louis XIV, Richelieu, Mazarin, Anne d'Autriche with 17th soundtrack)
 # Paintings : L'Ouïe, Abraham Bosse
 # Leçons de ténèbres
+# User
 
+is_cloudinary_active = false
 
+# User
+puts 'Creating demo user'
+lucas = User.new(
+  email: "lucas@example.com",
+  password: "123456",
+  name: "lucadeouf"
+  # first_name: "Lucas",
+  # last_name: "Martin"
+)
+
+file = File.open(Rails.root.join('db/media/users/lucas.jpg'))
+if is_cloudinary_active
+  lucas.photo.attach(io: file, filename: 'lucas.jpg', content_type: 'images/jpeg')
+end
+lucas.save!
+
+# Topic
+puts "Creating topics..."
+music = Topic.new(name: "Musique à travers les siècles")
+file = File.open(Rails.root.join('db/media/topics/music.jpg'))
+if is_cloudinary_active
+  music.photo.attach(io: file, filename: 'music.jpg', content_type: 'images/jpg')
+end
+music.save!
+
+femmes = Topic.new(name: "Les femmes dans l'histoire de l'art")
+file = File.open(Rails.root.join('db/media/topics/women.jpg'))
+art_history = Topic.new(name: "L'histoire de l'art - partie 1")
+if is_cloudinary_active
+  art.photo.attach(io: file, filename: 'women.jpg', content_type: 'images/jpg')
+end
+femmes.save!
+
+art = Topic.new(name: 'Histoire de l\'Art')
+file = File.open(Rails.root.join('db/media/topics/art.jpg'))
+if is_cloudinary_active
+  art.photo.attach(io: file, filename: 'art.jpg', content_type: 'images/jpg')
+end
+art.save!
+
+# Content
 puts "Creating demo contents..."
 music17th_1 = Content.new(
   title: "Le Malade Imaginaire",
@@ -31,12 +75,13 @@ music17th_1 = Content.new(
 )
 
 file = File.open(Rails.root.join('db/media/content/music17th_1.jpg'))
-music17th_1.photo.attach(io: file, filename: 'music17th_1.jpg', content_type: 'image/jpeg')
+if is_cloudinary_active
+  music17th_1.photo.attach(io: file, filename: 'music17th_1.jpg', content_type: 'image/jpeg')
+end
 music17th_1.save!
 
-
 music17th_2 = Content.new(
-  title: "Le Malade Imaginaire",
+  title: "Le Malade Imaginaire - accompagnement musical",
   author: "Marc-Antoine Charpentier",
   date: 1973, # "10/02/1973"
   category: "Audio",
@@ -47,7 +92,9 @@ music17th_2 = Content.new(
 )
 
 file = File.open(Rails.root.join('db/media/content/music17th_2.jpg'))
-music17th_2.photo.attach(io: file, filename: 'music17th_2.jpg', content_type: 'image/jpeg')
+if is_cloudinary_active
+  music17th_2.photo.attach(io: file, filename: 'music17th_2.jpg', content_type: 'image/jpeg')
+end
 music17th_2.save!
 
 music17th_3 = Content.new(
@@ -64,7 +111,9 @@ music17th_3 = Content.new(
 )
 
 file = File.open(Rails.root.join('db/media/content/music17th_3.jpg'))
-music17th_3.photo.attach(io: file, filename: 'music17th_3.jpg', content_type: 'image/jpeg')
+if is_cloudinary_active
+  music17th_3.photo.attach(io: file, filename: 'music17th_3.jpg', content_type: 'image/jpeg')
+end
 music17th_3.save!
 
 music17th_4 = Content.new(
@@ -83,7 +132,9 @@ music17th_4 = Content.new(
 )
 
 file = File.open(Rails.root.join('db/media/content/music17th_4.jpg'))
-music17th_4.photo.attach(io: file, filename: 'music17th_4.jpg', content_type: 'image/jpeg')
+if is_cloudinary_active
+  music17th_4.photo.attach(io: file, filename: 'music17th_4.jpg', content_type: 'image/jpeg')
+end
 music17th_4.save!
 
 music17th_5 = Content.new(
@@ -102,42 +153,70 @@ music17th_5 = Content.new(
 )
 
 file = File.open(Rails.root.join('db/media/content/music17th_5.jpg'))
-music17th_5.photo.attach(io: file, filename: 'music17th_5.jpg', content_type: 'image/jpeg')
+if is_cloudinary_active
+  music17th_5.photo.attach(io: file, filename: 'music17th_5.jpg', content_type: 'image/jpeg')
+end
 music17th_5.save!
 
-
-
-
-
+# Journey
 puts "Creating demo journey..."
-music17th_journey = Journey.name(
-  name: "Voyage musical dans la France du 17e siècle",
-  summary: "Ce MOOC vous propose de partir à la découverte des lieux, des musiciens \
-            et des repertoires de la musique française du 17e siècle.",
+music17th_journey = Journey.new(
+    name: "Voyage musical dans la France du 17e siècle",
+    summary: "Partez à la découverte des lieux, des musiciens et des repertoires de la musique française du 17e siècle.",
+    topic: music
+)
+
+music_18th = Journey.new(
+  name: 'Opéra du XVIIIe siècle : Haendel & Mozart',
+  summary: 'Découvrez l\'opéra baroque et classique à travers le Giulio Cesare de Haendel et le Don Giovanni de Mozart.',
   topic: music
 )
 
+file = File.open(Rails.root.join('db/media/journeys/music_18th.jpg'))
+if is_cloudinary_active
+  music_18th.photo.attach(io: file, filename: 'music_18th.jpg', content_type: 'image/jpg')
+end
+music_18th.save!
+
+music_19th = Journey.new(
+  name: 'Opéra du XIXe siècle : Meyerbeer, Wagner, & Verdi',
+  summary: 'Découvrez la musique et l\'impact culturel de trois opéras canoniques des années 1800 : Les Huguenots, Das Rheingold, et Otello.',
+  topic: music
+)
+
+file = File.open(Rails.root.join('db/media/journeys/music_19th.jpg'))
+if is_cloudinary_active
+  music_19th.photo.attach(io: file, filename: 'music_19th.jpg', content_type: 'image/jpg')
+end
+music_19th.save!
+
 puts "Linking demo journey to content..."
-journey_content = Journey_content.new(
+journey_content = JourneyContent.new(
   journey: music17th_journey,
   content: music17th_1
 )
 journey_content.save!
 
-journey_content = Journey_content.new(
+journey_content = JourneyContent.new(
   journey: music17th_journey,
   content: music17th_2
 )
 journey_content.save!
 
-journey_content = Journey_content.new(
+journey_content = JourneyContent.new(
   journey: music17th_journey,
   content: music17th_3
 )
 journey_content.save!
 
-journey_content = Journey_content.new(
+journey_content = JourneyContent.new(
   journey: music17th_journey,
   content: music17th_4
+)
+journey_content.save!
+
+journey_content = JourneyContent.new(
+  journey: music17th_journey,
+  content: music17th_5
 )
 journey_content.save!
