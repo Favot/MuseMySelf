@@ -5,6 +5,12 @@ ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
+
+# French version
+
+gem 'rails-i18n' 
+
+
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -29,6 +35,11 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
+
+# French version
+
+
+gem 'devise-i18n'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
