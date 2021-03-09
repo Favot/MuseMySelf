@@ -3,7 +3,7 @@ class CreateContents < ActiveRecord::Migration[6.0]
     create_table :contents do |t|
       t.string :title
       t.string :author
-      t.date :date
+      t.integer :date
       t.string :category
       t.integer :duration
       t.string :url
