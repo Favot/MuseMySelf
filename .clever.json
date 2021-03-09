@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "app_id": "app_a704322f-d57e-4609-bf51-f6868adbadfe",
+      "org_id": "user_ad938b61-d04c-4ba7-ba80-b5f26485fc7e",
+      "deploy_url": "https://push-par-clevercloud-customers.services.clever-cloud.com/app_a704322f-d57e-4609-bf51-f6868adbadfe.git",
+      "name": "MuseMySelf",
+      "alias": "MuseMySelf"
+    }
+  ]
+}
