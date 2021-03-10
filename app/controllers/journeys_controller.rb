@@ -22,9 +22,9 @@ class JourneysController < ApplicationController
     h, m = duration.divmod(60)
     @duration = "#{h} h #{m} min"
 
-    @subscribed = count_subscribers
-    @content_count_by_type = count_by_type
+    @count_subscribers = count_subscribers
 
+    @content_count_by_type = count_by_type
     @to_do_count_by_type = current_user_to_do
   end
 
