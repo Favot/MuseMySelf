@@ -1,0 +1,33 @@
+
+
+<%# if the the is not match with the research %>
+<% if @journeys.size == 0 %>
+<%# on peux eventuellement proposer un autre parcour %>
+<h2>Desoler nous n'avons pas de parcours correspondanrs a votre recherche</h2>
+<%# if only one resul %>
+<% elsif @journeys.size == 1 %>
+<h2>Resultat</h2>
+<h3>le parcour</h3>
+<% @journeys.each do |journey| %>
+	<div class="border-magic">
+		<%= link_to journey.name, journey_path(journey.id) %>
+
+
+	</div>
+<% end %>
+<%# if more than one result %>
+<% else %>
+<h2>Resultas</h2>
+<h3>les parcours</h3>
+<% @journeys.each do |journey| %>
+	<div class="border-magic">
+		<%= link_to journey.name, journey_path(journey.id) %>
+
+
+	</div>
+<% end %>
+<% end %>
+
+
+
+
