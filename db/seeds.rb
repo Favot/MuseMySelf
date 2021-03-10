@@ -1,6 +1,8 @@
 # Demo user : lucas
 # Demo journey : music17th
 
+require 'faker'
+
 puts "Cleaning all databases..."
 
 UserJourneyContent.destroy_all
@@ -449,3 +451,55 @@ user_journey_content_2 = UserJourneyContent.new(
 user_journey_content_2.save!
 
 puts "Finished!"
+
+
+# Start creating fake user at large scale
+
+
+# p "create 20 users"
+
+
+# 20.times do |_index|
+#   User.create!(name: Faker::Name.name,
+#               email: Faker::Internet.email,
+#               password: "123456"
+#                  )
+# end
+
+
+# #  get all users
+
+# users = User.all
+
+# # get all journeys
+
+# journeys = Journey.all
+# journeys_number = Journey.count
+# # each user create a random numbers of journeys 
+
+
+# users.each do |user|
+#   # each user pick up a random number between one to the max number of journey 
+#   random_numbers_of_journey = rand(1..journeys_number)
+#   # p random_numbers_of_journey
+#   journeys_pickup = journeys.sample(random_numbers_of_journey)
+  
+#   journeys_pickup.each do | journey_pickup|
+    
+#     user_journey_created = UserJourney.create!(
+#       journey: journey_pickup,
+#       user: user,
+#       completed: false
+#     )
+
+#     p user_journey_created.contents
+#   end
+
+# end
+
+# user_journey_1 = UserJourney.new(
+#   journey: music17th,
+#   user: lucas,
+#   completed: false
+# )
+
