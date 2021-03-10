@@ -12,16 +12,22 @@ class JourneysController < ApplicationController
 
   def show
     @journey = Journey.find(params[:id])
+
     ratings = this_journey_user_journey_contents.map(&:rating)
     @average = (ratings.sum * 1.0 / ratings.size)
 
     duration = this_journey_contents_sorted.sum(&:duration)
-
     h, m = duration.divmod(60)
     @duration = "#{h} h #{m} min"
+
+    @subscribed = count_subscribers
   end
 
   private
+
+  def count_subscribers
+    UserJourney.where(journey: @journey).size
+  end
 
   def this_journey_user_journey_contents
     # Get all the user_journeys where the journey is this one
