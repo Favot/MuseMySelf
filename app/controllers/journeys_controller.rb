@@ -14,6 +14,11 @@ class JourneysController < ApplicationController
     @journey = Journey.find(params[:id])
     ratings = this_journey_user_journey_contents.map(&:rating)
     @average = (ratings.sum * 1.0 / ratings.size)
+
+    duration = this_journey_contents_sorted.sum(&:duration)
+
+    h, m = duration.divmod(60)
+    @duration = "#{h} h #{m} min"
   end
 
   private
@@ -29,5 +34,10 @@ class JourneysController < ApplicationController
       end
     end
     return ujc
+  end
+
+  def this_journey_contents_sorted
+    @journey_contents = JourneyContent.where(journey: @journey)
+    @journey_contents.order(position: :asc).map(&:content)
   end
 end
