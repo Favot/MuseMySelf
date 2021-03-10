@@ -1,8 +1,7 @@
 # Demo user : lucas
-# Demo topic : music
 # Demo journey : music17th
 
-puts "Cleaning all databases..." # Journey Content, Journey, Content, User, Topic
+puts "Cleaning all databases..."
 
 UserJourneyContent.destroy_all
 UserJourney.destroy_all
@@ -336,6 +335,26 @@ if is_cloudinary_active
 end
 music17th_5.save!
 
+music17th_6 = Content.new(
+  title: "La Musique en France à l'époque baroque",
+  author: "James R. Anthony",
+  date: 1981,
+  category: "Livre",
+  duration: 180,
+  url: "https://livre.fnac.com/a2747744/James-R-Anthony-La-Musique-en-France-a-l-epoque-baroque#int=S:Suggestion|FA:LIV|1|2747744|BL5|L1",
+  description: "Depuis une vingtaine d'années, la musique baroque a fait l'objet d'un débat aussi\
+                passionné que passionnant. Toutefois, aucun ouvrage d'ensemble n'avait été consacré \
+                à cette époque particulièrement florissante en France puisqu'elle vit naître la tragédie \
+                lyrique et se développer le ballet, la musique religieuse prendre une grande importance \
+                dans la vie de cour, la sonate et le concerto italiens envahir les salons, tandis que le \
+                clavecin supplantait le luth."
+)
+
+file = File.open(Rails.root.join('db/media/contents/music17th_6.jpg'))
+if is_cloudinary_active
+  music17th_6.photo.attach(io: file, filename: 'music17th_6.jpg', content_type: 'image/jpg')
+end
+music17th_6.save!
 
 # -- linking demo content to journey
 puts "Linking demo content to demo journey..."
