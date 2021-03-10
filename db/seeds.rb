@@ -1,7 +1,6 @@
-# Data for demo
-# user : lucas
-# topic : music
-# journey : music_1
+# Demo user : lucas
+# Demo topic : music
+# Demo journey : music17th
 
 puts "Cleaning all databases..." # Journey Content, Journey, Content, User, Topic
 
@@ -16,9 +15,9 @@ puts "DB cleared"
 puts "Seeding some data..."
 is_cloudinary_active = true
 
+# -- 4 USERS
 puts "Creating users..."
 
-# User 1
 lucas = User.new(
   email: "lucas@exemple.com",
   password: "123456",
@@ -34,7 +33,6 @@ lucas = User.new(
 # end
 lucas.save!
 
-# User 2
 john = User.new(
   email: "john@exemple.com",
   password: "123456",
@@ -42,7 +40,6 @@ john = User.new(
 )
 john.save!
 
-# User 3
 marie = User.new(
   email: "marie@exemple.com",
   password: "123456",
@@ -50,7 +47,6 @@ marie = User.new(
 )
 marie.save!
 
-# User 4
 chris = User.new(
   email: "chris@exemple.com",
   password: "123456",
@@ -58,29 +54,32 @@ chris = User.new(
 )
 chris.save!
 
-
+# -- 4 TOPICS
 puts "Creating topics..."
 
-# Topic 1
 music = Topic.new(name: "Musique")
 music.save!
 
-# Topic 2
 art = Topic.new(name: "Art")
 art.save!
 
-# Topic 3
 architecture = Topic.new(name: "Architecture")
 architecture.save!
 
-# Topic 4
 photo = Topic.new(name: "Photographie")
 photo.save!
 
-
+# -- 5 JOURNEYS per Topic (except 7 for music)
 puts "Creating journeys..."
 
 # Journeys for music
+music17th = Journey.new(
+    name: "Voyage musical dans la France du XXVIIe siècle",
+    summary: "Partez à la découverte des lieux, des musiciens et des repertoires de la musique française du XXVIIe siècle.",
+    topic: music
+)
+music17th.save!
+
 music_1 = Journey.new(
   name: 'Opéra du XVIIIe siècle : Haendel & Mozart',
   summary: 'Découvrez l\'opéra baroque et classique à travers le Giulio Cesare de Haendel et le Don Giovanni de Mozart.',
@@ -236,8 +235,10 @@ photo_5.save!
 
 ################
 
+
+# -- 5 CONTENTS for Journey 'music17th'
 puts "Creating demo contents..."
-# Content
+
 music17th_1 = Content.new(
   title: "Le Malade Imaginaire",
   author: "Molière",
@@ -334,21 +335,6 @@ if is_cloudinary_active
   music17th_5.photo.attach(io: file, filename: 'music17th_5.jpg', content_type: 'image/jpeg')
 end
 music17th_5.save!
-
-
-
-
-# Journey
-puts "Creating demo journey..."
-music17th_journey = Journey.new(
-    name: "Voyage musical dans la France du 17e siècle",
-    summary: "Partez à la découverte des lieux, des musiciens et des repertoires de la musique française du 17e siècle.",
-    topic: music
-)
-
-music17th_journey.save!
-
-
 
 
 puts "Linking demo journey to content..."
