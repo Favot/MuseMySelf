@@ -4,11 +4,13 @@
 
 puts "Cleaning all databases..." # Journey Content, Journey, Content, User, Topic
 
+UserJourneyContent.destroy_all
+UserJourney.destroy_all
+User.destroy_all
 JourneyContent.destroy_all
+Content.destroy_all
 Journey.destroy_all
 Topic.destroy_all
-Content.destroy_all
-User.destroy_all
 
 puts "DB cleared"
 
@@ -233,8 +235,6 @@ photo_5 = Journey.new(
 )
 photo_5.save!
 
-################
-
 
 # -- 5 CONTENTS for Journey 'music17th'
 puts "Creating demo contents..."
@@ -337,42 +337,90 @@ end
 music17th_5.save!
 
 
-puts "Linking demo journey to content..."
+# -- linking demo content to journey
+puts "Linking demo content to demo journey..."
+
 journey_content = JourneyContent.new(
-  journey: music17th_journey,
+  journey: music17th,
   content: music17th_1,
   position: 1
 )
 journey_content.save!
 
 journey_content = JourneyContent.new(
-  journey: music17th_journey,
+  journey: music17th,
   content: music17th_2,
   position: 2
 )
 journey_content.save!
 
 journey_content = JourneyContent.new(
-  journey: music17th_journey,
+  journey: music17th,
   content: music17th_3,
   position: 3
 )
 journey_content.save!
 
 journey_content = JourneyContent.new(
-  journey: music17th_journey,
+  journey: music17th,
   content: music17th_4,
   position: 4
 )
 journey_content.save!
 
 journey_content = JourneyContent.new(
-  journey: music17th_journey,
+  journey: music17th,
   content: music17th_5,
   position: 5
 )
 journey_content.save!
 
 
+# -- user_journeys
+puts "Faking users registered to journeys"
+
+user_journey_1 = UserJourney.new(
+  journey: music17th,
+  user: lucas,
+  completed: false
+)
+user_journey_1.save!
+
+user_journey_2 = UserJourney.new(
+  journey: music17th,
+  user: marie,
+  completed: false
+)
+user_journey_2.save!
+
+user_journey_3 = UserJourney.new(
+  journey: music_4,
+  user: lucas,
+  completed: true
+)
+user_journey_3.save!
+
+# -- user_journey_contents
+puts "Faking user rating contents of demo journey"
+
+user_journey_content_1 = UserJourneyContent.new(
+  rating: 5,
+  review: "Une de mes pièces de théâtre préférées !",
+  user_journey: user_journey_2,
+  content: music17th_1,
+  completed: true,
+  position: 1
+)
+user_journey_content_1.save!
+
+user_journey_content_2 = UserJourneyContent.new(
+  rating: 3,
+  review: "J'adore la pièce de théatre 'Le Malade Imaginaire', mais je n'aime pas trop la musique qui l'accompagne...",
+  user_journey: user_journey_2,
+  content: music17th_2,
+  completed: true,
+  position: 2
+)
+user_journey_content_2.save!
 
 puts "Finished!"
