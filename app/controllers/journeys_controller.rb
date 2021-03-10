@@ -23,7 +23,9 @@ class JourneysController < ApplicationController
     @duration = "#{h} h #{m} min"
 
     @subscribed = count_subscribers
-    @count = count_by_type
+    @content_count_by_type = count_by_type
+
+    @to_do_count_by_type = current_user_to_do
   end
 
   private
@@ -55,6 +57,19 @@ class JourneysController < ApplicationController
     count = {}
     CATEGORIES.each do |category|
       count[category.to_s] = @journey_contents.joins(:content).where("contents.category" => category).size
+    end
+    count
+  end
+
+  def current_user_to_do
+    user = User.where(id: current_user).first
+    uncomplete_user_journey_contents = user.user_journeys.where(journey: @journey).first
+                                           .user_journey_contents.where(completed: false)
+    count = {}
+    CATEGORIES.each do |category|
+      count[category.to_s] = uncomplete_user_journey_contents.joins(:content)
+                                                             .where("contents.category" => category)
+                                                             .size
     end
     count
   end

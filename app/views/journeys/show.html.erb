@@ -17,9 +17,9 @@
 </div>
 <div class="placeholder" name="content summary">
   <ul>
-    <% @count.each do |key, value| %>
+    <% @content_count_by_type.each do |key, value| %>
       <%  unless value.zero?  %>
-        <li><%= "#{key} : #{value}"%></li>
+        <li><%= "#{key} : reste #{@to_do_count_by_type[key]} sur #{value} au total"%></li>
       <% end %>
     <% end %>
   </ul>
