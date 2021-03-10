@@ -1,5 +1,10 @@
+# Data for demo
+# user : lucas
+# topic : music
+# journey : music_1
 
-puts "Cleaning all databases (Journey Content, Journey, Content, User, Topic)..."
+puts "Cleaning all databases..." # Journey Content, Journey, Content, User, Topic
+
 JourneyContent.destroy_all
 Journey.destroy_all
 Topic.destroy_all
@@ -7,24 +12,17 @@ Content.destroy_all
 User.destroy_all
 
 puts "DB cleared"
-# category : %w[Théâtre, Film, Audio, Peinture, Autre]
 
-# Readings : Le Malade Imaginaire
-# Audio : Le Malade Imaginaire, Marc-Antoine Charpentier
-# Audio : Sacred music (to be identified)
-# Movie : (find a movie about Louis XIII, Louis XIV, Richelieu, Mazarin, Anne d'Autriche with 17th soundtrack)
-# Paintings : L'Ouïe, Abraham Bosse
-# Leçons de ténèbres
-# User
-
+puts "Seeding some data..."
 is_cloudinary_active = true
 
-# User
-puts 'Creating demo user'
+puts "Creating users..."
+
+# User 1
 lucas = User.new(
-  email: "lucas@example.com",
+  email: "lucas@exemple.com",
   password: "123456",
-  name: "lucadeouf"
+  name: "lucasdeouf"
   # first_name: "Lucas",
   # last_name: "Martin"
 )
@@ -36,32 +34,210 @@ lucas = User.new(
 # end
 lucas.save!
 
-# Topic
+# User 2
+john = User.new(
+  email: "john@exemple.com",
+  password: "123456",
+  name: "johndoe"
+)
+john.save!
+
+# User 3
+marie = User.new(
+  email: "marie@exemple.com",
+  password: "123456",
+  name: "Marie"
+)
+marie.save!
+
+# User 4
+chris = User.new(
+  email: "chris@exemple.com",
+  password: "123456",
+  name: "Chris"
+)
+chris.save!
+
+
 puts "Creating topics..."
-music = Topic.new(name: "Musique à travers les siècles")
-file = File.open(Rails.root.join('db/media/topics/music.jpg'))
-if is_cloudinary_active
-  music.photo.attach(io: file, filename: 'music.jpg', content_type: 'images/jpg')
-end
+
+# Topic 1
+music = Topic.new(name: "Musique")
 music.save!
 
-femmes = Topic.new(name: "Les femmes dans l'histoire de l'art")
-file = File.open(Rails.root.join('db/media/topics/women.jpg'))
-femmes = Topic.new(name: "L'histoire de l'art - partie 1")
-if is_cloudinary_active
-  femmes.photo.attach(io: file, filename: 'women.jpg', content_type: 'images/jpg')
-end
-femmes.save!
-
-art = Topic.new(name: 'Histoire de l\'Art')
-file = File.open(Rails.root.join('db/media/topics/art.jpg'))
-if is_cloudinary_active
-  art.photo.attach(io: file, filename: 'art.jpg', content_type: 'images/jpg')
-end
+# Topic 2
+art = Topic.new(name: "Art")
 art.save!
 
-# Content
+# Topic 3
+architecture = Topic.new(name: "Architecture")
+architecture.save!
+
+# Topic 4
+photo = Topic.new(name: "Photographie")
+photo.save!
+
+
+puts "Creating journeys..."
+
+# Journeys for music
+music_1 = Journey.new(
+  name: 'Opéra du XVIIIe siècle : Haendel & Mozart',
+  summary: 'Découvrez l\'opéra baroque et classique à travers le Giulio Cesare de Haendel et le Don Giovanni de Mozart.',
+  topic: music
+)
+music_1.save!
+
+music_2 = Journey.new(
+  name: 'Opéra du XIXe siècle : Meyerbeer, Wagner, & Verdi',
+  summary: 'Découvrez la musique et l\'impact culturel de trois opéras canoniques des années 1800 : Les Huguenots, Das Rheingold, et Otello.',
+  topic: music
+)
+music_2.save!
+
+ music_3= Journey.new(
+  name: "Musique du monde : Rythmes balinais",
+  summary: "Une introduction à la musique balinaise, et au rôle de la musique dans la culture balinaise grâce à un parcours interactif axé sur les rythmes de Bali.",
+  topic: music
+)
+music_3.save!
+
+music_4 = Journey.new(
+  name: "Introduction à l'opéra italien",
+  summary: "Explorez l'opéra italien dans cette expérience d'apprentissage en deux actes et apprenez à écouter la musique d'une nouvelle manière.
+",
+  topic: music
+)
+music_4.save!
+
+music_5 = Journey.new(
+  name: "Le jazz : la musique, les histoires, les acteurs",
+  summary: "Apprenez ce qui est unique dans le jazz (swing, improvisation, structure et expression) et obtenez le point de vue d'initiés de célèbres musiciens de jazz.",
+  topic: music
+)
+music_5.save!
+
+music_6 = Journey.new(
+  name: "La musique européenne à l'époque romantique",
+  summary: "Une véritable découverte de la culture musicale romantique occidentale depuis le XIXe siècle.",
+  topic: music
+)
+music_6.save!
+
+
+# Journeys for art
+art_1 = Journey.new(
+  name: "Une brève histoire de l’art",
+  summary: "De la Renaissance au XXe siècle, découvrez les grandes tendances et mouvements de l’histoire de l’art grâce à des contenus intéractifs.",
+  topic: art
+)
+art_1.save!
+
+art_2 = Journey.new(
+  name: "Connaissez-vous le 9e Art ?",
+  summary: "Ce parcours permet de découvrir l’histoire de la bande-dessinée, ses différents genres, ces pionniers et ses stars. Vous pourrez également comprendre les liens étroits qui unissent la BD aux autres arts.",
+  topic: art
+)
+art_2.save!
+
+art_3 = Journey.new(
+  name: "Louis XIV à Versailles",
+  summary: "Fonctionnement du pouvoir, aménagement des jardins, organisation des divertissements et des plaisirs, goût pour l’art… Plongez dans tous les secrets et toute l’organisation de Versailles sous le règne de Louis XIV.",
+  topic: art
+)
+art_3.save!
+
+art_4 = Journey.new(
+  name: "Le Pop Art",
+  summary: "Suivez ce parcours si vous souhaitez tout savoir sur cet incontournable courant artistique, né à la fin des années 1950 en Angleterre.",
+  topic: art
+)
+art_4.save!
+
+art_5 = Journey.new(
+  name: "Couleurs, bleu, jaune, rouge dans l’art",
+  summary: "Découvrez l’art par une thématique originale : comment les 3 couleurs primaires, le bleu, le jaune et le rouge, se sont imposées parmi les peintres ?",
+  topic: art
+)
+art_5.save!
+
+
+# Journeys for architecture
+architecture_1 = Journey.new(
+  name: "Histoire de l'architecture chinoise",
+  summary: "Ce parcours explore l'histoire architecturale riche et variée de la Chine.",
+  topic: architecture
+)
+architecture_1.save!
+
+architecture_2 = Journey.new(
+  name: "Rome : ville de la Renaissance et du Baroque",
+  summary: "Découvrez comment l'art, l'architecture et la forme urbaine de la Rome de la Renaissance et du Baroque ont projeté l'image de la ville à ses citoyens et au monde entier.",
+  topic: architecture
+)
+architecture_2.save!
+
+architecture_3 = Journey.new(
+  name: "Architecture moderne japonaise",
+  summary: "Explorez les éléments clés de l'architecture moderne japonaise et l'histoire qui s'y rapporte, en mettant l'accent sur son occidentalisation, couvrant la période de 1868 à 1945.",
+  topic: architecture
+)
+architecture_3.save!
+
+architecture_4 = Journey.new(
+  name: "Une histoire mondiale de l'architecture",
+  summary: "Découvrez la riche histoire de l'architecture de l'humanité au cours de ce voyage autour du globe, de 100 000 avant notre ère à environ 1 600 de notre ère.",
+  topic: architecture
+)
+architecture_4.save!
+
+architecture_5 = Journey.new(
+  name: "Le théâtre et ses illusions de perspective",
+  summary: "Découvrez les principes géométriques de base pour concevoir et gérer la réalisation de scènes théâtrales, qui fondent leur expressivité sur les effets de perspective de l'architecture et des espaces illusoires mis en place sur la scène.",
+  topic: architecture
+)
+architecture_5.save!
+
+# Journeys for photo
+photo_1 = Journey.new(
+  name: "Une brève histoire de la photographie",
+  summary: "Amateur de photographie ancienne ou instagrammeur frénétique, ce parcours s’adresse à tous ceux qui s’intéressent à la photographie, à son histoire, à ses techniques et à ses grands noms.",
+  topic: photo
+)
+photo_1.save!
+
+photo_2 = Journey.new(
+  name: "L'héroïsme de la Première Guerre mondiale à travers la photographie",
+  summary: "Découvrez quelques-unes des façons dont l'héroïsme et la Première Guerre mondiale sont dépeints dans l'art, la photographie et le cinéma.",
+  topic: photo
+)
+photo_2.save!
+
+photo_3 = Journey.new(
+  name: "Andy Warhol: Instantanés",
+  summary: "Ce parcours présente l'importance de la photographie dans l'oeuvre d'Andy Warhol et met en lumière différents thèmes et techniques explorés par l'artiste durant toute sa carrière.",
+  topic: photo
+)
+photo_3.save!
+
+photo_4 = Journey.new(
+  name: "Photographie par Yasuo Kiyonaga",
+  summary: "Découvrez le point de vue exceptionnel et l'imagination passionnée de cet artiste japonais.",
+  topic: photo
+)
+photo_4.save!
+
+photo_5 = Journey.new(
+  name: "Héroïnes de la Modernité",
+  summary: "Jeunes filles romantiques et amoureuses, patriotes héroïques, espionnes rusées et impitoyables... Découvrez les portraits des femmes qui ont inspiré les héroïnes des romans des Jules Verne.",
+  topic: photo
+)
+photo_5.save!
+
+################
+
 puts "Creating demo contents..."
+# Content
 music17th_1 = Content.new(
   title: "Le Malade Imaginaire",
   author: "Molière",
@@ -159,6 +335,9 @@ if is_cloudinary_active
 end
 music17th_5.save!
 
+
+
+
 # Journey
 puts "Creating demo journey..."
 music17th_journey = Journey.new(
@@ -167,35 +346,10 @@ music17th_journey = Journey.new(
     topic: music
 )
 
-file = File.open(Rails.root.join('db/media/journeys/music_17th.jpg'))
-if is_cloudinary_active
-  music17th_journey.photo.attach(io: file, filename: 'music_17th.jpg', content_type: 'image/jpg')
-end
 music17th_journey.save!
 
-music_18th = Journey.new(
-  name: 'Opéra du XVIIIe siècle : Haendel & Mozart',
-  summary: 'Découvrez l\'opéra baroque et classique à travers le Giulio Cesare de Haendel et le Don Giovanni de Mozart.',
-  topic: music
-)
 
-file = File.open(Rails.root.join('db/media/journeys/music_18th.jpg'))
-if is_cloudinary_active
-  music_18th.photo.attach(io: file, filename: 'music_18th.jpg', content_type: 'image/jpg')
-end
-music_18th.save!
 
-music_19th = Journey.new(
-  name: 'Opéra du XIXe siècle : Meyerbeer, Wagner, & Verdi',
-  summary: 'Découvrez la musique et l\'impact culturel de trois opéras canoniques des années 1800 : Les Huguenots, Das Rheingold, et Otello.',
-  topic: music
-)
-
-file = File.open(Rails.root.join('db/media/journeys/music_19th.jpg'))
-if is_cloudinary_active
-  music_19th.photo.attach(io: file, filename: 'music_19th.jpg', content_type: 'image/jpg')
-end
-music_19th.save!
 
 puts "Linking demo journey to content..."
 journey_content = JourneyContent.new(
@@ -232,3 +386,7 @@ journey_content = JourneyContent.new(
   position: 5
 )
 journey_content.save!
+
+
+
+puts "Finished!"
