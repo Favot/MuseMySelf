@@ -15,7 +15,7 @@
 <h2>Explorer les parcours</h2>
 <% @topics.each do |topic| %>
 	<div class="border-magic">
-		#<%= topic.name %>
+		#<%= link_to topic.name, journeys_path(topic.id) %>
 	</div>
 <% end %>
 
