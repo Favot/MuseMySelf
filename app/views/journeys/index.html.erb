@@ -10,7 +10,8 @@
 <h3>le parcour</h3>
 <% @journeys.each do |journey| %>
 	<div class="border-magic">
-		<%= journey.name %>
+		<%= link_to journey.name, journey_path(journey.id) %>
+
 
 	</div>
 <% end %>
@@ -20,7 +21,8 @@
 <h3>les parcours</h3>
 <% @journeys.each do |journey| %>
 	<div class="border-magic">
-		<%= journey.name %>
+		<%= link_to journey.name, journey_path(journey.id) %>
+
 
 	</div>
 <% end %>
