@@ -22,13 +22,14 @@
 <h2>Nouveautés</h2>
 <% @last_journeys.each do |journey| %>
 	<div class="border-magic">
-		<%= journey.name %>
+	 <%= link_to journey.name, journey_path(journey.id) %>
+	 
 	</div>
 <% end %>
 
 <h2>Notre séléction pour vous</h2>	
 <%  @random_journeys.each do |journey| %>
 	<div class="border-magic">
-		<%= journey.name %>
+		<%= link_to journey.name, journey_path(journey.id) %>
 	</div>
 <% end %>
