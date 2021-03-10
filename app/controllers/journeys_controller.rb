@@ -13,9 +13,7 @@ class JourneysController < ApplicationController
   def show
     @journey = Journey.find(params[:id])
     ratings = this_journey_user_journey_contents.map(&:rating)
-    # .map(&:user_journey_contents)
-    @average = ratings.sum / ratings.size
-    # raise
+    @average = (ratings.sum * 1.0 / ratings.size)
   end
 
   private
