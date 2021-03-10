@@ -11,22 +11,24 @@
 <% end %>
 
 
-
-<h2>Explorer les parcours</h2>
+<div class="content-title">
+  <h3>Explorer les parcours</h3>
+</div>
 <% @topics.each do |topic| %>
 	<div class="border-magic">
 		#<%= topic.name %>
 	</div>
 <% end %>
+<%= render 'components_christophe' %>
 
-<h2>Nouveautés</h2>
+<h3>Nouveautés</h3>
 <% @last_journeys.each do |journey| %>
 	<div class="border-magic">
 		<%= journey.name %>
 	</div>
 <% end %>
 
-<h2>Notre séléction pour vous</h2>	
+<h3>Notre séléction pour vous</h3>
 <%  @random_journeys.each do |journey| %>
 	<div class="border-magic">
 		<%= journey.name %>
