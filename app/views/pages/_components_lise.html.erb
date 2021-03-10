@@ -1,3 +1,45 @@
-<h1>header title</h1>
-<p>test body</p>
-<button class="btn btn-primary">test btn</button>
+<%= [1, 2, 3, 4, 5].sample %>
+<div class="text-center">
+
+<h5>Fnd me in components/_button.scss</h5>
+
+<div class="div-test">
+  <p>.btn-topic-disabled + .btn-active</p>
+  <%= link_to '#Peinture', '#', class: "btn-topic-disabled" %>
+  <%= link_to '#Histoire', '#', class: "btn-topic-disabled" %>
+  <%= link_to '#Pop Art', '#', class: "btn-topic-disabled" %>
+</div>
+
+<div class="div-test">
+  <%= link_to '#Peinture', '#', class: "btn-topic-disabled" %>
+  <%= link_to '#Histoire', '#', class: "btn-topic-disabled btn-active" %>
+  <%= link_to '#Pop Art', '#', class: "btn-topic-disabled" %>
+</div>
+
+<div class="div-test">
+  <p>.btn-topic-disabled + .btn-active</p>
+  <%= link_to 'Tous', '#', class: "btn-topic-disabled" %>
+  <%= link_to 'En cours', '#', class: "btn-topic-disabled" %>
+  <%= link_to 'Complétés', '#', class: "btn-topic-disabled btn-active" %>
+</div>
+
+<div class="div-test">
+  <p>.btn-login</p>
+  <%= link_to 'Me connecter', '#', class: "btn-login" %>
+</div>
+
+<div class="div-test">
+  <p>.btn-search</p>
+  <%= link_to 'Rechercher', '#', class: "btn-search" %>
+</div>
+
+<div class="div-test">
+  <p>.btn-start</p>
+  <%= link_to "S'inscrire à ce Parcours", '#', class: "btn-start" %>
+</div>
+
+
+
+
+
+</div>
