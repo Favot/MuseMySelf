@@ -17,9 +17,11 @@
 </div>
 <div class="placeholder" name="content summary">
   <ul>
-    <li>Video</li>
-    <li>Théâtre</li>
-    <li>...</li>
+    <% @count.each do |key, value| %>
+      <%  unless value.zero?  %>
+        <li><%= "#{key} : #{value}"%></li>
+      <% end %>
+    <% end %>
   </ul>
   <button type="button" name="button">S'inscrire au parcours</button>
 </div>

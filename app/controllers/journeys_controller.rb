@@ -1,4 +1,6 @@
 class JourneysController < ApplicationController
+  CATEGORIES = %w[Théâtre Film Audio Peinture Livre]
+
   # def index
   #   @journeys = Journey.all
 
@@ -21,6 +23,7 @@ class JourneysController < ApplicationController
     @duration = "#{h} h #{m} min"
 
     @subscribed = count_subscribers
+    @count = count_by_type
   end
 
   private
@@ -45,5 +48,14 @@ class JourneysController < ApplicationController
   def this_journey_contents_sorted
     @journey_contents = JourneyContent.where(journey: @journey)
     @journey_contents.order(position: :asc).map(&:content)
+  end
+
+  def count_by_type
+    @journey_contents = JourneyContent.where(journey: @journey)
+    count = {}
+    CATEGORIES.each do |category|
+      count[category.to_s] = @journey_contents.joins(:content).where("contents.category" => category).size
+    end
+    count
   end
 end
