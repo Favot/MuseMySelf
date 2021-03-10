@@ -394,6 +394,12 @@ journey_content = JourneyContent.new(
 )
 journey_content.save!
 
+journey_content = JourneyContent.new(
+  journey: music17th,
+  content: music17th_6,
+  position: 6
+)
+journey_content.save!
 
 # -- user_journeys
 puts "Faking users registered to journeys"
