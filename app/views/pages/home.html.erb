@@ -1,14 +1,21 @@
 <h1>Muse My Self</h1>
 
-
-<%= simple_form_for :search, url: journeys_path, method: :get do |f| %>
-	<div class="search-form-control form-group">
-		<input class="form-control string required" type="text" name="search[query]" id="search_query" />
-		<button name="button" type="submit" class="btn">
-		<i class="fas fa-search"></i> Search
-	</button>
-	</div>
+<!-- Search form -->
+<%= form_for :search, url: journeys_path, method: :get do |f| %>
+  <div class="form-container">
+    <label class="form-label form-label-hidden" for="search[query]">Champ de recherche</label>
+    <input class="form-input" type="text" name="search[query]" id="search_query" placeholder="Une idée ?"/>
+    <%= f.submit "Rechercher", class: "btn-search form-btn" %>
+  </div>
 <% end %>
+
+
+<!-- Caroussel tags -->
+<div class="content-title">
+  <h3>Explorer les parcours</h3>
+</div>
+
+<%= render 'shared/caroussel_tags', data: @topics %>
 
 
 <% @topics.each do |topic| %>
@@ -26,9 +33,17 @@
 	</div>
 <% end %>
 
-<h3>Notre séléction pour vous</h3>
-<%  @random_journeys.each do |journey| %>
-	<div class="border-magic">
-		<%= link_to journey.name, journey_path(journey.id) %>
-	</div>
-<% end %>
+
+<!-- Caroussel cards 1 -->
+<div class="content-title">
+  <h3>Nouveautés</h3>
+</div>
+
+<%= render 'shared/caroussel_cards', data: @last_journeys %>
+
+<!-- Caroussel cards 2 -->
+<div class="content-title">
+  <h3>Notre séléction pour vous</h3>
+</div>
+
+<%= render 'shared/caroussel_cards', data: @random_journeys %>
