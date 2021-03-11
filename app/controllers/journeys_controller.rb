@@ -10,27 +10,30 @@ class JourneysController < ApplicationController
 
   def show
     @journey = Journey.find(params[:id])
-    # calculations at journey level
-    ratings = this_journey_user_journey_contents.map(&:rating)
-    @average = (ratings.sum * 1.0 / ratings.size)
-
-    duration = this_journey_contents_sorted.sum(&:duration)
-    h, m = duration.divmod(60)
-    @duration = "#{h} h #{m} min"
-
+    # calculations about the journey
+    @average_rating = (ratings.sum * 1.0 / ratings.size)
+    @duration = "#{duration[0]} h #{duration[1]} min"
     @count_subscribers = count_subscribers
 
-    # calculations at journey contents level
-    @content_count_by_type = count_by_type
-
-    # skept if user is not connected yet
-    @to_do_count_by_type = current_user_to_do if user_signed_in?
-    
+    # calculations about the journey contents
     @contents = this_journey_contents_sorted.to_a # SQL relation => Array
+    @content_count_by_type = count_by_type
     @contents_durations = this_journey_contents_durations_in_h_and_min
+
+    # calculations about the user, skept if user is not connected yet
+    @to_do_count_by_type = current_user_to_do if user_signed_in?
   end
 
   private
+
+  def ratings
+    this_journey_user_journey_contents.map(&:rating)
+  end
+
+  def duration
+    duration = this_journey_contents_sorted.sum(&:duration)
+    duration.divmod(60) # => [hours, minutes]
+  end
 
   def count_subscribers
     UserJourney.where(journey: @journey).size
@@ -62,7 +65,6 @@ class JourneysController < ApplicationController
       contents_durations[content] = {}
       contents_durations[content][:hours], contents_durations[content][:minutes] = content.duration.divmod(60)
     end
-    pp contents_durations
     contents_durations
   end
 

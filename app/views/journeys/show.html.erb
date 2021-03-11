@@ -7,7 +7,7 @@
 <div class="placeholder" name="journey stats">
   <div class="placeholder">Inscrits <%= @count_subscribers %>
   </div>
-  <div class="placeholder">Note moyenne <%= @average %>
+  <div class="placeholder">Note moyenne <%= @average_rating %>
   </div>
   <div class="placeholder">Durée <%= @duration %>
   </div>
@@ -19,11 +19,17 @@
   <ul>
     <% @content_count_by_type.each do |key, value| %>
       <%  unless value.zero?  %>
-        <li><%= "#{key} : reste #{@to_do_count_by_type[key]} sur #{value} au total"%></li>
+        <li>
+          <% if user_signed_in? %>
+            <%= "#{key} : reste #{@to_do_count_by_type[key]} sur #{value} au total"%>
+          <% else %>
+            <%= "#{key} : #{value} au total"%>
+          <% end %>
+        </li>
       <% end %>
     <% end %>
   </ul>
-  
+
   <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
     <%= f.submit "S'inscrire au parcours" %>
   <% end %>
