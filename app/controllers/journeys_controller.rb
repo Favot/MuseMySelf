@@ -1,12 +1,10 @@
 class JourneysController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: %i[index show]
   CATEGORIES = %w[Théâtre Film Audio Peinture Livre]
 
   def index
     @journeys = Journey.all
-      if params[:search].present?
-      @journeys = @journeys.where('name ILIKE ?', "%#{ params[:search]['query'] }%")
-      end
+    @journeys = @journeys.where('name ILIKE ?', "%#{params[:search]['query']}%") if params[:search].present?
     @journeys = @journeys.where(topic_id: params[:topic_id]) if params[:topic_id].present?
   end
 
@@ -23,7 +21,9 @@ class JourneysController < ApplicationController
     @count_subscribers = count_subscribers
 
     @content_count_by_type = count_by_type
-    @to_do_count_by_type = current_user_to_do
+
+    # skip if user is not connected yet
+    # @to_do_count_by_type = current_user_to_do if user_signed_in?
   end
 
   private
