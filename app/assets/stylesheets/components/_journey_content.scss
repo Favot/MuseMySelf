@@ -54,16 +54,21 @@ section{
   position:absolute;
   bottom:24px;
 }
+
+
+// resolving conflicts here (will delete later), please leave it for now
+
+
 // Récuperer le css de lise pour btn-start
 // peut impacter la hauteur de la div section
-.btn-start{
-  width: 358px;
-  height: 74px;
-  background-color: $green-primary;
-  color: $black;
-  font-weight: 600;
-  border-radius: 70px;
-  padding: 15px 50px;
-  text-align: center;
-}
+// .btn-start{
+//   width: 358px;
+//   height: 74px;
+//   background-color: $green-primary;
+//   color: $black;
+//   font-weight: 600;
+//   border-radius: 70px;
+//   padding: 15px 50px;
+//   text-align: center;
+// }
 
