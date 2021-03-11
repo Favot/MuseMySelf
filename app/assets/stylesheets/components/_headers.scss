@@ -15,7 +15,11 @@
 .content-title{
   width: 95%;
   border-bottom: 1px solid rgba(255, 255, 255, .6);
-  margin:25px 10px 15px 10px;
+  margin:1.5em .6em 1em .6em;
+
+  h3{
+    margin-left: .6em;
+  }
 }
 .home-h3{
   font-family: $body-font;
