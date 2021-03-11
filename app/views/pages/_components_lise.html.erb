@@ -1,7 +1,46 @@
+<!-- TEST -->
 <%= [1, 2, 3, 4, 5].sample %>
 
-<div class="text-center">
 
+<!-- FORM html -->
+<h5>Fnd me in components/_search.scss</h5>
+
+<div class="div-test">
+  <p>Search form:</p>
+
+  <%= form_for :search, url: "#", method: :get do |f| %>
+    <div class="form-container">
+      <label class="form-label form-label-hidden" for="search[query]">Champ de recherche</label>
+      <input class="form-input" type="text" name="search[query]" id="search_query" placeholder="Une idée ?"/>
+      <%= link_to 'Rechercher', '#', class: "btn-search form-btn" %>
+    </div>
+  <% end %>
+
+</div>
+
+<!-- FORM helper -->
+<div class="div-test">
+  <p>Login form:</p>
+
+  <%= form_with url: "/search", method: :get do |form| %>
+      <div class="form-container">
+
+    <%= form.label :query, "Nom", class: "form-label" %>
+    <%= form.text_field :query, class: "form-input", placeholder: "Toto"%>
+
+    <%= form.label :query, "Email", class: "form-label" %>
+    <%= form.text_field :query, class: "form-input", placeholder: "test@exemple.com"%>
+
+    <%= form.label :query, "Mot de passe", class: "form-label" %>
+    <%= form.text_field :query, class: "form-input", placeholder: "······"%>
+
+    <%= form.submit "Me connecter", class: "btn-login form-btn" %>
+      </div>
+  <% end %>
+
+</div>
+
+<!-- BTN -->
 <h5>Fnd me in components/_button.scss</h5>
 
 <div class="div-test">
@@ -39,40 +78,23 @@
   <%= link_to "S'inscrire à ce Parcours", '#', class: "btn-start" %>
 </div>
 
-</div>
 
-
-<div class="text-center">
-
+<!-- TAGS -->
 <h5>Fnd me in components/_tag.scss</h5>
 
 <div class="div-test">
-  <p>.tag-topic</p>
-  <div class="tag-topic">MUSIQUE</div>
+  <p>.tag-topic + CATEGORY NAME</p>
+  <div class="tag-topic theater">MUSIQUE</div>
+  <div class="tag-topic movie">ARCHITECTURE</div>
+  <div class="tag-topic audio">PHOTOGRAPHIE</div>
+  <div class="tag-topic painting">ART</div>
 </div>
 
 <div class="div-test">
-  <p>.tag-category</p>
-  <div class="tag-category">PEINTURE</div>
+  <p>.tag-category + CATEGORY NAME</p>
+  <div class="tag-category painting">PEINTURE</div>
+  <div class="tag-category movie">FILM</div>
+  <div class="tag-category book">LIVRE</div>
+  <div class="tag-category theater">THÉÂTRE</div>
+  <div class="tag-category audio">AUDIO</div>
 </div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

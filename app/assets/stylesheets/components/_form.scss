@@ -1,17 +1,16 @@
-// Sign up form
-// Login form
-// Rating form
-// Search form
+// Forms: sign up, login, search (rating)
 
 .form-container{
   margin: auto;
   width: 90%;
   display: flex;
   flex-direction: column;
-
 }
 
+// Form label
+
 .form-label{
+  color: #B6B6B6;
   align-self: flex-start;
   margin: 0;
   padding: 0 5px;
@@ -21,48 +20,35 @@
   left: 10px;
   font-size: 14px;
 }
+
 .form-label-hidden{
-    display: none;
-  }
+  display: none;
+}
 
-.form-label-disable{
-    color: #B6B6B6;
-
-      align-self: flex-start;
-  margin: 0;
-  padding: 0 5px;
-  background-color: $black;
-  position: relative;
-  top: 10px;
-  left: 10px;
-  font-size: 14px;
-  }
-
+// Form input
 
 .form-input{
+  border: 1px solid #B6B6B6;
+  color: #B6B6B6;
   flex-grow: 1;
   background-color: $black;
-  color: $white;
-  border: 2px solid $white;
   border-radius: $border-radius;
   margin-bottom: 10px;
   height: 40px;
   padding: 0 20px;
 }
-  .form-input-disable{
-    border: 1px solid #B6B6B6;
-    color: #B6B6B6;
 
-      flex-grow: 1;
-  background-color: $black;
+.form-input:focus{
+  border: 2px solid $white;
+  color: $white;
+  outline: none;
 
+  // & ~ .form-label{
+  //   color: $white;
+  // }
+}
 
-  border-radius: $border-radius;
-  margin-bottom: 10px;
-  height: 40px;
-  padding: 0 20px;
-  }
-
+// Form btn
 
 .form-btn{
   flex-grow: 1;
