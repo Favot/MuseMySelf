@@ -11,7 +11,7 @@ class JourneysController < ApplicationController
   def show
     @journey = Journey.find(params[:id])
     # calculations about the journey
-    @average_rating = (ratings.sum * 1.0 / ratings.size)
+    @average_rating = average_rating
     @duration = "#{duration[0]} h #{duration[1]} min"
     @count_subscribers = count_subscribers
 
@@ -21,13 +21,20 @@ class JourneysController < ApplicationController
     @contents_durations = this_journey_contents_durations_in_h_and_min
 
     # calculations about the user, skept if user is not connected yet
-    @to_do_count_by_type = current_user_to_do if user_signed_in?
+    @to_do_count_by_type = current_user_to_do if subscribed?
+    @subscribed = subscribed?
   end
 
   private
 
   def ratings
     this_journey_user_journey_contents.map(&:rating)
+  end
+
+  def average_rating
+    return (ratings.sum * 1.0 / ratings.size) if ratings.size.positive?
+
+    "🤷" # if no ratings. Not best practice, but fun
   end
 
   def duration
@@ -75,6 +82,12 @@ class JourneysController < ApplicationController
       count[category.to_s] = @journey_contents.joins(:content).where("contents.category" => category).size
     end
     count
+  end
+
+  def subscribed?
+    return true if user_signed_in? && current_user.user_journeys.where(journey: @journey).size == 1
+
+    false
   end
 
   def current_user_to_do

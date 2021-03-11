@@ -20,7 +20,7 @@
     <% @content_count_by_type.each do |key, value| %>
       <%  unless value.zero?  %>
         <li>
-          <% if user_signed_in? %>
+          <% if @subscribed %>
             <%= "#{key} : reste #{@to_do_count_by_type[key]} sur #{value} au total"%>
           <% else %>
             <%= "#{key} : #{value} au total"%>
