@@ -1,0 +1,70 @@
+// Sign up form
+// Login form
+// Rating form
+// Search form
+
+.form-container{
+  margin: auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.form-label{
+  align-self: flex-start;
+  margin: 0;
+  padding: 0 5px;
+  background-color: $black;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+}
+.form-label-hidden{
+    display: none;
+  }
+
+.form-label-disable{
+    color: #B6B6B6;
+
+      align-self: flex-start;
+  margin: 0;
+  padding: 0 5px;
+  background-color: $black;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  }
+
+
+.form-input{
+  flex-grow: 1;
+  background-color: $black;
+  color: $white;
+  border: 2px solid $white;
+  border-radius: $border-radius;
+  margin-bottom: 10px;
+  height: 40px;
+  padding: 0 20px;
+}
+  .form-input-disable{
+    border: 1px solid #B6B6B6;
+    color: #B6B6B6;
+
+      flex-grow: 1;
+  background-color: $black;
+
+
+  border-radius: $border-radius;
+  margin-bottom: 10px;
+  height: 40px;
+  padding: 0 20px;
+  }
+
+
+.form-btn{
+  flex-grow: 1;
+  margin-top: 10px;
+}

@@ -1,4 +1,5 @@
 .btn-topic-disabled{
+  text-align: center;
   border: 1px solid $green-primary;
   background-color: $black;
   color: $green-primary;
@@ -22,6 +23,7 @@
 }
 
 .btn-login{
+  text-align: center;
   border: 1px solid $green-primary;
   background-color: $green-primary;
   color: $black;
@@ -35,6 +37,7 @@
 }
 
 .btn-search{
+  text-align: center;
   border: 1px solid $green-primary;
   background-color: $green-primary;
   color: $black;
@@ -48,6 +51,7 @@
 }
 
 .btn-start{
+  text-align: center;
   border: 1px solid $green-primary;
   background-color: $green-primary;
   color: $black;
@@ -60,7 +64,3 @@
     text-decoration: none;
   }
 }
-
-
-
-
