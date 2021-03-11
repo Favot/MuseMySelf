@@ -1,0 +1,38 @@
+.cards-container {
+  display:flex;
+  overflow:scroll;
+}
+
+.card-journey{
+  overflow: hidden;
+  height: 217px;
+  background: $purple-theater;
+  border-radius: $border-radius;
+  position: relative;
+  padding: 1rem;
+  min-width: 90%;
+  margin-right:8px;
+
+  .bg{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .card-icone{
+      background-image: url(image-path('monalisa.png'));
+      background-repeat: no-repeat;
+      color: $white;
+      opacity: 0.12;
+      transform: rotate(12.84deg) translateX(137px);
+      height: 104%;
+      width: 154%;
+      position: absolute;
+    }
+
+    p{
+      margin-bottom: 0;
+    }
+  }
+
+}

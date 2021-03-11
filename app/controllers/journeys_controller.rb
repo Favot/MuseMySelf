@@ -1,16 +1,14 @@
 class JourneysController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   CATEGORIES = %w[Théâtre Film Audio Peinture Livre]
 
-  # def index
-  #   @journeys = Journey.all
-
-  #   if params[:search].present?
-  #     @journeys = @journeys.where('name ILIKE ?', "%#{
-  #           params[:search]}%")
-  #   end
-
-  #   @journeys = @journeys.where(topic_id: params[:topic_id]) if params[:topic_id].present?
-  # end
+  def index
+    @journeys = Journey.all
+      if params[:search].present?
+      @journeys = @journeys.where('name ILIKE ?', "%#{ params[:search]['query'] }%")
+      end
+    @journeys = @journeys.where(topic_id: params[:topic_id]) if params[:topic_id].present?
+  end
 
   def show
     @journey = Journey.find(params[:id])
@@ -38,13 +36,13 @@ class JourneysController < ApplicationController
     # Get all the user_journeys where the journey is this one
     @user_journeys = UserJourney.where(journey: @journey)
     # For each user_journeys get all the user_journey_contents and store them
-    ujc = []
+    user_journey_contents = []
     @user_journeys.each do |user_journey|
       user_journey.user_journey_contents.each do |user_journey_content|
-        ujc << user_journey_content
+        user_journey_contents << user_journey_content
       end
     end
-    return ujc
+    user_journey_contents
   end
 
   def this_journey_contents_sorted

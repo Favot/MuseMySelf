@@ -12,3 +12,13 @@
 @import "components/index";
 @import "pages/index";
 @import "journeys/index";
+@import "components/headers";
+@import "components/card_journey";
+
+// components
+
+// help for the people who are really bad at desing (and typo)
+.border-magic {
+  border: 2px solid red;
+  margin: 2px;
+}

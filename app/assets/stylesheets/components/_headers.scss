@@ -1,0 +1,25 @@
+// Title Muse my self
+.main-h1{
+  font-size: 5em;
+  line-height: 4em
+}
+
+// h2 pour page log in et sign up
+.log-h2{
+  font-size: 2em;
+  line-height: 4em
+  // letter-spacing: .2rem;
+}
+
+// h3 de la page comme "explorer les parcours"
+.content-title{
+  width: 95%;
+  border-bottom: 1px solid rgba(255, 255, 255, .6);
+  margin:25px 10px 15px 10px;
+}
+.home-h3{
+  font-family: $body-font;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  // letter-spacing: .2rem;
+}
