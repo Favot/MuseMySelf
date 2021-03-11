@@ -491,8 +491,8 @@ puts "Finished!"
 #       user: user,
 #       completed: false
 #     )
-
-#     p user_journey_created.contents
+      # reset here tomorrow nigth 
+#     p journey_pickup.contents
 #   end
 
 # end
