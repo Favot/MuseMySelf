@@ -6,6 +6,9 @@ class JourneysController < ApplicationController
     @journeys = Journey.all
     @journeys = @journeys.where('name ILIKE ?', "%#{params[:search]['query']}%") if params[:search].present?
     @journeys = @journeys.where(topic_id: params[:topic_id]) if params[:topic_id].present?
+
+    # 'views/journeys/index.html.erb'
+    @journey_suggestion = Journey.all.sample(1)
   end
 
   def show
@@ -25,7 +28,7 @@ class JourneysController < ApplicationController
 
     # skept if user is not connected yet
     @to_do_count_by_type = current_user_to_do if user_signed_in?
-    
+
     @contents = this_journey_contents_sorted.to_a # SQL relation => Array
     @contents_durations = this_journey_contents_durations_in_h_and_min
   end
