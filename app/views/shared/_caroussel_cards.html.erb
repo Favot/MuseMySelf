@@ -6,7 +6,7 @@
       <div class="bg">
         <div class="card-icone"></div>
         <h4><%= journey.name %></h4>
-        <p><%= "#{journey.summary.byteslice(0,30)...}" %></p>
+        <p><%= "#{journey.summary.split.first(4).join(" ")}..." %></p>
       </div>
     <% end %>
   <% end %>
