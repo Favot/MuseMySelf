@@ -80,3 +80,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # own gem 
 
 gem 'cloudinary', '~> 1.16.0'
+
+gem 'faker', '~> 1.9', '>= 1.9.1'
