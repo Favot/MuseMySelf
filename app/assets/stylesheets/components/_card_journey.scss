@@ -1,29 +1,28 @@
+// do not change or delete please
+
 .cards-container {
-  display: flex;
-  overflow: scroll;
+  display:flex;
+  overflow:scroll;
 }
 
-
-
 .card-journey{
-
   overflow: hidden;
   height: 217px;
   background: $purple-theater;
   border-radius: $border-radius;
   position: relative;
   padding: 1rem;
-  width: 90%;
-  margin-right: 8px;
+  min-width: 90%;
+  margin-right:8px;
 
-  .bg {
-    height: 100%;
+  .bg{
+    height:100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 
-    .card-icone {
-      background-image: url(image-path("monalisa.png"));
+    .card-icone{
+      background-image: url(image-path('monalisa.png'));
       background-repeat: no-repeat;
       color: $white;
       opacity: 0.12;
@@ -33,12 +32,15 @@
       position: absolute;
     }
 
-    p {
+    p{
       margin-bottom: 0;
     }
   }
+
 }
 
+
+// Display cards vvertical scroll on search result page
 .cards-container-vertical {
   display: flex;
   flex-wrap: wrap;
@@ -49,27 +51,33 @@
     margin-bottom: 8px;
   }
 }
-// class Lise
-.btn-topic-disabled{
-  border: 1px solid $green-primary;
-  background-color: $black;
-  color: $green-primary;
-  border-radius: 50px;
-  padding: 8px 24px;
-  font-weight: 400;
-  min-width: 30%;
 
-  &:onclick{
-    text-decoration: none;
-  }
-}
 
-.btn-active{
-  border: 1px solid $green-primary;
-  background-color: $green-primary;
-  color: $black;
 
-  &:onclick{
-    text-decoration: none;
-  }
-}
+
+// resolving conflicts here (will delete later), please leave it for now
+
+// // class Lise
+// .btn-topic-disabled{
+//   border: 1px solid $green-primary;
+//   background-color: $black;
+//   color: $green-primary;
+//   border-radius: 50px;
+//   padding: 8px 24px;
+//   font-weight: 400;
+//   min-width: 30%;
+
+//   &:onclick{
+//     text-decoration: none;
+//   }
+// }
+
+// .btn-active{
+//   border: 1px solid $green-primary;
+//   background-color: $green-primary;
+//   color: $black;
+
+//   &:onclick{
+//     text-decoration: none;
+//   }
+// }
