@@ -1,1 +1,43 @@
 // Specific CSS for your home-page
+
+.home-title{
+  width: 70%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 80px;
+
+  h1{
+    font-size: 64px;
+    text-align: center;
+    line-height: 63px;
+    margin-bottom: 20px;
+  }
+
+  p{
+    color: $light-gray;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+}
+
+.home-container{
+  margin-bottom: 80px;
+
+  .form-container{
+    width: 70%;
+  }
+}
+
+// .home-caroussel{
+//   margin-top: 24px;
+// }
+
+// Test below
+.bg-test-svg{
+  z-index: 0;
+  position: fixed;
+  top: 160px;
+  opacity: 0.7;
+}

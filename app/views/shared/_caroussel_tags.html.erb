@@ -1,7 +1,7 @@
 <!-- Partial for 'home.html.erb' -->
 
-<div class="cards-container">
+<div class="caroussel-container">
   <% data.each do |topic| %>
-    <%= link_to "##{topic.name}", journeys_path(topic_id: topic.id), class: "btn-topic-disabled" %>
+    <%= link_to "##{topic.name}", journeys_path(topic_id: topic.id), class: "caroussel-item btn-topic-disabled" %>
   <% end %>
 </div>
