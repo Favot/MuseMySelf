@@ -1,3 +1,5 @@
+// Btn for topic filters (homepage) or tabs (user_journey)
+
 .btn-topic-disabled{
   text-align: center;
   border: 1px solid $green-primary;
@@ -22,6 +24,8 @@
   }
 }
 
+// Btn sign up / login forms
+
 .btn-login{
   text-align: center;
   border: 1px solid $green-primary;
@@ -36,6 +40,8 @@
   }
 }
 
+// Btn search form
+
 .btn-search{
   text-align: center;
   border: 1px solid $green-primary;
@@ -49,6 +55,8 @@
     text-decoration: none;
   }
 }
+
+// Btn start journey (journey show)
 
 .btn-start{
   text-align: center;
