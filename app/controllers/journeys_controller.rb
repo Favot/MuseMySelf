@@ -10,7 +10,7 @@ class JourneysController < ApplicationController
 
   def show
     @journey = Journey.find(params[:id])
-
+    # calculations at journey level
     ratings = this_journey_user_journey_contents.map(&:rating)
     @average = (ratings.sum * 1.0 / ratings.size)
 
@@ -20,10 +20,14 @@ class JourneysController < ApplicationController
 
     @count_subscribers = count_subscribers
 
+    # calculations at journey contents level
     @content_count_by_type = count_by_type
 
-    # skip if user is not connected yet
-    # @to_do_count_by_type = current_user_to_do if user_signed_in?
+    # skept if user is not connected yet
+    @to_do_count_by_type = current_user_to_do if user_signed_in?
+    
+    @contents = this_journey_contents_sorted.to_a # SQL relation => Array
+    @contents_durations = this_journey_contents_durations_in_h_and_min
   end
 
   private
@@ -47,7 +51,19 @@ class JourneysController < ApplicationController
 
   def this_journey_contents_sorted
     @journey_contents = JourneyContent.where(journey: @journey)
-    @journey_contents.order(position: :asc).map(&:content)
+    @journey_contents.order(position: :asc).map(&:content).map
+  end
+
+  def this_journey_contents_durations_in_h_and_min
+    # we need to calculate durations in hours and minutes and store them in a different variable because they are not \
+    # part of the content model
+    contents_durations = {}
+    @contents.map do |content|
+      contents_durations[content] = {}
+      contents_durations[content][:hours], contents_durations[content][:minutes] = content.duration.divmod(60)
+    end
+    pp contents_durations
+    contents_durations
   end
 
   def count_by_type
