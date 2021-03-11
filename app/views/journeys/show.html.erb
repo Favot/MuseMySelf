@@ -25,3 +25,39 @@
   </ul>
   <button type="button" name="button">S'inscrire au parcours</button>
 </div>
+<div class="placeholder">
+  <table class="placeholder">
+    <% position = 0 %>
+    <% @contents.each do |content| %>
+      <% position += 1 %>
+      <tr>
+        <% if position.odd? %>
+          <td>placeholder</td>
+          <td>
+            <ul>
+              <li><%= content.category %></li>
+              <li><%= content.title %></li>
+              <li><%= "#{content.author}, #{content.date}" %></li>
+              <!-- <li><%= link_to "Découvrir", user_journey_content_path %></li> -->
+              <li><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></li>
+            </ul>
+          </td>
+          <td> <%= "Position : #{position}" %></td>
+        <% else %>
+          <td> <%= "Position : #{position}" %></td>
+          <td>
+            <ul>
+              <li><%= content.category %></li>
+              <li><%= content.title %></li>
+              <li><%= "#{content.author}, #{content.date}" %></li>
+              <!-- <li><%= link_to "Découvrir", user_journey_content_path %></li> -->
+              <li><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></li>
+            </ul>
+          </td>
+          <td>placeholder</td>
+        <% end %>
+      </tr>
+      <% end %>
+
+  </table>
+</div>
