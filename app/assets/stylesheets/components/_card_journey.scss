@@ -1,34 +1,29 @@
 .cards-container {
-  display:flex;
-  overflow:scroll;
+  display: flex;
+  overflow: scroll;
 }
 
-.div-test { // div de Lise
-  display:flex;
-  overflow:scroll;
-  a {
-    margin-right:12px;
-  }
-}
+
 
 .card-journey{
+
   overflow: hidden;
   height: 217px;
   background: $purple-theater;
   border-radius: $border-radius;
   position: relative;
   padding: 1rem;
-  min-width: 90%;
-  margin-right:8px;
+  width: 90%;
+  margin-right: 8px;
 
-  .bg{
-    height:100%;
+  .bg {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 
-    .card-icone{
-      background-image: url(image-path('monalisa.png'));
+    .card-icone {
+      background-image: url(image-path("monalisa.png"));
       background-repeat: no-repeat;
       color: $white;
       opacity: 0.12;
@@ -38,11 +33,21 @@
       position: absolute;
     }
 
-    p{
+    p {
       margin-bottom: 0;
     }
   }
+}
 
+.cards-container-vertical {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  .card-journey {
+    margin-bottom: 8px;
+  }
 }
 // class Lise
 .btn-topic-disabled{
