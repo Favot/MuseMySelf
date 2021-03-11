@@ -1,0 +1,74 @@
+// Btn for topic filters (homepage) or tabs (user_journey)
+
+.btn-topic-disabled{
+  text-align: center;
+  border: 1px solid $green-primary;
+  background-color: $black;
+  color: $green-primary;
+  border-radius: 50px;
+  padding: 8px 24px;
+  font-weight: 400;
+
+  &:onclick{
+    text-decoration: none;
+  }
+}
+
+.btn-active{
+  border: 1px solid $green-primary;
+  background-color: $green-primary;
+  color: $black;
+
+  &:onclick{
+    text-decoration: none;
+  }
+}
+
+// Btn sign up / login forms
+
+.btn-login{
+  text-align: center;
+  border: 1px solid $green-primary;
+  background-color: $green-primary;
+  color: $black;
+  border-radius: $border-radius;
+  padding: 8px;
+  font-weight: 400;
+
+  &:onclick{
+    text-decoration: none;
+  }
+}
+
+// Btn search form
+
+.btn-search{
+  text-align: center;
+  border: 1px solid $green-primary;
+  background-color: $green-primary;
+  color: $black;
+  border-radius: $border-radius;
+  padding: 8px;
+  font-weight: 600;
+
+  &:onclick{
+    text-decoration: none;
+  }
+}
+
+// Btn start journey (journey show)
+
+.btn-start{
+  text-align: center;
+  border: 1px solid $green-primary;
+  background-color: $green-primary;
+  color: $black;
+  border-radius: $border-radius;
+  padding: 16px 32px;
+  font-weight: 600;
+  border-radius: 50px;
+
+  &:onclick{
+    text-decoration: none;
+  }
+}

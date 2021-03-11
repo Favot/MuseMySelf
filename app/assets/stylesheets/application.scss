@@ -11,12 +11,10 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "components/headers";
-@import "components/card_journey";
+@import "journeys/index";
 
 
 // components
-
 
 // help for the people who are really bad at desing (and typo)
 .border-magic {
@@ -29,14 +27,14 @@
 }
 
 
+// used for test
+.div-test{
+  margin: 20px 0;
+}
 
 
 
-
-
-
-
-
-
-
-
+// prevents body content to be hidden by navbar, please do not delete
+body {
+  margin-bottom: 85px;
+}
