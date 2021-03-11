@@ -1,0 +1,7 @@
+<!-- Partial for 'home.html.erb' -->
+
+<div class="cards-container">
+  <% data.each do |topic| %>
+    <%= link_to "##{topic.name}", journeys_path(topic_id: topic.id), class: "btn-topic-disabled" %>
+  <% end %>
+</div>
