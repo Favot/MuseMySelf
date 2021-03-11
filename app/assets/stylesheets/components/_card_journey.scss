@@ -3,6 +3,14 @@
   overflow:scroll;
 }
 
+.div-test { // div de Lise
+  display:flex;
+  overflow:scroll;
+  a {
+    margin-right:12px;
+  }
+}
+
 .card-journey{
   overflow: hidden;
   height: 217px;
@@ -35,4 +43,28 @@
     }
   }
 
+}
+// class Lise
+.btn-topic-disabled{
+  border: 1px solid $green-primary;
+  background-color: $black;
+  color: $green-primary;
+  border-radius: 50px;
+  padding: 8px 24px;
+  font-weight: 400;
+  min-width: 30%;
+
+  &:onclick{
+    text-decoration: none;
+  }
+}
+
+.btn-active{
+  border: 1px solid $green-primary;
+  background-color: $green-primary;
+  color: $black;
+
+  &:onclick{
+    text-decoration: none;
+  }
 }

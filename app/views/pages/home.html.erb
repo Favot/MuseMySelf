@@ -11,9 +11,6 @@
 <% end %>
 
 
-<div class="content-title">
-  <h3>Explorer les parcours</h3>
-</div>
 <% @topics.each do |topic| %>
 	<div class="border-magic">
 		#<%= link_to topic.name, journeys_path(topic_id: topic.id) %>
@@ -25,7 +22,7 @@
 <% @last_journeys.each do |journey| %>
 	<div class="border-magic">
 	 <%= link_to journey.name, journey_path(journey.id) %>
-	 
+
 	</div>
 <% end %>
 
