@@ -7,9 +7,6 @@
   font-size: 12px;
   border-radius: 50px;
   letter-spacing: 4px;
-  // TO DO: change default color according to topic or value
-  border: 1px solid $purple-theater;
-  background-color: $purple-theater;
 }
 
 .tag-category{
@@ -23,22 +20,28 @@
   letter-spacing: 4px;
 }
 
+// To change background color
+
 .painting{
   border: 1px solid $blue-painting;
   background-color: $blue-painting;
 }
+
 .theater{
   border: 1px solid $purple-theater;
   background-color: $purple-theater;
 }
+
 .movie{
   border: 1px solid $yellow-movie;
   background-color: $yellow-movie;
 }
+
 .book{
   border: 1px solid $lime-book;
   background-color: $lime-book;
 }
+
 .audio{
   border: 1px solid $pink-audio;
   background-color: $pink-audio;
