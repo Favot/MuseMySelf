@@ -1,4 +1,5 @@
 <div class="navbar-container">
+
   <div class="navbar-item">
     <%= link_to "/", class: "" do %>
       <svg width="43" height="40" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +11,8 @@
   <div class="navbar-item">
     <%= link_to "/", class: "" do %>
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M35.8289 40L19.0147 23.1763C17.1188 24.3373 14.8858 25.0085 12.4972 25.0085C5.59391 25.0085 0 19.4082 0 12.5043C0 5.60033 5.59715 0 12.4972 0C19.3972 0 24.9943 5.60033 24.9943 12.5043C24.9943 14.8812 24.3299 17.1058 23.1794 18.9996L40 35.8297L35.8289 40ZM12.5749 1.34901C6.38146 1.34901 1.36445 6.37211 1.36445 12.5659C1.36445 18.7596 6.3847 23.7827 12.5749 23.7827C18.7652 23.7827 23.7854 18.7596 23.7854 12.5659C23.7854 6.37211 18.7652 1.34901 12.5749 1.34901Z" fill="white"/>
+      <path d="M4.07005 4.06934C9.49583 -1.35645 18.2947 -1.35645 23.7205 4.06934C28.8455 9.19432 29.1293 17.3273 24.5728 22.7862L26.5403 24.7547C27.2185 25.4319 28.5201 24.9467 30.3306 26.7572L39.2629 35.6895C40.2457 36.6723 40.2457 38.2803 39.2629 39.2631C38.2801 40.245 36.672 40.245 35.6902 39.2631L26.7579 30.3308C24.9464 28.5194 25.4326 27.2188 24.7544 26.5405L22.7869 24.573C17.3271 29.1295 9.19502 28.8457 4.07005 23.7208C-1.35668 18.294 -1.35668 9.49606 4.07005 4.06934V4.06934ZM5.67716 5.6774C1.13865 10.2159 1.13865 17.5742 5.67716 22.1127C10.2157 26.6512 17.574 26.6512 22.1125 22.1127C26.651 17.5742 26.651 10.2159 22.1125 5.6774C17.574 1.13888 10.2157 1.13888 5.67716 5.6774Z" fill="white"/>
+      <path d="M8.89323 7.22116C8.50446 7.51534 7.9511 7.43872 7.65692 7.04995C7.36274 6.66212 7.43936 6.10876 7.82813 5.81458C9.37376 4.6511 11.1748 3.98991 13.0099 3.8291C14.8695 3.66735 16.767 4.01828 18.4706 4.8838C18.9048 5.10514 19.0779 5.6358 18.8566 6.07092C18.6352 6.5051 18.1036 6.67726 17.6695 6.45686C16.2657 5.74364 14.7012 5.45419 13.1659 5.58756C11.6496 5.71999 10.1645 6.26484 8.89323 7.22116V7.22116Z" fill="white"/>
       </svg>
     <% end %>
   </div>
@@ -46,50 +48,3 @@
   </div>
 
 </div>
-
-
-
-
-
-
-
-
-<!-- lewagon
-
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-  <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
--->
