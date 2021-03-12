@@ -29,9 +29,12 @@
       <% end %>
     <% end %>
   </ul>
-
-  <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
-    <%= f.submit "S'inscrire au parcours" %>
+  <% if @subscribed %>
+    <p>Vous êtes inscrit sur ce parcours</p>
+  <% else %>
+    <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
+      <%= f.submit "S'inscrire au parcours" %>
+    <% end %>
   <% end %>
 
 </div>

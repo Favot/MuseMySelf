@@ -13,6 +13,8 @@ class JourneysController < ApplicationController
 
   def show
     @journey = Journey.find(params[:id])
+
+    redirect_to user_journey_path if subscribed?
     # calculations about the journey
     @average_rating = average_rating
     @duration = "#{duration[0]} h #{duration[1]} min"
@@ -88,7 +90,7 @@ class JourneysController < ApplicationController
   end
 
   def subscribed?
-    return true if user_signed_in? && current_user.user_journeys.where(journey: @journey).size == 1
+    return true if user_signed_in? && current_user.user_journeys.where(journey: @journey).size >= 1
 
     false
   end
