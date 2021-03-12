@@ -77,8 +77,8 @@ puts "Creating journeys..."
 
 # Journeys for music
 music17th = Journey.new(
-    name: "Voyage musical dans la France du XXVIIe siècle",
-    summary: "Partez à la découverte des lieux, des musiciens et des repertoires de la musique française du XXVIIe siècle.",
+    name: "Voyage musical dans la France du XVIIe siècle",
+    summary: "Partez à la découverte des lieux, des musiciens et des repertoires de la musique française du XVIIe siècle.",
     topic: music
 )
 music17th.save!
@@ -156,13 +156,6 @@ art_4 = Journey.new(
 )
 art_4.save!
 
-art_5 = Journey.new(
-  name: "Couleurs, bleu, jaune, rouge dans l’art",
-  summary: "Découvrez l’art par une thématique originale : comment les 3 couleurs primaires, le bleu, le jaune et le rouge, se sont imposées parmi les peintres ?",
-  topic: art
-)
-art_5.save!
-
 
 # Journeys for architecture
 architecture_1 = Journey.new(
@@ -193,13 +186,6 @@ architecture_4 = Journey.new(
 )
 architecture_4.save!
 
-architecture_5 = Journey.new(
-  name: "Le théâtre et ses illusions de perspective",
-  summary: "Découvrez les principes géométriques de base pour concevoir et gérer la réalisation de scènes théâtrales, qui fondent leur expressivité sur les effets de perspective de l'architecture et des espaces illusoires mis en place sur la scène.",
-  topic: architecture
-)
-architecture_5.save!
-
 # Journeys for photo
 photo_1 = Journey.new(
   name: "Une brève histoire de la photographie",
@@ -229,6 +215,14 @@ photo_4 = Journey.new(
 )
 photo_4.save!
 
+# last 3 journeys
+architecture_5 = Journey.new(
+  name: "Le théâtre et ses illusions de perspective",
+  summary: "Découvrez les principes géométriques de base pour concevoir et gérer la réalisation de scènes théâtrales, qui fondent leur expressivité sur les effets de perspective de l'architecture et des espaces illusoires mis en place sur la scène.",
+  topic: architecture
+)
+architecture_5.save!
+
 photo_5 = Journey.new(
   name: "Héroïnes de la Modernité",
   summary: "Jeunes filles romantiques et amoureuses, patriotes héroïques, espionnes rusées et impitoyables... Découvrez les portraits des femmes qui ont inspiré les héroïnes des romans des Jules Verne.",
@@ -236,6 +230,12 @@ photo_5 = Journey.new(
 )
 photo_5.save!
 
+art_5 = Journey.new(
+  name: "Couleurs, bleu, jaune, rouge dans l’art",
+  summary: "Découvrez l’art par une thématique originale : comment les 3 couleurs primaires, le bleu, le jaune et le rouge, se sont imposées parmi les peintres ?",
+  topic: art
+)
+art_5.save!
 
 # -- 5 CONTENTS for Journey 'music17th'
 puts "Creating demo contents..."
@@ -475,23 +475,23 @@ puts "Finished!"
 
 # journeys = Journey.all
 # journeys_number = Journey.count
-# # each user create a random numbers of journeys 
+# # each user create a random numbers of journeys
 
 
 # users.each do |user|
-#   # each user pick up a random number between one to the max number of journey 
+#   # each user pick up a random number between one to the max number of journey
 #   random_numbers_of_journey = rand(1..journeys_number)
 #   # p random_numbers_of_journey
 #   journeys_pickup = journeys.sample(random_numbers_of_journey)
-  
+
 #   journeys_pickup.each do | journey_pickup|
-    
+
 #     user_journey_created = UserJourney.create!(
 #       journey: journey_pickup,
 #       user: user,
 #       completed: false
 #     )
-      # reset here tomorrow nigth 
+      # reset here tomorrow nigth
 #     p journey_pickup.contents
 #   end
 
@@ -502,4 +502,3 @@ puts "Finished!"
 #   user: lucas,
 #   completed: false
 # )
-
