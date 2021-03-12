@@ -7,3 +7,14 @@
     }
   }
 }
+
+.stats {
+  display:flex;
+  justify-content: space-between;
+  opacity: .5;
+  margin:12px 0;
+}
+
+.description{
+  text-align: center;
+}
