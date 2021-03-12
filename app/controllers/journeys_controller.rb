@@ -8,11 +8,11 @@ class JourneysController < ApplicationController
     @journeys = @journeys.where(topic_id: params[:topic_id]) if params[:topic_id].present?
     @topic = Topic.where(id: params[:topic_id]) if params[:topic_id].present?
     # 'views/journeys/index.html.erb'
-    @journey_suggestion = Journey.all.sample(3)
+    @journey_suggestions = Journey.all.sample(3)
 
     # to get journey topic
     @all_journeys_topic = {}
-    @journeys.each do |journey|
+    Journey.all.each do |journey|
       @all_journeys_topic[journey] = journey.topic.name
     end
   end
