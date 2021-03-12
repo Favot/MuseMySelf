@@ -1,5 +1,3 @@
-// do not change or delete please
-
 .cards-container {
   display:flex;
   overflow:scroll;
@@ -32,57 +30,151 @@
     //   position: absolute;
     // }
 
-    p{
-      margin-bottom: 0;
-    }
+
   }
 
 }
 
 
-// Display cards vvertical scroll on search result page
+
+
+// Display cards vertical scroll on search result page
+
 .cards-container-vertical {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
   width: 95%;
   margin: auto;
 
-  .card-journey {
+  .card-art, .card-music, .card-photo, .card-architecture {
     margin: 0;
     margin-bottom: 10px;
     flex-grow: 1;
   }
 }
 
+// Used to change background color of journey card
 
+.card-art{
+  // bg color
+  background-color: $blue-painting;
 
+  // card content
+  color: $black;
+  border-radius: $border-radius;
+  height: 217px;
+  padding: 1rem; // 16px
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
-// resolving conflicts here (will delete later), please leave it for now
+  // Display an icon on the card background
+  position: relative;
 
-// // class Lise
-// .btn-topic-disabled{
-//   border: 1px solid $green-primary;
-//   background-color: $black;
-//   color: $green-primary;
-//   border-radius: 50px;
-//   padding: 8px 24px;
-//   font-weight: 400;
-//   min-width: 30%;
+  .card-bg-icon{
+    // z-index: 0;
+    // overflow: hidden;
+    align-self: flex-end;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    position: absolute;
+  }
 
-//   &:onclick{
-//     text-decoration: none;
-//   }
-// }
+  &:hover, &:active{
+    text-decoration: none;
+    color: $black;
+  }
+}
 
-// .btn-active{
-//   border: 1px solid $green-primary;
-//   background-color: $green-primary;
-//   color: $black;
+.card-music{
+  // bg color
+  background-color: $purple-theater;
 
-//   &:onclick{
-//     text-decoration: none;
-//   }
-// }
+  // card content
+  color: $black;
+  border-radius: $border-radius;
+  height: 217px;
+  padding: 1rem; // 16px
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  // Display an icon on the card background
+  position: relative;
+
+  .card-bg-icon{
+    align-self: flex-end;
+    background-repeat: no-repeat;
+    // opacity: 1;
+    position: absolute;
+  }
+
+  &:hover, &:active{
+    text-decoration: none;
+    color: $black;
+  }
+}
+
+.card-architecture{
+  // bg color
+  background-color: $yellow-movie;
+
+  // card content
+  color: $black;
+  border-radius: $border-radius;
+  height: 217px;
+  padding: 1rem; // 16px
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  // Display an icon on the card background
+  position: relative;
+
+  .card-bg-icon{
+    // z-index: 0;
+    // overflow: hidden;
+    align-self: flex-end;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    position: absolute;
+  }
+
+  &:hover, &:active{
+    text-decoration: none;
+    color: $black;
+  }
+}
+
+.card-photo{
+  // bg color
+  background-color: $pink-audio;
+
+  // card content
+  color: $black;
+  border-radius: $border-radius;
+  height: 217px;
+  padding: 1rem; // 16px
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  // Display an icon on the card background
+  position: relative;
+
+  .card-bg-icon{
+    // z-index: 0;
+    // overflow: hidden;
+    align-self: flex-end;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    position: absolute;
+  }
+
+  &:hover, &:active{
+    text-decoration: none;
+    color: $black;
+  }
+}
