@@ -36,7 +36,10 @@
 }
 
 
+
+
 // Display cards vertical scroll on search result page
+
 .cards-container-vertical {
   display: flex;
   flex-wrap: wrap;
@@ -67,6 +70,18 @@
   flex-direction: column;
   justify-content: flex-end;
 
+  // Display an icon on the card background
+  position: relative;
+
+  .card-bg-icon{
+    // z-index: 0;
+    // overflow: hidden;
+    align-self: flex-end;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    position: absolute;
+  }
+
   &:hover, &:active{
     text-decoration: none;
     color: $black;
@@ -85,6 +100,16 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  // Display an icon on the card background
+  position: relative;
+
+  .card-bg-icon{
+    align-self: flex-end;
+    background-repeat: no-repeat;
+    // opacity: 1;
+    position: absolute;
+  }
 
   &:hover, &:active{
     text-decoration: none;
@@ -105,6 +130,18 @@
   flex-direction: column;
   justify-content: flex-end;
 
+  // Display an icon on the card background
+  position: relative;
+
+  .card-bg-icon{
+    // z-index: 0;
+    // overflow: hidden;
+    align-self: flex-end;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    position: absolute;
+  }
+
   &:hover, &:active{
     text-decoration: none;
     color: $black;
@@ -123,6 +160,18 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  // Display an icon on the card background
+  position: relative;
+
+  .card-bg-icon{
+    // z-index: 0;
+    // overflow: hidden;
+    align-self: flex-end;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    position: absolute;
+  }
 
   &:hover, &:active{
     text-decoration: none;
