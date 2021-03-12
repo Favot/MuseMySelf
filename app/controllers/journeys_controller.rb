@@ -14,7 +14,7 @@ class JourneysController < ApplicationController
   def show
     @journey = Journey.find(params[:id])
     # calculations about the journey
-    @average_rating = average_rating
+    # @average_rating = average_rating
     @duration = "#{duration[0]} h #{duration[1]} min"
     @count_subscribers = count_subscribers
 
