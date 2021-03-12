@@ -2,11 +2,11 @@
 
 <div class="cards-container">
   <% data.each do |journey| %>
-    <%= link_to journey_path(journey.id), class: "card-journey" do %>
+    <%= link_to journey_path(journey), class: "card-journey" do %>
       <div class="bg">
         <div class="card-icone"></div>
         <h4><%= journey.name %></h4>
-        <p><%= "#{journey.summary.byteslice(0,30)...}" %></p>
+        <p><%= "#{journey.summary.split.first(4).join(" ")}..." %></p>
       </div>
     <% end %>
   <% end %>

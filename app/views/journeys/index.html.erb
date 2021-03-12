@@ -19,22 +19,18 @@
 <h3>le parcour</h3>
 <div class="cards-container-vertical">
 		<% @journeys.each do |journey| %>
-			<%= link_to journey_path(journey.id), class: "card-journey "  do %>
-				
+			<%= link_to journey_path(journey), class: "card-journey" do %>
+
 					<div class="bg">
 						<div class="card-icone"></div>
 						<h4>
 							<%=journey.name%>
 						</h4>
 						<p>
-							<%="#{journey.summary.byteslice(0, 30)}..." %>
+							<%="#{journey.summary.split.first(4).join(" ")}..." %>
 						</p>
-
-					
 				</div>
-				
 			<% end %>
-				
 		<% end %>
 	</div>
 
@@ -46,21 +42,17 @@
 	<div class="cards-container-vertical">
 		<% @journeys.each do |journey| %>
 			<%= link_to journey_path(journey.id), class: "card-journey "  do %>
-				
 					<div class="bg">
 						<div class="card-icone"></div>
 						<h4>
 							<%=journey.name%>
 						</h4>
 						<p>
-							<%="#{journey.summary.byteslice(0, 30)}..." %>
+							<%="#{journey.summary.split.first(4).join(" ")}..." %>
 						</p>
-
-					
 				</div>
-				
 			<% end %>
-				
+
 		<% end %>
 	</div>
 

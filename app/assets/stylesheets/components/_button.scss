@@ -5,7 +5,7 @@
   border: 1px solid $green-primary;
   background-color: $black;
   color: $green-primary;
-  border-radius: 50px;
+  border-radius: $border-radius-round;
   padding: 8px 24px;
   font-weight: 400;
 
@@ -66,7 +66,7 @@
   border-radius: $border-radius;
   padding: 16px 32px;
   font-weight: 600;
-  border-radius: 50px;
+  border-radius: $border-radius-round;
 
   &:onclick{
     text-decoration: none;
