@@ -33,7 +33,7 @@ class JourneysController < ApplicationController
   private
 
   def ratings
-    this_journey_user_journey_contents.map(&:rating)
+    this_journey_user_journey_contents.map(&:rating).compact
   end
 
   def average_rating

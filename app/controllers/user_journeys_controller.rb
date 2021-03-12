@@ -6,8 +6,10 @@ class UserJourneysController < ApplicationController
     @journey = Journey.find(params[:journey_id])
     @user_journey.journey = @journey
     @user_journey.user = current_user
+    @journey_contents = @journey.journey_contents
 
-    if @user_journey.save!
+    if @user_journey.save
+      create_user_journey_content(@journey_contents)
       flash[:notice] = 'Vous avez été enregistré sur le parcours !'
       redirect_to user_journey_path(params[:journey_id])
     else
@@ -35,8 +37,18 @@ class UserJourneysController < ApplicationController
 
   private
 
+  def create_user_journey_content(journey_contents)
+    journey_contents.each do |journey_content|
+      UserJourneyContent.create!(
+        user_journey: @user_journey,
+        content_id: journey_content.content_id,
+        position: journey_content.position
+      )
+    end
+  end
+
   def ratings
-    this_journey_user_journey_contents.map(&:rating)
+    this_journey_user_journey_contents.map(&:rating).compact
   end
 
   def average_rating
