@@ -8,7 +8,7 @@ class JourneysController < ApplicationController
     @journeys = @journeys.where(topic_id: params[:topic_id]) if params[:topic_id].present?
 
     # 'views/journeys/index.html.erb'
-    @journey_suggestion = Journey.all.sample(1)
+    @journey_suggestion = Journey.all.sample(3)
   end
 
   def show
