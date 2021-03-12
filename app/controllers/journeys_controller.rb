@@ -6,7 +6,7 @@ class JourneysController < ApplicationController
     @journeys = Journey.all
     @journeys = @journeys.where('name ILIKE ?', "%#{params[:search]['query']}%") if params[:search].present?
     @journeys = @journeys.where(topic_id: params[:topic_id]) if params[:topic_id].present?
-
+    @topic = Topic.where(id: params[:topic_id]) if params[:topic_id].present?
     # 'views/journeys/index.html.erb'
     @journey_suggestion = Journey.all.sample(3)
   end
