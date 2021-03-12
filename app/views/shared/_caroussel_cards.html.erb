@@ -1,13 +1,38 @@
-<!-- Partial for 'home.html.erb' -->
+<!-- Partial for Caroussel of journey cards -->
 
-<div class="cards-container">
+<div class="caroussel-container">
   <% data.each do |journey| %>
-    <%= link_to journey_path(journey), class: "card-journey" do %>
-      <div class="bg">
-        <div class="card-icone"></div>
+    <div class="caroussel-item-card">
+
+    <% if @all_journeys_topic[journey] == "Photographie" %>
+      <%= link_to journey_path(journey), class: "card-photo" do %>
         <h4><%= journey.name %></h4>
         <p><%= "#{journey.summary.split.first(4).join(" ")}..." %></p>
-      </div>
+      <% end %>
     <% end %>
+
+    <% if @all_journeys_topic[journey] == "Art" %>
+      <%= link_to journey_path(journey), class: "card-art" do %>
+        <h4><%= journey.name %></h4>
+        <p><%= "#{journey.summary.split.first(4).join(" ")}..." %></p>
+      <% end %>
+    <% end %>
+
+    <% if @all_journeys_topic[journey] == "Architecture" %>
+      <%= link_to journey_path(journey), class: "card-architecture" do %>
+        <h4><%= journey.name %></h4>
+        <p><%= "#{journey.summary.split.first(4).join(" ")}..." %></p>
+      <% end %>
+    <% end %>
+
+    <% if @all_journeys_topic[journey] == "Musique" %>
+      <%= link_to journey_path(journey), class: "card-music" do %>
+        <h4><%= journey.name %></h4>
+        <p><%= "#{journey.summary.split.first(4).join(" ")}..." %></p>
+      <% end %>
+    <% end %>
+
+    </div>
   <% end %>
 </div>
+

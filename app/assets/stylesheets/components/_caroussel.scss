@@ -1,4 +1,4 @@
-// this is a test file, please do not modify or delete
+// Caroussel tags and cards
 
 .caroussel-container{
   display: flex;
@@ -8,4 +8,11 @@
 
 .caroussel-item{
   margin: 0 5px;
+}
+
+// Specific for Caroussel cards
+
+.caroussel-item-card{
+  margin: 0 5px;
+  min-width: 95%;
 }
