@@ -22,7 +22,6 @@
   <!-- If 2 or more match results -->
   <div class="content-title">
   <% if params[:search].present? %>
-  
      <h3>Résultats pour <%= params[:search]['query'] %></h3>
   <% elsif params[:topic_id].present? %> 
      <h3>Résultats pour <%= @topic[0].name %></h3>
