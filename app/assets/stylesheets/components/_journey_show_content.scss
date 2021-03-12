@@ -1,0 +1,57 @@
+.journey-show{
+  background-image: url(image-path("bgjourneyshow.svg"));
+}
+
+.show-content{
+  // margin: 40px 0 80px 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.show-content:nth-child(odd){
+  flex-direction: row-reverse;
+  // text-align: right;
+}
+
+.show-content:nth-child(even){
+  // flex-direction: row-reverse;
+  text-align: right;
+}
+
+
+.bloc-content{
+  flex-grow: 1;
+  margin: 5px;
+
+  .bloc-title{
+    margin-bottom: 10px;
+  }
+
+  p{
+    margin: 0;
+    font-size: 1.1em;
+  }
+
+  .bloc-title p:last-child{
+    font-size: .9em;
+    color: rgba(255,255,255, 0.6);
+  }
+
+  a{
+    margin-top: 5px;
+  }
+}
+
+.icon-topic-theatre{
+  position: absolute;
+  top: -25px;
+  left: 100px;
+}
+.number{
+  margin: 5px;
+}
+
+
+
+
