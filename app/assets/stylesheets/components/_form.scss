@@ -10,7 +10,7 @@
 // Form label
 
 .form-label{
-  color: #B6B6B6;
+  color: $light-gray;
   align-self: flex-start;
   margin: 0;
   padding: 0 5px;
@@ -28,8 +28,8 @@
 // Form input
 
 .form-input{
-  border: 1px solid #B6B6B6;
-  color: #B6B6B6;
+  border: 1px solid $light-gray;
+  color: $light-gray;
   flex-grow: 1;
   background-color: $black;
   border-radius: $border-radius;
