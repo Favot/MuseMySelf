@@ -1,63 +1,27 @@
-<%= simple_form_for :search, url: journeys_path, method: :get do |f| %>
-	<div class="search-form-control form-group">
-		<input class="form-control string required" type="text" name="search[query]" id="search_query" />
-		<button name="button" type="submit" class="btn">
-		<i class="fas fa-search"></i> Search
-	</button>
-	</div>
-<% end %>
-
-
-
-<%# if the the is not match with the research %>
-<% if @journeys.size == 0 %>
-<%# on peux eventuellement proposer un autre parcour %>
-<h2>Desoler nous n'avons pas de parcours correspondanrs a votre recherche</h2>
-<%# if only one resul %>
-<% elsif @journeys.size == 1 %>
-<h2>Resultat</h2>
-<h3>le parcour</h3>
-<div class="cards-container-vertical">
-		<% @journeys.each do |journey| %>
-			<%= link_to journey_path(journey), class: "card-journey" do %>
-
-					<div class="bg">
-						<div class="card-icone"></div>
-						<h4>
-							<%=journey.name%>
-						</h4>
-						<p>
-							<%="#{journey.summary.split.first(4).join(" ")}..." %>
-						</p>
-				</div>
-			<% end %>
-		<% end %>
-	</div>
-
+<!-- Search Form -->
+<div class="div-test">
+  <%= render 'shared/search_form' %>
 </div>
-<%# if more than one result %>
+
+<!-- Search Results -->
+<% if @journeys.size == 0 %>
+  <!-- If 0 match result -->
+  <p>Désolé nous n'avons pas encore de Parcours correspondant à votre recherche</p>
+  <!-- Random suggestion of a journey -->
+  <div class="content-title">
+    <h3>Et si vous essayiez...</h3>
+  </div>
+  <%= render 'shared/vertical_cards', data: @journey_suggestion %>
+<% elsif @journeys.size == 1 %>
+  <!-- If only 1 match result -->
+  <div class="content-title">
+    <h3>Ce Parcours est fait pour vous !</h3>
+  </div>
+  <%= render 'shared/vertical_cards', data: @journeys %>
 <% else %>
-	<h2>Resultas</h2>
-	<h3>les parcours</h3>
-	<div class="cards-container-vertical">
-		<% @journeys.each do |journey| %>
-			<%= link_to journey_path(journey.id), class: "card-journey "  do %>
-					<div class="bg">
-						<div class="card-icone"></div>
-						<h4>
-							<%=journey.name%>
-						</h4>
-						<p>
-							<%="#{journey.summary.split.first(4).join(" ")}..." %>
-						</p>
-				</div>
-			<% end %>
-
-		<% end %>
-	</div>
-
+  <!-- If 2 or more match results -->
+  <div class="content-title">
+    <h3>Résultats pour "QUERY"</h3>
+  </div>
+  <%= render 'shared/vertical_cards', data: @journeys %>
 <% end %>
-
-
-
-

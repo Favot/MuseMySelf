@@ -47,8 +47,13 @@
   justify-content: center;
   align-items: center;
 
+  width: 95%;
+  margin: auto;
+
   .card-journey {
-    margin-bottom: 8px;
+    margin: 0;
+    margin-bottom: 10px;
+    flex-grow: 1;
   }
 }
 
