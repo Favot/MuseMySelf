@@ -1,9 +1,11 @@
 .journey-show{
   background-image: url(image-path("bgjourneyshow.svg"));
+  margin-top: 100px;
 }
 
 .show-content{
-  // margin: 40px 0 80px 0;
+  margin: 40px 0 100px 0;
+  padding: 15px;
   display: flex;
   align-items: center;
   position: relative;
@@ -11,14 +13,16 @@
 
 .show-content:nth-child(odd){
   flex-direction: row-reverse;
-  // text-align: right;
+  //text-align: right;
 }
 
 .show-content:nth-child(even){
-  // flex-direction: row-reverse;
+  //flex-direction: row-reverse;
   text-align: right;
 }
 
+#bloc1{
+}
 
 .bloc-content{
   flex-grow: 1;
@@ -43,11 +47,36 @@
   }
 }
 
+.icon-topic-movie{
+  position: absolute;
+  top: -63px;
+  left: 225px;
+}
+
 .icon-topic-theatre{
   position: absolute;
   top: -25px;
   left: 100px;
 }
+
+.icon-topic-painting{
+  position: absolute;
+  top: -23px;
+  left: 182px;
+}
+
+.icon-topic-audio{
+  position: absolute;
+  top: -75px;
+  left: 60px;
+}
+
+.icon-topic-book{
+  position: absolute;
+  top: -56px;
+  left: 163px;
+}
+
 .number{
   margin: 5px;
 }
