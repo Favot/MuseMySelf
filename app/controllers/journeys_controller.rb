@@ -9,6 +9,12 @@ class JourneysController < ApplicationController
 
     # 'views/journeys/index.html.erb'
     @journey_suggestion = Journey.all.sample(3)
+
+    # to get journey topic
+    @all_journeys_topic = {}
+    @journeys.each do |journey|
+      @all_journeys_topic[journey] = journey.topic.name
+    end
   end
 
   def show
