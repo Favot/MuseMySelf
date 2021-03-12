@@ -5,7 +5,6 @@
 
 .show-content{
   margin: 40px 0 100px 0;
-  padding: 15px;
   display: flex;
   align-items: center;
   position: relative;
@@ -27,6 +26,7 @@
 .bloc-content{
   flex-grow: 1;
   margin: 5px;
+  text-align: left;
 
   .bloc-title{
     margin-bottom: 10px;
@@ -80,7 +80,3 @@
 .number{
   margin: 5px;
 }
-
-
-
-
