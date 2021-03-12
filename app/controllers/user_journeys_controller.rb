@@ -1,5 +1,12 @@
 class UserJourneysController < ApplicationController
   CATEGORIES = %w[Théâtre Film Audio Peinture Livre]
+  TAGS = {
+    "Audio" => "audio",
+    "Film" => "movie",
+    "Théâtre" => "theater",
+    "Peinture" => "painting",
+    "Livre" => "book"
+  }
 
   def create
     @user_journey = UserJourney.new
@@ -20,6 +27,8 @@ class UserJourneysController < ApplicationController
 
   def show
     @journey = Journey.find(params[:id])
+    @tags = TAGS
+
     # calculations about the journey
     @average_rating = average_rating
     @duration = "#{duration[0]} h #{duration[1]} min"
