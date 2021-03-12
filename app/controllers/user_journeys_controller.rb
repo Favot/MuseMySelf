@@ -8,7 +8,7 @@ class UserJourneysController < ApplicationController
     @user_journey.user = current_user
     @journey_contents = @journey.journey_contents
 
-    if @user_journey.save!
+    if @user_journey.save
       create_user_journey_content(@journey_contents)
       flash[:notice] = 'Vous avez été enregistré sur le parcours !'
       redirect_to user_journey_path(params[:journey_id])
