@@ -5,7 +5,6 @@
 
 <!-- Search Results -->
 <% if @journeys.size == 0 %>
-
   <!-- If 0 match result -->
   <p>Désolé nous n'avons pas encore de Parcours correspondant à votre recherche</p>
   <!-- Random suggestion of a journey -->
@@ -13,21 +12,16 @@
     <h3>Et si vous essayiez...</h3>
   </div>
   <%= render 'shared/vertical_cards', data: @journey_suggestion %>
-
 <% elsif @journeys.size == 1 %>
-
   <!-- If only 1 match result -->
   <div class="content-title">
     <h3>Ce Parcours est fait pour vous !</h3>
   </div>
   <%= render 'shared/vertical_cards', data: @journeys %>
-
 <% else %>
-
   <!-- If 2 or more match results -->
   <div class="content-title">
     <h3>Résultats pour "QUERY"</h3>
   </div>
   <%= render 'shared/vertical_cards', data: @journeys %>
-
 <% end %>
