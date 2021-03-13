@@ -10,23 +10,14 @@
 
 #myTabs {
   width: 100%;
-border: 1px solid red;
-}
-
-.active {
-  background-color: pink;
-}
-
-p {
-  text-align: left;
-  padding: 10px;
+  border: 1px solid red;
 }
 
 .tab-content {
   display: none;
-  padding: 10px 20px;
 }
 
 .tab-content.active {
   display: block;
+  border: 1px solid red;
 }
