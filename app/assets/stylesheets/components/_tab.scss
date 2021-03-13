@@ -1,23 +1,16 @@
-// Tabs for user_journeys
+// Tabs for user_journeys#index
 
-.container-tabs-btn{
+#myTabs{
   display: flex;
   justify-content: space-around;
   margin-bottom: 1.5rem;
-}
-
-// test
-
-#myTabs {
-  width: 100%;
-  border: 1px solid red;
 }
 
 .tab-content {
   display: none;
 }
 
-.tab-content.active {
+.tab-content.show{
   display: block;
   border: 1px solid red;
 }

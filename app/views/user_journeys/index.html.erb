@@ -9,21 +9,32 @@
   <h3 class="text-center">Mes parcours</h3>
 </div>
 
-<div class="tabs" id="myTabs">
-<!-- Tabs -->
-<div class="container-tabs-btn">
-  <%= link_to "En cours", '#', class: "tab-button btn-topic-disabled btn-active", id: "pending" %>
-  <%= link_to "Complétés", '#', class: "tab-button btn-topic-disabled", id: "completed" %>
-  <%= link_to "Favoris", '#', class: "tab-button btn-topic-disabled", id: "favorite" %>
-</div>
-<!-- Tabs content -->
-<div class="container-tabs-content" id="myTabsContent">
-  <div class="tab-content active" id="pending"><p>content en cours</p></div>
-  <div class="tab-content" id="completed"><p>content completed</p></div>
-  <div class="tab-content" id="favorite"><p>content fav</p></div>
-</div>
-</div>
 
+<div class="tabs">
+  <!-- Tabs buttons-->
+  <div id="myTabs">
+    <button class="tab-button btn-topic-disabled btn-active" data-id="pending">En cours</button>
+    <button class="tab-button btn-topic-disabled" data-id="completed">Complétés</button>
+    <button class="tab-button btn-topic-disabled" data-id="favorite">Favoris</button>
+  </div>
+
+  <!-- Tabs content -->
+  <div id="myTabsContent">
+    <div class="tab-content show" id="pending">
+      <h4>content en COURSSSSSSS</h4>
+
+    </div>
+      <div class="tab-content" id="completed">
+        <p>content COMPLETE</p>
+
+    </div>
+      <div class="tab-content" id="favorite">
+        <h2>content FAVVV</h2>
+
+    </div>
+  </div>
+
+</div>
 
 
 
