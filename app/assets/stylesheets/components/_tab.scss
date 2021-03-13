@@ -1,7 +1,32 @@
 // Tabs for user_journeys
 
-.tabs-container{
+.container-tabs-btn{
   display: flex;
   justify-content: space-around;
   margin-bottom: 1.5rem;
+}
+
+// test
+
+#myTabs {
+  width: 100%;
+border: 1px solid red;
+}
+
+.active {
+  background-color: pink;
+}
+
+p {
+  text-align: left;
+  padding: 10px;
+}
+
+.tab-content {
+  display: none;
+  padding: 10px 20px;
+}
+
+.tab-content.active {
+  display: block;
 }

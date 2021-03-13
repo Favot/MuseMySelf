@@ -35,7 +35,7 @@ document.addEventListener('turbolinks:load', () => {
 
 
 // JS Tabs for 'user_journeys#index'
-import { displayTabContent } from '../components/tabs';
+import { displayTab } from '../components/tabs';
 document.addEventListener('click', () => {
-  displayTabContent()
+  displayTab()
 });

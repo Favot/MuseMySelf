@@ -31,7 +31,15 @@
     </div>
     <div class="tag-progression">ÉTAPE 1/6</div>
   <% end %>
+</div>
 
+<div class="tabs-container">
+  <%= link_to 'Favoris', '#', class: "btn-topic-disabled" %>
+  <%= link_to 'En cours', '#', class: "btn-topic-disabled" %>
+  <%= link_to 'Complétés', '#', class: "btn-topic-disabled btn-active" %>
+</div>
+
+<div class="cards-container-vertical">
   <%= link_to "#", class: "card-art" do %>
     <h4>Renaissance</h4>
     <p>Description brève du contenu</p>
@@ -47,6 +55,7 @@
     <div class="tag-progression">COMPLÉTÉ LE 12.03.2021</div>
   <% end %>
 </div>
+
 
 <br>
 

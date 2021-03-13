@@ -1,5 +1,13 @@
-const displayTabContent = () => {
-  // console.log(event.target.id);
-}
+// Adding .active on clicked tab for user_journeys#index
 
-export {displayTabContent}
+const displayTab = () => {
+  console.log(event.target)
+
+  const tabs = document.querySelector('#myTabs');
+  const tabButton = document.querySelectorAll()
+  const contents =
+
+
+};
+
+export {displayTab}
