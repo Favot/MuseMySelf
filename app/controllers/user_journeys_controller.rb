@@ -13,25 +13,20 @@ class UserJourneysController < ApplicationController
     @ujs_started.each do |uj_started|
       @user_journeys_started << uj_started.journey
     end
-    # Get topics of journeys of only user_journeys in progress
-    @user_journeys_started_topic = {}
-    @user_journeys_started.each do |uj|
-      @user_journeys_started_topic[uj] = uj.topic.name
-    end
 
     # Get only user_journeys completed
-    @ujs_conpleted = @ujs.where(completed: true)
+    @ujs_completed = @ujs.where(completed: true)
     # Get journeys of only user_journeys completed
-    @user_journeys_conpleted = []
-    @ujs_conpleted.each do |uj_completed|
-      @user_journeys_conpleted << uj_completed.journey
+    @user_journeys_completed = []
+    @ujs_completed.each do |uj_completed|
+      @user_journeys_completed << uj_completed.journey
     end
-    # Get topics of journeys of only user_journeys completed
-    @user_journeys_conpleted_topic = {}
-    @user_journeys_conpleted.each do |uj|
-      @user_journeys_conpleted_topic[uj] = uj.topic.name
+
+    # Get journey topic
+    @all_journeys_topic = {}
+    Journey.all.each do |journey|
+      @all_journeys_topic[journey] = journey.topic.name
     end
-    # raise
   end
 
   def create
