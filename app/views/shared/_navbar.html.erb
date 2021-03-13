@@ -1,5 +1,6 @@
 <div class="navbar-container">
 
+  <!-- Logo -->
   <div class="navbar-item">
     <%= link_to "/", class: "" do %>
       <svg width="43" height="40" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -8,6 +9,7 @@
     <% end %>
   </div>
 
+  <!-- search -->
   <div class="navbar-item">
     <%= link_to "/", class: "" do %>
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,8 +19,9 @@
     <% end %>
   </div>
 
+  <!-- Bookmarks -->
   <div class="navbar-item">
-    <%= link_to "/", class: "" do %>
+    <%= link_to "/user_journeys", class: "" do %>
       <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M2.92793 0C1.50901 0 0.315315 1.03604 0.0450444 2.38739C0.0225218 2.56757 0 2.74775 0 2.95045V37.0495C0 37.2297 0.0225218 37.4324 0.0450444 37.6126C0.315315 38.964 1.50901 40 2.92793 40H31.5991V0H2.92793ZM17.2748 1.12613H27.6126V22.2522L22.4324 26.1036L17.2522 22.2522V1.12613H17.2748ZM1.1036 2.95045C1.1036 2.74775 1.12613 2.56757 1.19369 2.38739C1.41892 1.64415 2.11712 1.12613 2.92793 1.12613H3.69369V34.1216H2.92793C2.22973 34.1216 1.5991 34.3694 1.1036 34.7522V2.95045ZM30.518 36.4865H4.27928V37.5901H30.518V38.8513H2.92793C2.11712 38.8513 1.41892 38.3108 1.19369 37.5901C1.12613 37.4099 1.1036 37.2297 1.1036 37.027C1.1036 36.8243 1.12613 36.6441 1.19369 36.464C1.41892 35.7207 2.11712 35.2027 2.92793 35.2027H30.4955V36.4865H30.518ZM30.518 34.1216H4.84234V1.12613H16.1486V22.8153L22.4324 27.5L28.7162 22.8153V1.12613H30.4955V34.1216H30.518Z" fill="white"/>
       <path d="M26.419 18.2657L23.6712 17.8603L22.455 15.3828L21.2163 17.8603L18.4685 18.2657L20.4505 20.2026L19.9775 22.9279L22.4325 21.6441L24.8874 22.9279L24.4145 20.2026L26.419 18.2657ZM22.4325 20.6981L21.0811 21.3963L21.3289 19.8873L20.2478 18.8288L21.7568 18.6035L22.4325 17.2297L23.1081 18.6035L24.6172 18.8288L23.5361 19.8873L23.7838 21.3963L22.4325 20.6981Z" fill="white"/>
@@ -26,6 +29,7 @@
     <% end %>
   </div>
 
+  <!-- Logout if user signed in -->
   <div class="navbar-item">
     <% if user_signed_in? %>
       <%= link_to destroy_user_session_path, method: :delete, class: "" do %>
@@ -34,6 +38,7 @@
         </svg>
       <% end %>
 
+    <!-- Login if user not signed in -->
     <% else %>
       <%= link_to new_user_session_path, class: "" do %>
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
