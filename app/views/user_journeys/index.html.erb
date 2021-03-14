@@ -21,15 +21,11 @@
   <div id="myTabsContent">
     <!-- Started -->
     <div class="tab-content show" id="pending">
-      <div class="cards-container-vertical">
-        <%= render 'shared/cards', data: @user_journeys_started %>
-      </div>
+      <%= render 'shared/vertical_cards', data: @user_journeys_started %>
     </div>
     <!-- Completed -->
     <div class="tab-content" id="completed">
-      <div class="cards-container-vertical">
-        <%= render 'shared/cards', data: @user_journeys_completed %>
-      </div>
+      <%= render 'shared/vertical_cards', data: @user_journeys_completed %>
     </div>
     <!-- Best rating -->
     <div class="tab-content" id="favorite">
