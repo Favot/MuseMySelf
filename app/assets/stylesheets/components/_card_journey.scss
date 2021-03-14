@@ -1,23 +1,23 @@
-.cards-container {
-  display:flex;
-  overflow:scroll;
-}
+// .cards-container {
+//   display:flex;
+//   overflow:scroll;
+// }
 
-.card-journey{
-  overflow: hidden;
-  height: 217px;
-  background: $purple-theater;
-  border-radius: $border-radius;
-  position: relative;
-  padding: 1rem;
-  min-width: 90%;
-  margin-right:8px;
+// .card-journey{
+//   overflow: hidden;
+//   height: 217px;
+//   background: $purple-theater;
+//   border-radius: $border-radius;
+//   position: relative;
+//   padding: 1rem;
+//   min-width: 90%;
+//   margin-right:8px;
 
-  .bg{
-    height:100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+//   .bg{
+//     height:100%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: flex-end;
 
     // .card-icone{
     //   background-image: url(image-path('monalisa.png'));
@@ -31,9 +31,9 @@
     // }
 
 
-  }
+//   }
 
-}
+// }
 
 
 
@@ -48,149 +48,58 @@
   width: 95%;
   margin: auto;
 
-  .card-art, .card-music, .card-photo, .card-architecture {
+  .card-journey{
     margin: 0;
     margin-bottom: 10px;
     flex-grow: 1;
   }
 }
 
+// Journey card without background color
+
+.card-journey{
+  // Card content
+  color: $black;
+  border-radius: $border-radius;
+  height: 217px;
+  padding: 1rem; // 16px
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  // Display an icon on the card background
+  position: relative;
+
+  .card-bg-icon{
+    align-self: flex-end;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    position: absolute;
+  }
+
+  &:hover, &:active{
+    text-decoration: none;
+    color: $black;
+  }
+
+  p{
+    margin: 0;
+  }
+}
+
 // Used to change background color of journey card
 
-.card-art{
-  // bg color
+.card-journey.art{
   background-color: $blue-painting;
-
-  // card content
-  color: $black;
-  border-radius: $border-radius;
-  height: 217px;
-  padding: 1rem; // 16px
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  // Display an icon on the card background
-  position: relative;
-
-  .card-bg-icon{
-    // z-index: 0;
-    // overflow: hidden;
-    align-self: flex-end;
-    background-repeat: no-repeat;
-    opacity: 0.2;
-    position: absolute;
-  }
-
-  &:hover, &:active{
-    text-decoration: none;
-    color: $black;
-  }
-
-  p{
-    margin: 0;
-  }
 }
 
-.card-music{
-  // bg color
-  background-color: $purple-theater;
-
-  // card content
-  color: $black;
-  border-radius: $border-radius;
-  height: 217px;
-  padding: 1rem; // 16px
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  // Display an icon on the card background
-  position: relative;
-
-  .card-bg-icon{
-    align-self: flex-end;
-    background-repeat: no-repeat;
-    // opacity: 1;
-    position: absolute;
-  }
-
-  &:hover, &:active{
-    text-decoration: none;
-    color: $black;
-  }
-
-  p{
-    margin: 0;
-  }
-}
-
-.card-architecture{
-  // bg color
+.card-journey.architecture{
   background-color: $yellow-movie;
-
-  // card content
-  color: $black;
-  border-radius: $border-radius;
-  height: 217px;
-  padding: 1rem; // 16px
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  // Display an icon on the card background
-  position: relative;
-
-  .card-bg-icon{
-    // z-index: 0;
-    // overflow: hidden;
-    align-self: flex-end;
-    background-repeat: no-repeat;
-    opacity: 0.2;
-    position: absolute;
-  }
-
-  &:hover, &:active{
-    text-decoration: none;
-    color: $black;
-  }
-
-  p{
-    margin: 0;
-  }
 }
 
-.card-photo{
-  // bg color
+.card-journey.photo{
   background-color: $pink-audio;
+}
 
-  // card content
-  color: $black;
-  border-radius: $border-radius;
-  height: 217px;
-  padding: 1rem; // 16px
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  // Display an icon on the card background
-  position: relative;
-
-  .card-bg-icon{
-    // z-index: 0;
-    // overflow: hidden;
-    align-self: flex-end;
-    background-repeat: no-repeat;
-    opacity: 0.2;
-    position: absolute;
-  }
-
-  &:hover, &:active{
-    text-decoration: none;
-    color: $black;
-  }
-
-  p{
-    margin: 0;
-  }
+.card-journey.music{
+  background-color: $purple-theater;
 }

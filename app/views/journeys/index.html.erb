@@ -11,21 +11,27 @@
   <div class="content-title">
     <h3>Et si vous essayiez...</h3>
   </div>
-  <%= render 'shared/vertical_cards', data: @journey_suggestions %>
+  <div class="cards-container-vertical">
+    <%= render 'shared/cards', data: @journey_suggestions %>
+  </div>
 <% elsif @journeys.size == 1 %>
   <!-- If only 1 match result -->
   <div class="content-title">
     <h3>Ce Parcours est fait pour vous !</h3>
   </div>
-  <%= render 'shared/vertical_cards', data: @journeys %>
+  <div class="cards-container-vertical">
+    <%= render 'shared/cards', data: @journeys %>
+  </div>
 <% else %>
   <!-- If 2 or more match results -->
   <div class="content-title">
   <% if params[:search].present? %>
      <h3>Résultats pour "<%= params[:search]['query'] %>"</h3>
-  <% elsif params[:topic_id].present? %> 
+  <% elsif params[:topic_id].present? %>
      <h3>Résultats pour #<%= @topic[0].name %></h3>
   <% end %>
   </div>
-  <%= render 'shared/vertical_cards', data: @journeys %>
+  <div class="cards-container-vertical">
+    <%= render 'shared/cards', data: @journeys %>
+  </div>
 <% end %>

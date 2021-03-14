@@ -2,7 +2,7 @@
 
 <div class="cards-container-vertical">
   <% data.each do |journey| %>
- 
+
     <% if @all_journeys_topic[journey] == "Photographie" %>
       <%= link_to journey_path(journey), class: "card-photo" do %>
         <h4><%= journey.name %></h4>
