@@ -6,19 +6,15 @@ class UserJourneysController < ApplicationController
     # Get all user_journeys of current user
     @ujs = UserJourney.where(user: current_user)
 
-    # Get only user_journeys in progress
-    @ujs_started = @ujs.where(completed: false)
     # Get journeys of only user_journeys in progress
     @user_journeys_started = []
-    @ujs_started.each do |uj_started|
+    @ujs.where(completed: false).each do |uj_started|
       @user_journeys_started << uj_started.journey
     end
 
-    # Get only user_journeys completed
-    @ujs_completed = @ujs.where(completed: true)
     # Get journeys of only user_journeys completed
     @user_journeys_completed = []
-    @ujs_completed.each do |uj_completed|
+    @ujs.where(completed: true).each do |uj_completed|
       @user_journeys_completed << uj_completed.journey
     end
 
