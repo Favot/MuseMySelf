@@ -22,7 +22,7 @@
 
 .content-container-bottom {
   padding: 16px;
-  margin-bottom: 150px;
+  // margin-bottom: 150px;
 }
 
 .review {
@@ -30,14 +30,20 @@
   border-radius: 5px;
   margin: 16px;
   padding: 16px;
-  position: absolute;
-  margin-bottom: 150px;
+  position: relative;
+  padding-top: 32px;
 
   h3 {
     background-color: #000000;
-    position: relative;
-    top: -40px;
-    left: 10px;
+    position: absolute;
     display: inline-flex;
+    transform: translateY(-150%);
   }
+}
+
+.yellow {
+  color: yellow;
+}
+.grey {
+  color: grey; 
 }
