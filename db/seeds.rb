@@ -5,6 +5,9 @@ require 'faker'
 
 puts "Cleaning all databases..."
 
+UserAnswer.destroy_all
+Answer.destroy_all
+QuizQuestion.destroy_all
 UserJourneyContent.destroy_all
 UserJourney.destroy_all
 User.destroy_all
