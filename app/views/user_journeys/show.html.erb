@@ -1,75 +1,69 @@
-<div class="placeholder" name="category">
-  <span><%= @journey.topic.name %></span>
-</div>
-<div class="placeholder" name="Journey name">
-  <h1><%= @journey.name %></h1>
-</div>
-<div class="placeholder" name="journey stats">
-  <div class="placeholder">Inscrits <%= @count_subscribers %>
+<div class="container text-center mt-5">
+  <div class="category">
+    <span class="tag-topic theater"><%= @journey.topic.name %></span>
   </div>
-  <div class="placeholder">Note moyenne <%= @average_rating %>
+  <div class="journey-name">
+    <h1><%= @journey.name %></h1>
   </div>
-  <div class="placeholder">Durée <%= @duration %>
+  <div class="stats">
+    <div class="subscribe">Inscrits <%= @count_subscribers %>
+    </div>
+    <div class="rating">Note moyenne <%= @average_rating %>
+    </div>
+    <div class="duration">Durée <%= @duration %>
+    </div>
   </div>
-</div>
-<div class="placeholder" name="description">
-  <p><%= @journey.summary %></p>
-</div>
-<div class="placeholder" name="content summary">
-  <ul>
-    <% @content_count_by_type.each do |key, value| %>
-      <%  unless value.zero?  %>
-        <li>
-          <% if @subscribed %>
-            <%= "#{key} : reste #{@to_do_count_by_type[key]} sur #{value} au total"%>
-          <% else %>
-            <%= "#{key} : #{value} au total"%>
-          <% end %>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
-  <% if @subscribed %>
-    <p>Vous êtes inscrit sur ce parcours</p>
-  <% else %>
-    <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
-      <%= f.submit "S'inscrire au parcours" %>
-    <% end %>
-  <% end %>
 
-</div>
-<div class="placeholder">
-  <table class="placeholder">
-    <% position = 0 %>
-    <% @contents.each do |content| %>
-      <% position += 1 %>
-      <tr>
-        <% if position.odd? %>
-          <td>placeholder</td>
-          <td>
-            <ul>
-              <li><%= content.category %></li>
-              <li><%= content.title %></li>
-              <li><%= "#{content.author}, #{content.date}" %></li>
-              <!-- <li><%= link_to "Découvrir", user_journey_content_path %></li> -->
-              <li><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></li>
-            </ul>
-          </td>
-          <td> <%= "Position : #{position}" %></td>
-        <% else %>
-          <td> <%= "Position : #{position}" %></td>
-          <td>
-            <ul>
-              <li><%= content.category %></li>
-              <li><%= content.title %></li>
-              <li><%= "#{content.author}, #{content.date}" %></li>
-              <!-- <li><%= link_to "Découvrir", user_journey_content_path %></li> -->
-              <li><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></li>
-            </ul>
-          </td>
-          <td>placeholder</td>
+  <div class="description">
+    <p><%= @journey.summary %></p>
+  </div>
+  <div class="content-summary">
+    <ul style="list-style:none; padding:0;">
+      <% @content_count_by_type.each do |key, value| %>
+        <%  unless value.zero?  %>
+          <li>
+            <% if @subscribed %>
+              <%= "#{key} : reste #{@to_do_count_by_type[key]} sur #{value} au total"%>
+            <% else %>
+              <%= "#{value} #{key}  "%>
+            <% end %>
+          </li>
         <% end %>
-      </tr>
       <% end %>
-  </table>
+    </ul>
+
+    <% if @subscribed %>
+      <p>Vous êtes inscrit sur ce parcours</p>
+    <% else %>
+      <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
+        <%= f.submit "S'inscrire au parcours", class:'btn-start' %>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="container">
+  <% position = 0 %>
+  <% @contents.each do |content| %>
+    <% position += 1 %>
+    <div class="show-content">
+      <div class="number <%= @tags[content.category] %>">
+        <%= position  %>
+      </div>
+      <div class="icon-topic-<%= @tags[content.category] %>">
+        <%= image_tag("#{@tags[content.category]}.svg") %>
+
+      </div>
+      <div class="bloc-content">
+        <div class="tag-topic <%= @tags[content.category] %> mb-2"><%= content.category %></div>
+        <div class="bloc-title">
+          <p><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></p>
+          <p><%= content.title %></p>
+          <p><%= "#{content.author}, #{content.date}" %></p>
+        </div>
+        <%= link_to "Découvrir", user_journey_content_path %>
+      </div>
+    </div>
+  <% end %>
 </div>
