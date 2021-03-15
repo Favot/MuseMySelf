@@ -1,6 +1,13 @@
 class JourneysController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   CATEGORIES = %w[Théâtre Film Audio Peinture Livre]
+  TAGS = {
+    "Audio" => "audio",
+    "Film" => "movie",
+    "Théâtre" => "theater",
+    "Peinture" => "painting",
+    "Livre" => "book"
+  }
 
   def index
     @journeys = Journey.all
@@ -19,6 +26,7 @@ class JourneysController < ApplicationController
 
   def show
     @journey = Journey.find(params[:id])
+    @tags = TAGS
 
     redirect_to user_journey_path if subscribed?
     # calculations about the journey
