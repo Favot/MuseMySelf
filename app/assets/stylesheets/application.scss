@@ -44,4 +44,22 @@ body {
   width: 90%;
   margin: auto;
   margin-top: 12px;
+  font-size: 14px;
+}
+
+// Used for user_journeys#index
+.profile-header{
+  width: 90%;
+  margin: 50px auto;
+
+  h2, h1{
+    text-align: center;
+    margin: 0;
+    font-size: 2rem;
+    line-height: 0.9;
+  }
+
+  h1{
+    font-size: 3rem;
+  }
 }

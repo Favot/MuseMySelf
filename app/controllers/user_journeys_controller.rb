@@ -1,5 +1,36 @@
 class UserJourneysController < ApplicationController
+  before_action :authenticate_user!, only: %i[index]
   CATEGORIES = %w[Théâtre Film Audio Peinture Livre]
+  TAGS = {
+    "Audio" => "audio",
+    "Film" => "movie",
+    "Théâtre" => "theater",
+    "Peinture" => "painting",
+    "Livre" => "book"
+  }
+
+  def index
+    # Get all user_journeys of current user
+    @ujs = UserJourney.where(user: current_user)
+
+    # Get journeys of only user_journeys in progress
+    @user_journeys_started = []
+    @ujs.where(completed: false).each do |uj_started|
+      @user_journeys_started << uj_started.journey
+    end
+
+    # Get journeys of only user_journeys completed
+    @user_journeys_completed = []
+    @ujs.where(completed: true).each do |uj_completed|
+      @user_journeys_completed << uj_completed.journey
+    end
+
+    # Get journey topic
+    @all_journeys_topic = {}
+    Journey.all.each do |journey|
+      @all_journeys_topic[journey] = journey.topic.name
+    end
+  end
 
   def create
     @user_journey = UserJourney.new
@@ -20,6 +51,8 @@ class UserJourneysController < ApplicationController
 
   def show
     @journey = Journey.find(params[:id])
+    @tags = TAGS
+
     # calculations about the journey
     @average_rating = average_rating
     @duration = "#{duration[0]} h #{duration[1]} min"
