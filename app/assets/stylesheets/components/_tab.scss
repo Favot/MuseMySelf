@@ -1,0 +1,15 @@
+// Tabs for user_journeys#index
+
+#myTabs{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.show{
+  display: block;
+}

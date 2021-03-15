@@ -9,7 +9,7 @@
   padding: 8px 24px;
   font-weight: 400;
 
-  &:onclick{
+  &:hover, &:active{
     text-decoration: none;
   }
 }
@@ -19,7 +19,7 @@
   background-color: $green-primary;
   color: $black;
 
-  &:onclick{
+  &:hover, &:active{
     text-decoration: none;
   }
 }
@@ -35,7 +35,7 @@
   padding: 8px;
   font-weight: 400;
 
-  &:onclick{
+  &:hover, &:active{
     text-decoration: none;
   }
 }
@@ -51,7 +51,7 @@
   padding: 8px;
   font-weight: 600;
 
-  &:onclick{
+  &:hover, &:active{
     text-decoration: none;
   }
 }
@@ -68,7 +68,7 @@
   font-weight: 600;
   border-radius: $border-radius-round;
 
-  &:onclick{
+  &:hover, &:active{
     text-decoration: none;
   }
 }

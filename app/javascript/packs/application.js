@@ -32,3 +32,10 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
+
+
+// JS Tabs for 'user_journeys#index'
+import { displayTab } from '../components/tabs';
+document.addEventListener('click', () => {
+  displayTab()
+});

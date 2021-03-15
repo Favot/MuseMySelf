@@ -1,0 +1,37 @@
+<!-- Page header -->
+<div class="profile-header">
+  <h2>Bonjour</h2>
+  <h1><%= "#{current_user.name} !" %></h1>
+</div>
+
+<!-- Page subtitle -->
+<div class="content-title">
+  <h3 class="text-center">Mes parcours</h3>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <!-- Tabs buttons-->
+  <div id="myTabs">
+    <button class="tab-button btn-topic-disabled btn-active" data-id="pending">En cours</button>
+    <button class="tab-button btn-topic-disabled" data-id="completed">Complétés</button>
+    <button class="tab-button btn-topic-disabled" data-id="favorite">Favoris</button>
+  </div>
+  <!-- Tabs content -->
+  <div id="myTabsContent">
+    <!-- Started -->
+    <div class="tab-content show" id="pending">
+      <%= render 'shared/vertical_cards', data: @user_journeys_started %>
+    </div>
+    <!-- Completed -->
+    <div class="tab-content" id="completed">
+      <%= render 'shared/vertical_cards', data: @user_journeys_completed %>
+    </div>
+    <!-- Best rating -->
+    <div class="tab-content" id="favorite">
+      <div class="cards-container-vertical">
+        <em><p>Vos parcours favoris seront bientôt disponibles ici !</p></em>
+      </div>
+    </div>
+  </div>
+</div>
