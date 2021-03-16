@@ -19,6 +19,13 @@ puts "Seeding some data..."
 is_cloudinary_active = true
 
 # -- 4 USERS
+#  Lucas 
+#  John
+#  Marie
+#  Chris
+
+
+
 puts "Creating users..."
 
 lucas = User.new(
@@ -57,7 +64,12 @@ chris = User.new(
 )
 chris.save!
 
+
+
+
 # -- 4 TOPICS
+#  Musique, Art, Architecture, Photographie
+
 puts "Creating topics..."
 
 music = Topic.new(name: "Musique")
@@ -76,6 +88,7 @@ photo.save!
 puts "Creating journeys..."
 
 # Journeys for music
+
 music17th = Journey.new(
     name: "Voyage musical dans la France du XVIIe siècle",
     summary: "Partez à la découverte des lieux, des musiciens et des repertoires de la musique française du XVIIe siècle.",
@@ -358,6 +371,9 @@ if is_cloudinary_active
 end
 music17th_6.save!
 
+
+
+
 # -- linking demo content to journey
 puts "Linking demo content to demo journey..."
 
@@ -404,6 +420,134 @@ journey_content = JourneyContent.new(
 journey_content.save!
 
 # -- user_journeys
+
+
+# -- 5 CONTENTS for Journey 'music_5' #jazz
+puts "Creating demo contents jazz"
+
+jazz_1 = Content.new(
+  title: " New Orleans Memories ",
+  author: "Jelly Roll Morton",
+  date: 1940, # "10/02/1973"
+  category: "Audio",
+  duration: 45,
+  url: "https://www.discogs.com/Jelly-Roll-Morton-New-Orleans-Memories/master/880279",
+  description: "Sur ses cartes de visite, on pouvait lire « Inventor of Jazz » (« inventeur du jazz »),  \
+                « Originator of Stomp and Swing » (« créateur du stomp et du swing »), \
+                « World's Greatest Hot Tune Writer » (« le plus grand auteur de morceaux hot au monde ») et, \
+                plus de 60 ans après sa mort, bon nombre de critiques pensent désormais qu'il n'avait peut-être pas tort. \
+                Découvrez au travers cet album Jelly Roll Morton l'inventeur du jazz, ainsi que la Nouvelle-Orleans berceau \
+                et ville emblématique du jazz au travers son histoire."
+)
+
+file = File.open(Rails.root.join('db/media/contents/new_orleans_memories.jpg'))
+if is_cloudinary_active
+  jazz_1.photo.attach(io: file, filename: 'new_orleans_memories.jpg', content_type: 'image/jpeg')
+end
+jazz_1.save!
+
+jazz_2 = Content.new(
+  title: "Nightlife",
+  author: "Archibald Motley",
+  date: 1943, # "10/02/1973"
+  category: "Peinture",
+  duration: 5,
+  url: "https://www.artic.edu/artworks/117266/nightlife",
+  description: "Le peintre de Chicago Archibald Motley a représenté le dynamisme de la culture afro-américaine,\
+              dépeignant fréquemment de jeunes citadins sophistiqués en ville. La vie nocturne dépeint un cabaret bondé \
+              dans le quartier South Side de Bronzeville, avec des gens assis autour de tables et au bar. L’horloge indique une heure et\
+              l’endroit est toujours bondé de buveurs et de danseurs. Deux barmans servent les clients et réapprovisionnent l'étalage \
+              bien éclairé de l'alcool, et les couples dansent furieusement en arrière-plan sur la musique fournie par le juke-box à droite. \
+              La tête étrange au sommet du juke-box est peut-être un distributeur d’arachides connu sous le nom de «Smilin’ Sam d’Alabam ’»; \
+              lorsqu'une pièce de monnaie était insérée dans la tête et que la langue était tirée, la machine distribuait des arachides. \
+              Motley a unifié la composition grâce à son utilisation de formes répétées et d'un ton bordeaux omniprésent qui baigne toute la \
+              scène dans une lumière intense et artificielle. (L'artiste avait vu les Nighthawks d'Edward Hopper à l'Art Institute l'année précédente \
+              et était intrigué par son utilisation de la lumière artificielle.) Les figures stylisées sont étroitement interconnectées; \
+              ils sont disposés le long d'une diagonale pointue qui comprime l'espace dans un décor en forme de scène. La composition dynamique\
+              et les couleurs rehaussées expriment de manière vivante la vivacité de la scène, faisant de Nightlife l’une des peintures les plus \
+              élèbres de Motley."
+)
+
+file = File.open(Rails.root.join('db/media/contents/night_life_paint.jpg'))
+if is_cloudinary_active
+  jazz_2.photo.attach(io: file, filename: 'night_life_paint.jpg', content_type: 'image/jpeg')
+end
+jazz_2.save!
+
+jazz_3 = Content.new(
+  title: "Bird",
+  author: "Clint Eastwood",
+  date: 1988, # "18/12/1991"
+  category: "Film",
+  duration: 160,
+  url: "https://www.youtube.com/watch?v=8AxcmE5N068",
+  description: "Bird est un film américain réalisé par Clint Eastwood et sorti en 1988. \
+                Il s'agit d'un film biographique et une interprétation cinématographique de la vie de Charlie Parker,\
+                alias « Bird » (Yardbird en VO), jazzman visionnaire et musicien accompli qui éleva le saxophone à un niveau d'expression inédit.\
+                Le film, présenté au festival de Cannes 1988, dépeint alternativement la jeunesse et la maturité de cet homme\
+                et de ce créateur de génie, sa carrière et ses drames personnels. "
+)
+
+file = File.open(Rails.root.join('db/media/contents/Bird.jpg'))
+if is_cloudinary_active
+  jazz_3.photo.attach(io: file, filename: 'Bird.jpg', content_type: 'image/jpeg')
+end
+jazz_3.save!
+
+
+jazz_4 = Content.new(
+  title: "What a Wonderful World",
+  author: "Louis Armstrong",
+  date: 1638,
+  category: "Audio",
+  duration: 3,
+  url: "http://todo.com",
+  description: "todo."
+)
+
+# file = File.open(Rails.root.join('db/media/contents/music17th_4.jpg'))
+# if is_cloudinary_active
+#   music17th_4.photo.attach(io: file, filename: 'music17th_4.jpg', content_type: 'image/jpeg')
+# end
+jazz_4.save!
+
+jazz_5 = Content.new(
+  title: "The Best of Simple",
+  author: "Langston Hughes",
+  date: 1961,
+  category: "Livre",
+  duration: 560,
+  url: "https://archive.org/details/bestofsimple00lang/page/n7/mode/2up",
+  description: "Todo."
+)
+
+# file = File.open(Rails.root.join('db/media/contents/music17th_5.jpg'))
+# if is_cloudinary_active
+#   music17th_5.photo.attach(io: file, filename: 'music17th_5.jpg', content_type: 'image/jpeg')
+# end
+jazz_5.save!
+
+jazz_6 = Content.new(
+  title: "La Musique en France à l'époque baroque",
+  author: "James R. Anthony",
+  date: 1981,
+  category: "Livre",
+  duration: 180,
+  url: "https://livre.fnac.com/a2747744/James-R-Anthony-La-Musique-en-France-a-l-epoque-baroque#int=S:Suggestion|FA:LIV|1|2747744|BL5|L1",
+  description: "Depuis une vingtaine d'années, la musique baroque a fait l'objet d'un débat aussi\
+                passionné que passionnant. Toutefois, aucun ouvrage d'ensemble n'avait été consacré \
+                à cette époque particulièrement florissante en France puisqu'elle vit naître la tragédie \
+                lyrique et se développer le ballet, la musique religieuse prendre une grande importance \
+                dans la vie de cour, la sonate et le concerto italiens envahir les salons, tandis que le \
+                clavecin supplantait le luth."
+)
+
+# file = File.open(Rails.root.join('db/media/contents/music17th_6.jpg'))
+# if is_cloudinary_active
+#   music17th_6.photo.attach(io: file, filename: 'music17th_6.jpg', content_type: 'image/jpg')
+# end
+jazz_6.save!
+
 puts "Faking users registered to journeys"
 
 user_journey_1 = UserJourney.new(
