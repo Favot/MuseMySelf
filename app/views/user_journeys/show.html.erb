@@ -65,4 +65,17 @@
       </div>
     </div>
   <% end %>
+  <% if @user_journey.completed == false %>
+
+  <div class="btn-search form-btn">
+      <%= button_to "completed", complete_user_journey_path(@user_journey.id), method: :patch , class: "btn-search form-btn" %>
+  </div>
+
+  <% else %>
+
+    <div>Vous avez deja complete se parcour</div>
+  
+  <% end %>
+  
+  
 </div>
