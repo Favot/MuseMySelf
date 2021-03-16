@@ -23,11 +23,11 @@
           <%  unless value.zero?  %>
             <div class="card-content">
               <% if @subscribed %>
-              <%= image_tag("#{key}-content.svg") %>
+              <!<%= image_tag("#{key}-content.svg") %>
                 <div class="counter">
-                  <p><%= "#{@to_do_count_by_type[key]} sur #{value}" %></p>
+                  <p><%= "#{@to_do_count_by_type[key]}/#{value}" %></p>
                 </div>
-              <% else %>
+                <% else %>
                 <%= image_tag("#{key}-content.svg") %>
                 <div class="counter">
                   <p><%= "#{value}" %></p>
@@ -39,13 +39,12 @@
     </div>
   </section>
 
-  <% if @subscribed %>
-    <p>Vous êtes inscrit sur ce parcours</p>
-  <% else %>
-    <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
-      <%= f.submit "S'inscrire au parcours", class:'btn-start' %>
-    <% end %>
-  <% end %>
+
+      <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
+        <%= f.submit "S'inscrire au parcours", class:'btn-start' %>
+      <% end %>
+
+  </div>
 </div>
 
 <div class="container journey-show">

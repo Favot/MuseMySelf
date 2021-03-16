@@ -145,7 +145,7 @@ class UserJourneysController < ApplicationController
   end
 
   def subscribed?
-    return true if user_signed_in? && current_user.user_journeys.where(journey: @journey).size == 1
+    return true if user_signed_in? && current_user.user_journeys.where(journey: @journey).size >= 1
 
     false
   end
