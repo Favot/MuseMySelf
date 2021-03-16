@@ -427,6 +427,13 @@ user_journey_3 = UserJourney.new(
 )
 user_journey_3.save!
 
+user_journey_4 = UserJourney.new(
+  journey: music17th,
+  user: chris,
+  completed: true
+)
+user_journey_4.save!
+
 # -- user_journey_contents
 puts "Faking user rating contents of demo journey"
 
@@ -449,6 +456,67 @@ user_journey_content_2 = UserJourneyContent.new(
   position: 2
 )
 user_journey_content_2.save!
+
+# user journey with all content
+user_journey_content_3 = UserJourneyContent.new(
+  rating: 4,
+  review: "Magnifique pièce de théatre. Surtout en période de covid",
+  user_journey: user_journey_4,
+  content: music17th_1,
+  completed: true,
+  position: 1
+)
+user_journey_content_3.save!
+
+user_journey_content_4 = UserJourneyContent.new(
+  rating: 2,
+  review: "La musique ne colle pas à la pièce et le ton de Molière",
+  user_journey: user_journey_4,
+  content: music17th_2,
+  completed: true,
+  position: 2
+)
+user_journey_content_4.save!
+
+user_journey_content_5 = UserJourneyContent.new(
+  rating: 3,
+  review: "Très belle réalisation de Alain Corneau",
+  user_journey: user_journey_4,
+  content: music17th_3,
+  completed: true,
+  position: 3
+)
+user_journey_content_5.save!
+
+user_journey_content_6 = UserJourneyContent.new(
+  rating: 4,
+  review: "Etonnant de réalisme",
+  user_journey: user_journey_4,
+  content: music17th_4,
+  completed: true,
+  position: 4
+)
+user_journey_content_6.save!
+
+user_journey_content_7 = UserJourneyContent.new(
+  rating: 5,
+  review: "le meilleur contenu de ce parcours",
+  user_journey: user_journey_4,
+  content: music17th_5,
+  completed: true,
+  position: 5
+)
+user_journey_content_7.save!
+
+user_journey_content_8 = UserJourneyContent.new(
+  rating: 2,
+  review: "Je n'apprécie pas le baroque",
+  user_journey: user_journey_4,
+  content: music17th_6,
+  completed: true,
+  position: 6
+)
+user_journey_content_8.save!
 
 puts "Finished!"
 
