@@ -66,6 +66,12 @@ class UserJourneysController < ApplicationController
     # calculations about the user, skept if user is not connected yet
     @to_do_count_by_type = current_user_to_do if subscribed?
     @subscribed = subscribed?
+
+    @user_journey = UserJourney.where(journey: @journey).where(user: current_user).first
+    @user_journey_contents_ids = {}
+    @user_journey.user_journey_contents.each do |user_journey_content|
+      @user_journey_contents_ids[user_journey_content.content] = user_journey_content.id
+    end
   end
 
   private
@@ -85,7 +91,7 @@ class UserJourneysController < ApplicationController
   end
 
   def average_rating
-    return (ratings.sum * 1.0 / ratings.size) if ratings.size.positive?
+    return (ratings.sum * 1.0 / ratings.size).round(1) if ratings.size.positive?
 
     "🤷" # if no ratings. Not best practice, but fun
   end
@@ -127,6 +133,7 @@ class UserJourneysController < ApplicationController
     end
     contents_durations
   end
+
 
   def count_by_type
     @journey_contents = JourneyContent.where(journey: @journey)

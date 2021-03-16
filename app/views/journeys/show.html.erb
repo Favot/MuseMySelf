@@ -39,6 +39,7 @@
     </div>
   </section>
 
+
       <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
         <%= f.submit "S'inscrire au parcours", class:'btn-start' %>
       <% end %>
@@ -50,25 +51,23 @@
   <% position = 0 %>
   <% @contents.each do |content| %>
     <% position += 1 %>
-
-      <div class="show-content">
-        <div class="number <%= @tags[content.category] %>">
-          <%= position  %>
-        </div>
-        <div class="icon-topic-<%= @tags[content.category] %>">
-          <%= image_tag("#{@tags[content.category]}.svg") %>
-
-        </div>
-        <div class="bloc-content">
-          <div class="tag-topic <%= @tags[content.category] %> mb-2"><%= content.category %></div>
-          <div class="bloc-title">
-            <p><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></p>
-            <p><%= content.title %></p>
-            <p><%= "#{content.author}, #{content.date}" %></p>
-          </div>
-          <%= link_to "Découvrir", user_journey_content_path %>
-        </div>
-
+    <div class="show-content">
+      <div class="number <%= @tags[content.category] %>">
+        <%= position  %>
+      </div>
+    </div>
+    <div class="icon-topic-<%= @tags[content.category] %>">
+      <%= image_tag("#{@tags[content.category]}.svg") %>
+    </div>
+    <div class="bloc-content">
+      <div class="tag-topic <%= @tags[content.category] %> mb-2">
+        <%= content.category %>
+      </div>
+      <div class="bloc-title">
+        <p><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></p>
+        <p><%= content.title %></p>
+        <p><%= "#{content.author}, #{content.date}" %></p>
+      </div>
     </div>
   <% end %>
 </div>
