@@ -6,31 +6,38 @@
     <h1><%= @journey.name %></h1>
   </div>
   <div class="stats">
-    <div class="subscribe">Inscrits <%= @count_subscribers %>
+    <div class="subscribe"><%= @count_subscribers %>
     </div>
-    <div class="rating">Note moyenne <%= @average_rating %>
+    <div class="rating"><%= @average_rating %>
     </div>
-    <div class="duration">Durée <%= @duration %>
+    <div class="duration"><%= @duration %>
     </div>
   </div>
 
   <div class="description">
     <p><%= @journey.summary %></p>
   </div>
-  <div class="content-summary">
-    <ul style="list-style:none; padding:0;">
-      <% @content_count_by_type.each do |key, value| %>
-        <%  unless value.zero?  %>
-          <li>
-            <% if @subscribed %>
-              <%= "#{key} : reste #{@to_do_count_by_type[key]} sur #{value} au total"%>
-            <% else %>
-              <%= "#{value} #{key}  "%>
-            <% end %>
-          </li>
+  <section>
+    <div class="content-journey">
+        <% @content_count_by_type.each do |key, value| %>
+          <%  unless value.zero?  %>
+            <div class="card-content">
+              <% if @subscribed %>
+              <%= image_tag("#{key}-content.svg") %>
+                <div class="counter">
+                  <p><%= "#{@to_do_count_by_type[key]} sur #{value}" %></p>
+                </div>
+              <% else %>
+                <%= image_tag("#{key}-content.svg") %>
+                <div class="counter">
+                  <p><%= "#{value}" %></p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
+    </div>
+  </section>
 
     <% if @subscribed %>
       <p>Vous êtes inscrit sur ce parcours</p>
@@ -39,31 +46,32 @@
         <%= f.submit "S'inscrire au parcours", class:'btn-start' %>
       <% end %>
     <% end %>
-
   </div>
 </div>
 
-<div class="container">
+<div class="container journey-show">
   <% position = 0 %>
   <% @contents.each do |content| %>
     <% position += 1 %>
-    <div class="show-content">
-      <div class="number <%= @tags[content.category] %>">
-        <%= position  %>
-      </div>
-      <div class="icon-topic-<%= @tags[content.category] %>">
-        <%= image_tag("#{@tags[content.category]}.svg") %>
 
-      </div>
-      <div class="bloc-content">
-        <div class="tag-topic <%= @tags[content.category] %> mb-2"><%= content.category %></div>
-        <div class="bloc-title">
-          <p><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></p>
-          <p><%= content.title %></p>
-          <p><%= "#{content.author}, #{content.date}" %></p>
+      <div class="show-content">
+        <div class="number <%= @tags[content.category] %>">
+          <%= position  %>
         </div>
-        <%= link_to "Découvrir", user_journey_content_path %>
-      </div>
+        <div class="icon-topic-<%= @tags[content.category] %>">
+          <%= image_tag("#{@tags[content.category]}.svg") %>
+
+        </div>
+        <div class="bloc-content">
+          <div class="tag-topic <%= @tags[content.category] %> mb-2"><%= content.category %></div>
+          <div class="bloc-title">
+            <p><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></p>
+            <p><%= content.title %></p>
+            <p><%= "#{content.author}, #{content.date}" %></p>
+          </div>
+          <%= link_to "Découvrir", user_journey_content_path %>
+        </div>
+
     </div>
   <% end %>
 </div>
