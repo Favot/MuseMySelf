@@ -1,21 +1,16 @@
 class UserAnswersController < ApplicationController
   def create
-    # # cretae UserAnswer instance
-    # @user_answer = UserAnswer.new
-    # # get current user_journey_content
-    # @user_journey_content = UserJourneyContent.find(params[:user_journey_content_id])
-    # @user_answer.user_journey_content = @user_journey_content
-    # # get answers selected by current user
-    # @answers =
-    # @user_answer.answer = @answers
+    # get current user_journey_content
+    @user_journey_content = UserJourneyContent.find(params[:user_journey_content_id])
+    # create user_answer when saving user input
+    @user_journey_content.user_answers.destroy_all
+    @user_journey_content.update(user_journey_content_user_answers_params)
+    redirect_to user_journey_content_quiz_path
+  end
 
-    # if @user_answer.save
-    #   flash[:notice] = 'Réponses enregistrées !'
-    #   redirect_to quiz_questions_path
-    # else
-    #   flash[:notice] = 'Erreur dans la sauvegarde des réponses'
-    #   redirect_to quiz_questions_path
-    # end
-    # # raise
+  private
+
+  def user_journey_content_user_answers_params
+    params.require(:user_journey_content).permit(user_answers_attributes: [:answer_id])
   end
 end

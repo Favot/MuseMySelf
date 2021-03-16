@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
   resources :user_journey_contents, only: %i[show edit update] do
-    resources :quiz_questions, only: %i[index]
+    resource :quiz, only: %i[show]
     resources :user_answers, only: %i[create]
   end
 

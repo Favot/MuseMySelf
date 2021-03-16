@@ -1,0 +1,43 @@
+<!-- Header -->
+<%= render 'shared/quiz_header' %>
+
+<% user_correct_answers_counter = 0 %>
+<% @user_answers.each do |user_answer| %>
+  <% if user_answer.answer.correct %>
+    <% user_correct_answers_counter += 1 %>
+  <% end %>
+<% end %>
+
+<!-- Message -->
+<div class="quiz-question">
+  <% if user_correct_answers_counter == @quiz_questions.size %>
+    <h2><%= "Félicitations tu as répondu correctement à toutes les questions ! 🎉" %></h2>
+  <% elsif user_correct_answers_counter == 0 %>
+    <h2><%= "Dommage tu feras mieux au prochain quiz !" %></h2>
+  <% elsif user_correct_answers_counter == 1 %>
+    <h2><%= "Bravo tu as #{user_correct_answers_counter} bonne réponse ! 🎉" %></h2>
+  <% else %>
+    <h2><%= "Bravo tu as #{user_correct_answers_counter} bonnes réponses ! 🎉" %></h2>
+  <% end %>
+</div>
+
+<!-- Feedback -->
+<% step = 0 %>
+
+<div class="feedback-container">
+  <% @quiz_questions.each do |question| %>
+    <!-- Question -->
+    <h4><%= question.label %></h4>
+    <!-- if correct answer -->
+    <% if @comparison[:user_answers][step] == @comparison[:correct_answers][step] %>
+      <p class="correct">La bonne réponse était <strong><%= @comparison[:correct_answers][step] %></strong></p>
+    <!-- if incorrect answer -->
+    <% else %>
+      <p class="incorrect">Tu as répondu <strong><%= @comparison[:user_answers][step] %></strong>, la bonne réponse était <strong><%= @comparison[:correct_answers][step] %></strong> !</p>
+    <% end %>
+    <% step += 1 %>
+  <% end %>
+  <!-- CTA btn -->
+  <%= link_to "Revenir au contenu", user_journey_content_path(@user_journey_content), class: "btn-start", id: "backBtn"%>
+</div>
+

@@ -1,0 +1,44 @@
+<% steps_countdown = @quiz_questions.size %>
+<% answer_counter = 1 %>
+<% question_counter = 1 %>
+
+<!-- Header -->
+<%= render 'shared/quiz_header' %>
+
+<!-- Form -->
+<%= form_tag user_journey_content_user_answers_path(@user_journey_content), method: :post do %>
+  <!-- Dynamic quiz content with JS -->
+  <% @quiz_questions.each do |question| %>
+    <div class="quiz-container" id="quiz-container-<%= question_counter %>">
+      <!-- Question -->
+      <div class="quiz-question">
+        <!-- Quiz progression -->
+        <div class="quiz-progression">
+          <div class="tag-topic painting">
+            <%= "#{question_counter} / #{@quiz_questions.size}" %>
+          </div>
+        </div>
+        <h2><%= question.label %></h2>
+      </div>
+      <!-- Possible answers -->
+      <div class="quiz-answers">
+        <% @answers.where(quiz_question: question).each do |answer| %>
+          <!-- Hidden radio btn + Label -->
+          <input class="checkbox-answers" type="radio" name="user_journey_content[user_answers_attributes][<%= question_counter %>][answer_id]" id="answer-<%= answer_counter %>" value="<%= answer.id %>">
+          <label class="for-checkbox-answers" for="answer-<%= answer_counter %>"><%= answer.content %></label>
+          <% answer_counter += 1 %>
+        <% end %>
+      </div>
+      <!-- CTA btn -->
+      <div class="quiz-btn">
+        <% if steps_countdown > 1 %>
+          <span class='btn-start quiz-next-btn' id="btn-<%= question_counter + 1 %>"> Valider ma réponse</span>
+        <% elsif steps_countdown == 1 %>
+          <%= submit_tag "Terminer le quiz", class: "btn-start", id: "endBtn"%>
+        <% end %>
+      </div>
+      <% steps_countdown -= 1 %>
+      <% question_counter += 1 %>
+    </div>
+  <% end %>
+<% end %>
