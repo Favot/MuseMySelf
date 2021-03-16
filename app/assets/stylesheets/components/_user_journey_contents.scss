@@ -1,0 +1,49 @@
+.content-banner {
+  min-height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+
+  position: relative;
+
+  .bottom {
+    width: 60%;
+    margin: auto;
+    padding: 16px;
+    position: absolute;
+    bottom: 0px;
+  }
+}
+
+.top-text {
+  font-size: .9em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.content-container-bottom {
+  padding: 16px;
+  // margin-bottom: 150px;
+}
+
+.review {
+  border: 1px solid white;
+  border-radius: 5px;
+  margin: 16px;
+  padding: 16px;
+  position: relative;
+  padding-top: 32px;
+
+  h3 {
+    background-color: #000000;
+    position: absolute;
+    display: inline-flex;
+    transform: translateY(-150%);
+  }
+}
+
+.yellow {
+  color: yellow;
+}
+.grey {
+  color: grey; 
+}
