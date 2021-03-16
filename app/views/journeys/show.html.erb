@@ -25,7 +25,7 @@
               <% if @subscribed %>
               <!<%= image_tag("#{key}-content.svg") %>
                 <div class="counter">
-                  <p><%= "#{@to_do_count_by_type[key]}/#{value} toto" %></p>
+                  <p><%= "#{@to_do_count_by_type[key]}/#{value}" %></p>
                 </div>
                 <% else %>
                 <%= image_tag("#{key}-content.svg") %>
