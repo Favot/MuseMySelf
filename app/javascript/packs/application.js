@@ -39,3 +39,15 @@ import { displayTab } from '../components/tabs';
 document.addEventListener('click', () => {
   displayTab()
 });
+
+// JS Tabs for 'user_journey_content/quiz_questions#index'
+import { saveUserAnswer } from '../components/answer';
+document.addEventListener('click', () => {
+  saveUserAnswer()
+});
+
+// JS Tabs for 'user_journey_content/quiz_questions#index'
+import { displayNextQuestion } from '../components/quiz';
+document.addEventListener('click', () => {
+  displayNextQuestion()
+});
