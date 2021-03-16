@@ -25,7 +25,7 @@ is_cloudinary_active = true
 puts "Creating users..."
 
 lucas = User.new(
-  email: "lucas@exemple.com",
+  email: "lucas@example.com",
   password: "123456",
   name: "lucasdeouf"
   # first_name: "Lucas",
@@ -40,21 +40,21 @@ lucas = User.new(
 lucas.save!
 
 john = User.new(
-  email: "john@exemple.com",
+  email: "john@example.com",
   password: "123456",
   name: "johndoe"
 )
 john.save!
 
 marie = User.new(
-  email: "marie@exemple.com",
+  email: "marie@example.com",
   password: "123456",
   name: "Marie"
 )
 marie.save!
 
 chris = User.new(
-  email: "chris@exemple.com",
+  email: "chris@example.com",
   password: "123456",
   name: "Chris"
 )
@@ -364,47 +364,47 @@ music17th_6.save!
 # -- linking demo content to journey
 puts "Linking demo content to demo journey..."
 
-journey_content = JourneyContent.new(
+journey_content_1 = JourneyContent.new(
   journey: music17th,
   content: music17th_1,
   position: 1
 )
-journey_content.save!
+journey_content_1.save!
 
-journey_content = JourneyContent.new(
+journey_content_2 = JourneyContent.new(
   journey: music17th,
   content: music17th_2,
   position: 2
 )
-journey_content.save!
+journey_content_2.save!
 
-journey_content = JourneyContent.new(
+journey_content_3 = JourneyContent.new(
   journey: music17th,
   content: music17th_3,
   position: 3
 )
-journey_content.save!
+journey_content_3.save!
 
-journey_content = JourneyContent.new(
+journey_content_4 = JourneyContent.new(
   journey: music17th,
   content: music17th_4,
   position: 4
 )
-journey_content.save!
+journey_content_4.save!
 
-journey_content = JourneyContent.new(
+journey_content_5 = JourneyContent.new(
   journey: music17th,
   content: music17th_5,
   position: 5
 )
-journey_content.save!
+journey_content_5.save!
 
-journey_content = JourneyContent.new(
+journey_content_6 = JourneyContent.new(
   journey: music17th,
   content: music17th_6,
   position: 6
 )
-journey_content.save!
+journey_content_6.save!
 
 # -- user_journeys
 puts "Faking users registered to journeys"
@@ -452,6 +452,140 @@ user_journey_content_2 = UserJourneyContent.new(
   position: 2
 )
 user_journey_content_2.save!
+
+# -- QuizQuestions
+puts "Creating quiz questions for two contents"
+
+# content 1
+question_1 = QuizQuestion.new(
+  label: "Qui a composé la musique de scène de la pièce ?",
+  journey_content: journey_content_1
+)
+question_1.save!
+
+question_2 = QuizQuestion.new(
+  label: "Comment se nomme la fille d'Argan ?",
+  journey_content: journey_content_1
+)
+question_2.save!
+
+question_3 = QuizQuestion.new(
+  label: "Quand la pièce a-t-elle été écrite ?",
+  journey_content: journey_content_1
+)
+question_3.save!
+
+# content 2
+question_content2_1 = QuizQuestion.new(
+  label: "Quel genre mêle théâtre, musique et danse ?",
+  journey_content: journey_content_2
+)
+question_content2_1.save!
+
+
+# -- Answers
+puts "Creating answers for one quizQuestion"
+
+# for content 1 question 1
+answer_q1_1 = Answer.new(
+  content: "Lully",
+  correct: false,
+  quiz_question: question_1
+)
+
+answer_q1_1.save!
+
+answer_q1_2 = Answer.new(
+  content: "Charpentier",
+  correct: true,
+  quiz_question: question_1
+)
+
+answer_q1_2.save!
+
+answer_q1_3 = Answer.new(
+  content: "Corelli",
+  correct: false,
+  quiz_question: question_1
+)
+
+answer_q1_3.save!
+
+# for content 1 question 2
+answer_q2_1 = Answer.new(
+  content: "Angélique",
+  correct: true,
+  quiz_question: question_2
+)
+
+answer_q2_1.save!
+
+answer_q2_2 = Answer.new(
+  content: "Toinette",
+  correct: false,
+  quiz_question: question_2
+)
+
+answer_q2_2.save!
+
+answer_q2_3 = Answer.new(
+  content: "Béline",
+  correct: false,
+  quiz_question: question_2
+)
+
+answer_q2_3.save!
+
+# for content 1 question 3
+answer_q3_1 = Answer.new(
+  content: "1573",
+  correct: false,
+  quiz_question: question_3
+)
+
+answer_q3_1.save!
+
+answer_q3_2 = Answer.new(
+  content: "1673",
+  correct: true,
+  quiz_question: question_3
+)
+
+answer_q3_2.save!
+
+answer_q3_3 = Answer.new(
+  content: "1773",
+  correct: false,
+  quiz_question: question_3
+)
+
+answer_q3_3.save!
+
+# for content 2 question 1
+answer_c2_q1_1 = Answer.new(
+  content: "Drame",
+  correct: false,
+  quiz_question: question_content2_1
+)
+
+answer_c2_q1_1.save!
+
+answer_c2_q1_2 = Answer.new(
+  content: "Opéra-ballet",
+  correct: false,
+  quiz_question: question_content2_1
+)
+
+answer_c2_q1_2.save!
+
+answer_c2_q1_3 = Answer.new(
+  content: "Comédie-ballet",
+  correct: true,
+  quiz_question: question_content2_1
+)
+
+answer_c2_q1_3.save!
+
 
 puts "Finished!"
 
