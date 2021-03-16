@@ -1,20 +1,36 @@
-.placeholder {
-  border: 1px solid red;
-  tr {
-    border: 1px solid red;
-    td {
-      border: 1px solid red;
-    }
-  }
+.container{
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.journey-name h1{
+  font-size: 3.5rem;
+  margin: 20px;
 }
 
 .stats {
   display:flex;
-  justify-content: space-between;
+  justify-content: space-around;
   opacity: .5;
   margin:12px 0;
 }
 
 .description{
   text-align: center;
+  line-height: 1.7rem;
 }
+
+.subscribe:before{
+  content:url(image-path("subscribers-icon.svg"));
+  margin: .4em;
+}
+
+.rating:before{
+  content:url(image-path("rating-icon.svg"));
+  margin: .4em;
+}
+
+.duration:before{
+  content:url(image-path("duration-icon.svg"));
+  margin: .4em;
+}
+

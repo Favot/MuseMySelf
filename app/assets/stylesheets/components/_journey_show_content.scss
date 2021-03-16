@@ -1,6 +1,12 @@
+.container{
+  margin-top: 80px;
+}
+
+
 .journey-show{
   background-image: url(image-path("bgjourneyshow.svg"));
-  margin-top: 100px;
+  margin-top: 80px;
+  background-size: cover;
 }
 
 .show-content{
@@ -10,6 +16,18 @@
   position: relative;
 }
 
+.show-content:after {
+  display: block;
+  position: absolute;
+  top: 118px;
+  left: 44px;
+  content: ' ';
+  background-image: url(image-path("bg-vector.svg"));
+  background-size: 305px 171px;
+  height: 171px;
+  width: 305px;
+}
+
 .show-content:nth-child(odd){
   flex-direction: row-reverse;
   //text-align: right;
@@ -17,7 +35,46 @@
 
 .show-content:nth-child(even){
   //flex-direction: row-reverse;
+
   text-align: right;
+
+  &:after {
+    transform: scaleX(-1);
+  }
+
+  .icon-topic-audio{
+  position: absolute;
+  top: -55px;
+  left: 66px;
+  }
+
+  .icon-topic-theater{
+  position: absolute;
+  top: -55px;
+  left: 66px;
+  }
+
+  .icon-topic-movie{
+  position: absolute;
+  top: -55px;
+  left: 66px;
+  }
+
+  .icon-topic-painting{
+  position: absolute;
+  top: -55px;
+  left: 66px;
+  }
+
+  .icon-topic-book{
+  position: absolute;
+  top: -55px;
+  left: 66px;
+  }
+}
+
+.show-content:last-child:after {
+  display: none;
 }
 
 #bloc1{
@@ -26,10 +83,16 @@
 .bloc-content{
   flex-grow: 1;
   margin: 5px;
-  text-align: left;
+
 
   .bloc-title{
     margin-bottom: 10px;
+  }
+
+  p:first-child{
+    margin: 0;
+    font-size: .9em;
+    opacity:.6;
   }
 
   p{
@@ -49,32 +112,32 @@
 
 .icon-topic-movie{
   position: absolute;
-  top: -63px;
-  left: 225px;
+  top: -55px;
+  left: 195px;
 }
 
-.icon-topic-theatre{
+.icon-topic-theater{
   position: absolute;
-  top: -25px;
-  left: 100px;
+  top: -55px;
+  left: 195px;
 }
 
 .icon-topic-painting{
   position: absolute;
-  top: -23px;
-  left: 182px;
+  top: -55px;
+  left: 195px;
 }
 
 .icon-topic-audio{
   position: absolute;
-  top: -75px;
-  left: 60px;
+  top: -55px;
+  left: 195px;
 }
 
 .icon-topic-book{
   position: absolute;
-  top: -56px;
-  left: 163px;
+  top: -55px;
+  left: 195px;
 }
 
 .number{
