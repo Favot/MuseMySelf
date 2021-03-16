@@ -21,16 +21,16 @@
   <div id="myTabsContent">
     <!-- Started -->
     <div class="tab-content show" id="pending">
-      <%= render 'shared/vertical_cards', data: @user_journeys_started %>
+      <%= render 'shared/vertical_user_journey', data: @user_journeys_started %>
     </div>
     <!-- Completed -->
     <div class="tab-content" id="completed">
-      <%= render 'shared/vertical_cards', data: @user_journeys_completed %>
+      <%= render 'shared/vertical_user_journey', data: @user_journeys_completed %>
     </div>
     <!-- Best rating -->
     <div class="tab-content" id="favorite">
       <div class="cards-container-vertical">
-        <em><p>Vos parcours favoris seront bientôt disponibles ici !</p></em>
+        <%= render 'shared/vertical_user_journey', data: @user_journeys_favorites %>
       </div>
     </div>
   </div>
