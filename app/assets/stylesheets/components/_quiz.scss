@@ -1,4 +1,4 @@
-// scss for quiz_questions#index
+// SCSS for quiz_questions#index
 .quiz-header{
   width: 90%;
   margin: auto;
@@ -18,19 +18,22 @@
   }
 }
 
-// progression
+// Progression
 .quiz-progression{
-  margin-top: 1.5rem;
+  margin-bottom: 12px;
   text-align: center;
+
+  .tag-topic{
+    letter-spacing: 0px;
+  }
 }
 
-// question
+// Question
 .quiz-question{
-  border-top: 1px solid rgba(255, 255, 255, .6);
   border-bottom: 1px solid rgba(255, 255, 255, .6);
   width: 90%;
   text-align: center;
-  margin: 1.5rem auto;
+  margin: 0 auto;
   padding: 1.5rem 1rem;
 
   h2{
@@ -49,20 +52,20 @@
   .btn-start{
     display: inline-block;
     width: 100%;
+    cursor: pointer;
   }
 }
 
-// hidden radio btn
+// Hidden radio btn
 [type="radio"]:checked,
 [type="radio"]:not(:checked){
-  // position: absolute;
   left: -9999px;
   width: 0;
   height: 0;
   visibility: hidden;
 }
 
-// answers container
+// Answers container
 .quiz-answers{
   width: 90%;
   margin: 1.5rem auto;
@@ -71,7 +74,6 @@
 
   .checkbox-answers:checked + label,
   .checkbox-answers:not(:checked) + label{
-    // position: relative;
     width: 100%;
     margin: 0.5rem 0;
     display: inline-block;
@@ -83,26 +85,47 @@
   }
 }
 
-// only bg color + border when NOT CHECKED
+// Only bg color + border when NOT CHECKED
 .checkbox-answers:not(:checked) + label{
   background-color: $black;
   border: 2px solid $light-gray;
 }
 
-// only bg color + border when CHECKED
+// Only bg color + border when CHECKED
 .checkbox-answers:checked + label{
   background-color: transparent;
   border: 2px solid $green-primary;
   color: $green-primary;
 }
 
+// Caroussel with JS
+.hide-quiz {
+  display:none;
+}
 
-// display feedback page
+.fade-out {
+  opacity:0 !important;
+  transition:1s;
+}
 
+.fade-in {
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+
+// Feedback page
 .feedback-container{
   width: 90%;
   margin: 2rem auto;
-  // border-bottom: 1px solid rgba(255, 255, 255, .6);
 
   h4{
     font-size: 22px;
@@ -121,7 +144,7 @@
   }
 
   .incorrect{
-    color: #F84949; // declare new var
+    color: $red-incorrect;
   }
 
   .btn-start{

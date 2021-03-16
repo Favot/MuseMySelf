@@ -25,29 +25,20 @@ require("channels")
 // External imports
 import "bootstrap";
 
+// JS Tabs for 'user_journey_content/quiz#show'
+import { displayNextQuestion } from '../components/quiz';
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  displayNextQuestion();
 });
-
 
 // JS Tabs for 'user_journeys#index'
 import { displayTab } from '../components/tabs';
 document.addEventListener('click', () => {
   displayTab()
-});
-
-// JS Tabs for 'user_journey_content/quiz_questions#index'
-import { saveUserAnswer } from '../components/answer';
-document.addEventListener('click', () => {
-  saveUserAnswer()
-});
-
-// JS Tabs for 'user_journey_content/quiz_questions#index'
-import { displayNextQuestion } from '../components/quiz';
-document.addEventListener('click', () => {
-  displayNextQuestion()
 });
