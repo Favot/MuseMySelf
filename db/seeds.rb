@@ -246,7 +246,7 @@ puts "Creating demo contents..."
 music17th_1 = Content.new(
   title: "Le Malade Imaginaire",
   author: "Molière",
-  date: 1973, # "10/02/1973"
+  date: 1673, # "10/02/1973"
   category: "Théâtre",
   duration: 120,
   url: "https://www.fnac.com/SearchResult/ResultList.aspx?SCat=0%211&Search=le+malade+imaginaire&sft=1&sa=0",
