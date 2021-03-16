@@ -91,7 +91,7 @@ class UserJourneysController < ApplicationController
   end
 
   def average_rating
-    return (ratings.sum * 1.0 / ratings.size) if ratings.size.positive?
+    return (ratings.sum * 1.0 / ratings.size).round(1) if ratings.size.positive?
 
     "🤷" # if no ratings. Not best practice, but fun
   end

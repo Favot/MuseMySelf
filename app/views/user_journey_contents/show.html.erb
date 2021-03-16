@@ -22,7 +22,7 @@
       <%= @content.description %>
     </div>
     <div class="">
-      <%= link_to "Voir plus", @content.url %> -
+      <%= link_to "Voir plus", @content.url, class: "fas fa-external-link-alt" %> -
       <%= link_to "Tenter le Culture-Quizz", "#" %>
     </div>
     <br>
@@ -33,16 +33,20 @@
                                  class: "far fa-edit"
                              %>
       </h3>
-      <p>
-        <% @user_journey_content.rating.times do %>
-        <i class="fas fa-star yellow"></i>
-        <% end %>
-        <% (5 - @user_journey_content.rating).times do %>
-          <i class="fas fa-star grey"></i>
-        <% end %>
-      </p>
-      <p><%= @user_journey_content.review %></p>
-      <p class="top-text"><%= @user_journey_content.completed ? "Ce parcours est terminé." : "Ce parcours n'est pas terminé."%></p>
+      <% unless @user_journey_content.rating.nil? %>
+        <p>
+          <% @user_journey_content.rating.times do %>
+          <i class="fas fa-star yellow"></i>
+          <% end %>
+          <% (5 - @user_journey_content.rating).times do %>
+            <i class="fas fa-star grey"></i>
+          <% end %>
+        </p>
+        <p><%= @user_journey_content.review %></p>
+        <p class="top-text"><%= @user_journey_content.completed ? "Ce parcours est terminé." : "Ce parcours n'est pas terminé."%></p>
+      <% else %>
+        <p class="top-text"><%= "Vous n'avez encore rien saisi sur ce parcours. Commencez à l'éditer dès maintenant."%></p>
+      <% end %>
     </div>
   </div>
 </div>
