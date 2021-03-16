@@ -1,19 +1,19 @@
 // Specific CSS for your home-page
 
-.home-title{
+.home-title {
   width: 70%;
   margin: auto;
   margin-top: 50px;
   margin-bottom: 60px;
 
-  h1{
+  h1 {
     font-size: 64px;
     text-align: center;
     line-height: 63px;
     margin-bottom: 20px;
   }
 
-  p{
+  p {
     color: $light-gray;
     font-size: 20px;
     font-weight: 300;
@@ -22,19 +22,19 @@
   }
 }
 
-.home-container{
+.home-container {
   margin-bottom: 80px;
   padding-top: 1rem;
 
-  .form-container{
+  .form-container {
     width: 70%;
   }
 }
 
 // Background icon
 
-.bg-icon-svg{
-  z-index: 0;
+.bg-icon-svg {
+  z-index: -5;
   position: fixed;
   top: 140px;
   opacity: 0.6;
