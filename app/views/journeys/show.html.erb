@@ -1,3 +1,4 @@
+
 <div class="container text-center mt-5">
   <div class="category">
     <span class="tag-topic theater"><%= @journey.topic.name %></span>
@@ -51,23 +52,39 @@
   <% position = 0 %>
   <% @contents.each do |content| %>
     <% position += 1 %>
-    <div class="show-content">
+    <div class="icon-topic-<%= @tags[content.category] %>  <%= position % 2 == 0 ? "icon-topic-left"  : "icon-topic-right"  %>">
+      <%= image_tag("#{@tags[content.category]}.svg") %>
+    </div>
+    <div class="show-content  <%= position % 2 == 0 ? "content-left"  : "content-right"  %>">
       <div class="number <%= @tags[content.category] %>">
         <%= position  %>
       </div>
-    </div>
-    <div class="icon-topic-<%= @tags[content.category] %>">
-      <%= image_tag("#{@tags[content.category]}.svg") %>
-    </div>
-    <div class="bloc-content">
-      <div class="tag-topic <%= @tags[content.category] %> mb-2">
-        <%= content.category %>
-      </div>
-      <div class="bloc-title">
-        <p><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></p>
-        <p><%= content.title %></p>
-        <p><%= "#{content.author}, #{content.date}" %></p>
+      <div class="topic-and-title-block <%= position % 2 == 0 ? "block-left"  : "block-right"  %>">
+        <div class="tag-topic <%= @tags[content.category] %>">
+          <%= content.category %>
+        </div>
+        <div class="bloc-title">
+          <p><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></p>
+          <p><%= content.title %></p>
+          <p><%= "#{content.author}, #{content.date}" %></p>
+        </div>
       </div>
     </div>
+        
+    
+    
+    <% if position % 2 == 0 && position < @contents.size  %>
+        <div class="svgLeftToRigth">
+          <svg width="305" height="171" viewBox="0 0 305 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.00317 171C1.00317 110.368 86.5513 86.9474 180.5 104C274.449 121.053 304 83.3684 304 0" stroke="white" />
+          </svg>
+        </div>
+    <% elsif  position % 2 != 0  && position < @contents.size  %>
+        <div class="svgRigthToLeft">
+          <svg width="305" height="171" viewBox="0 0 305 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.00317 171C1.00317 110.368 86.5513 86.9474 180.5 104C274.449 121.053 304 83.3684 304 0" stroke="white" />
+          </svg>
+        </div>
+    <% end %>
   <% end %>
 </div>
