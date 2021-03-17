@@ -43,30 +43,14 @@
   z-index: 3;
   right: 69px;
 }
-.icon-topic-movie {
-}
-
-.icon-topic-theater {
-}
-
-.icon-topic-painting {
-}
-
-.icon-topic-audio {
-}
-
-.icon-topic-book {
-}
-
-.number {
-}
 
 .container {
   padding-right: 15px;
   padding-left: 15px;
 }
+
 .journey-name h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin: 20px;
 }
 
@@ -153,11 +137,12 @@
 }
 
 .block-left {
-  align-items: end;
+  align-items: flex-end;
   text-align: right;
+
   .bloc-title {
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
   }
 }

@@ -10,6 +10,7 @@ class JourneysController < ApplicationController
   }
 
   def index
+    @topics = Topic.all
     @journeys = Journey.all
     @journeys = @journeys.where('name ILIKE ?', "%#{params[:search]['query']}%") if params[:search].present?
     @journeys = @journeys.where(topic_id: params[:topic_id]) if params[:topic_id].present?
@@ -36,7 +37,9 @@ class JourneysController < ApplicationController
 
     # calculations about the journey contents
     @contents = @journey.contents
+    # @contents = this_journey_contents_sorted.reverse.to_a # SQL relation => Array
     @contents_by_type = @journey.contents.group_by(&:category)
+   
     @content_count_by_type = count_by_type
     @contents_durations = this_journey_contents_durations_in_h_and_min
 
@@ -55,7 +58,7 @@ class JourneysController < ApplicationController
     UserJourneyContent
       .joins(user_journey: :journey) # association
       .where(user_journeys: { journey: @journey }) # table
-      .average(:rating).to_f
+      .average(:rating).to_f.round(1)
   end
 
   def duration

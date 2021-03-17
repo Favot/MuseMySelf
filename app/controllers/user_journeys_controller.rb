@@ -67,6 +67,7 @@ class UserJourneysController < ApplicationController
 
     @contents = @user_journey.contents
     # @contents = this_journey_contents_sorted.to_a # SQL relation => Array
+
     @content_count_by_type = count_by_type
     @contents_durations = this_journey_contents_durations_in_h_and_min
 
@@ -110,10 +111,6 @@ class UserJourneysController < ApplicationController
     end
   end
 
-  def ratings
-    this_journey_user_journey_contents.map(&:rating).compact
-  end
-
   def average_rating
     average_user_journey_contents_rating || "🤷"
   end
@@ -122,7 +119,7 @@ class UserJourneysController < ApplicationController
     UserJourneyContent
       .joins(user_journey: :journey) # association
       .where(user_journeys: { journey: @journey }) # table
-      .average(:rating).to_f
+      .average(:rating).to_f.round(1)
   end
 
   def duration
@@ -132,19 +129,6 @@ class UserJourneysController < ApplicationController
 
   def count_subscribers
     UserJourney.where(journey: @journey).size
-  end
-
-  def this_journey_user_journey_contents
-    # Get all the user_journeys where the journey is this one
-    @user_journeys = UserJourney.where(journey: @journey)
-    # For each user_journeys get all the user_journey_contents and store them
-    user_journey_contents = []
-    @user_journeys.each do |user_journey|
-      user_journey.user_journey_contents.each do |user_journey_content|
-        user_journey_contents << user_journey_content
-      end
-    end
-    user_journey_contents
   end
 
   def this_journey_contents_sorted

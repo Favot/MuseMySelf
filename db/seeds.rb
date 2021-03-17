@@ -659,7 +659,7 @@ puts "Faking data for user lucas"
 user_journey_lucas_1 = UserJourney.create!(
   journey: music17th,
   user: lucas,
-  completed: false
+  completed: true
 )
 
 # one user_journey
@@ -676,26 +676,26 @@ puts "Faking data for user marie"
 user_journey_marie_1 = UserJourney.create!(
   journey: music17th,
   user: marie,
-  completed: false
+  completed: true
 )
 
-UserJourneyContent.create!(
-  rating: 3,
-  review: "Je n'aime pas trop cette musique...",
-  user_journey: user_journey_marie_1,
-  content: music17th_2,
-  completed: true,
-  position: 2
-)
+# UserJourneyContent.create!(
+#   rating: 3,
+#   review: "Je n'aime pas trop cette musique...",
+#   user_journey: user_journey_marie_1,
+#   content: music17th_2,
+#   completed: true,
+#   position: 2
+# )
 
-UserJourneyContent.create!(
-  rating: 5,
-  review: "J'adore cette pièce !",
-  user_journey: user_journey_marie_1,
-  content: music17th_6,
-  completed: true,
-  position: 6
-)
+# UserJourneyContent.create!(
+#   rating: 5,
+#   review: "J'adore cette pièce !",
+#   user_journey: user_journey_marie_1,
+#   content: music17th_6,
+#   completed: true,
+#   position: 6
+# )
 
 # -- chris
 puts "Faking data for user chris"

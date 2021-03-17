@@ -1,6 +1,7 @@
 .container {
   margin-top: 15px;
 }
+
 // conteneur pour journey show => rectangle 21
 section {
   width: 100%;
@@ -14,6 +15,7 @@ section {
   position: relative;
   margin-bottom: 25px;
 }
+
 // div pour les card de contenu avec icones
 .content-journey {
   width: 80%;
@@ -33,6 +35,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+
   // snippets
   // .counter {
   //   width: 24px;
@@ -75,11 +78,13 @@ section {
     right: -8px;
     top: -12px;
     border-radius: 50%;
+
     p {
       margin: 0;
     }
   }
 }
+
 // div pour snippets
 .start {
   position: absolute;
@@ -116,18 +121,3 @@ section {
     border: 1px solid $pink-audio;
   }
 }
-
-// resolving conflicts here (will delete later), please leave it for now
-
-// Récuperer le css de lise pour btn-start
-// peut impacter la hauteur de la div section
-// .btn-start{
-//   width: 358px;
-//   height: 74px;
-//   background-color: $green-primary;
-//   color: $black;
-//   font-weight: 600;
-//   border-radius: 70px;
-//   padding: 15px 50px;
-//   text-align: center;
-// }
