@@ -46,7 +46,7 @@ class UserJourneysController < ApplicationController
       flash[:notice] = 'Vous avez été enregistré sur le parcours !'
       redirect_to user_journey_path(params[:journey_id])
     else
-      flash[:alert] = 'Petit problème ! Vérifiez que vous êtes bien connecté.'
+      flash[:alert] = 'Petit problème ! Vérifiez que vous êtes bien connecté(e).'
       redirect_to journey_path(params[:journey_id])
     end
   end
