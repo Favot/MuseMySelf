@@ -463,14 +463,6 @@ JourneyContent.create!(
   position: 1
 )
 
-<<<<<<< HEAD
-user_journey_content_2 = UserJourneyContent.new(
-  rating: 3,
-  review: "J'adore la pièce de théatre 'Le Malade Imaginaire', mais je n'aime pas trop la musique qui l'accompagne...",
-  user_journey: user_journey_4,
-  content: music17th_2,
-  completed: false,
-=======
 # content 2
 jazz_2 = Content.new(
   title: "Nightlife",
