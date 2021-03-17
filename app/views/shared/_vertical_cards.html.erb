@@ -5,6 +5,12 @@
     <!-- Photo -->
     <% if @all_journeys_topic[journey] == "Photographie" %>
       <%= link_to journey_path(journey), class: "card-journey photo" do %>
+        <!-- duration -->
+        <div class="card-journey-timer">
+          <%= image_tag("clock-test.svg") %>
+          <h4>1h20</h4>
+        </div>
+        <!-- /duration -->
         <!-- Text -->
         <h4><%= journey.name %></h4>
         <p><%= "#{journey.summary.split.first(4).join(" ")}..." %></p>
@@ -30,6 +36,12 @@
     <!-- Art -->
     <% if @all_journeys_topic[journey] == "Art" %>
       <%= link_to journey_path(journey), class: "card-journey art" do %>
+        <!-- duration -->
+        <div class="card-journey-timer">
+          <%= image_tag("clock-test.svg") %>
+          <h4>1h20</h4>
+        </div>
+        <!-- /duration -->
         <!-- Text -->
         <h4><%= journey.name %></h4>
         <p><%= "#{journey.summary.split.first(4).join(" ")}..." %></p>
@@ -53,6 +65,12 @@
     <!-- Architecture -->
     <% if @all_journeys_topic[journey] == "Architecture" %>
       <%= link_to journey_path(journey), class: "card-journey architecture" do %>
+        <!-- duration -->
+        <div class="card-journey-timer">
+          <%= image_tag("clock-test.svg") %>
+          <h4>1h20</h4>
+        </div>
+        <!-- /duration -->
         <!-- Text -->
         <h4><%= journey.name %></h4>
         <p><%= "#{journey.summary.split.first(4).join(" ")}..." %></p>
@@ -76,6 +94,12 @@
     <!-- Music -->
     <% if @all_journeys_topic[journey] == "Musique" %>
       <%= link_to journey_path(journey), class: "card-journey music" do %>
+        <!-- duration -->
+        <div class="card-journey-timer">
+          <%= image_tag("clock-test.svg") %>
+          <h4>1h20</h4>
+        </div>
+        <!-- /duration -->
         <!-- Text -->
         <h4><%= journey.name %></h4>
         <p><%= "#{journey.summary.split.first(4).join(" ")}..." %></p>

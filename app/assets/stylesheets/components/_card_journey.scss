@@ -5,8 +5,8 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 95%;
   margin: auto;
+  padding: 0 16px;
 
   .card-journey{
     margin: 0;
@@ -28,7 +28,25 @@
   justify-content: flex-end;
   // Display an icon on the card background
   position: relative;
+  .card-journey-timer {
+    display:flex;
+    align-items:center;
+    position:absolute;
+    top:20px;
+    opacity: .7;
 
+    h4 {
+      font-family:$body-font;
+      font-size:16px;
+      margin-top: -6px;
+      margin-bottom:0;
+    }
+
+    img {
+      width:32px;
+      margin-right:8px;
+    }
+  }
   .card-bg-icon{
     align-self: flex-end;
     background-repeat: no-repeat;
@@ -43,6 +61,8 @@
 
   p{
     margin: 0;
+    opacity: .7;
+    line-height: 23px;
   }
 }
 

@@ -15,6 +15,11 @@
   }
 }
 
+.main-desc {
+  line-height: 29px;
+  margin-bottom: 20px;
+}
+
 .top-text {
   font-size: .9em;
   color: rgba(255, 255, 255, 0.6);
@@ -25,10 +30,13 @@
   // margin-bottom: 150px;
 }
 
+.title {
+  margin-top:12px;
+}
+
 .review {
   border: 1px solid white;
   border-radius: 5px;
-  margin: 16px;
   padding: 16px;
   position: relative;
   padding-top: 32px;
@@ -45,5 +53,5 @@
   color: yellow;
 }
 .grey {
-  color: grey; 
+  color: grey;
 }

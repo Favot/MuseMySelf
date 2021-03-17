@@ -26,8 +26,9 @@
   color: $black;
   font-weight: 700;
   font-size: 12px;
+  text-transform: uppercase;
   border-radius: $border-radius-round;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
 
 // Used for a content category
@@ -39,8 +40,9 @@
   color: $black;
   font-weight: 700;
   font-size: 12px;
+  text-transform: uppercase;
   border-radius: $border-radius-round;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
 
 // To change background color of tag-topic & tag-category

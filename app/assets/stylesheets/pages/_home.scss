@@ -1,33 +1,47 @@
 // Specific CSS for your home-page
 
 .home-title {
-  width: 70%;
+  width: 80%;
   margin: auto;
-  margin-top: 50px;
-  margin-bottom: 60px;
+  margin-top: 30px;
+  margin-bottom: 130px;
 
   h1 {
-    font-size: 64px;
+    font-size: 45px;
     text-align: center;
-    line-height: 63px;
-    margin-bottom: 20px;
+    line-height: 53px;
+    margin-bottom: 1px;
   }
 
   p {
-    color: $light-gray;
-    font-size: 20px;
-    font-weight: 300;
+    color: #FFFFFF;
+    font-size: 21px;
+    font-weight: 500;
     text-align: center;
-    letter-spacing: 2px;
+    line-height: 28px;
+    opacity: 0.6;
+    margin: 0 auto;
+    letter-spacing: 1.5px;
   }
 }
 
 .home-container {
-  margin-bottom: 80px;
+  margin-bottom: 153px;
   padding-top: 1rem;
+  margin-top: 160px;
 
   .form-container {
     width: 70%;
+
+    .form-input {
+      border: none;
+      font-size: 33px;
+      border-radius: 0px !important;
+      padding:0px 0px 10px 0px !important;
+      font-weight: 500;
+      font-family: 'DM Serif Display';
+      border-bottom: 1px solid white;
+    }
   }
 }
 
