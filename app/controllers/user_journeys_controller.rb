@@ -89,6 +89,18 @@ class UserJourneysController < ApplicationController
     end
   end
 
+  def complete
+    if params.present?
+      user_journey = UserJourney.find(params[:id])
+
+      user_journey.completed = true
+
+      user_journey.save
+
+      redirect_to journey_path(user_journey.journey_id)
+    end
+  end
+
   private
 
   def create_user_journey_content(journey_contents)
@@ -148,7 +160,6 @@ class UserJourneysController < ApplicationController
     end
     contents_durations
   end
-
 
   def count_by_type
     @journey_contents = JourneyContent.where(journey: @journey)
