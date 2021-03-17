@@ -46,14 +46,15 @@ class JourneysController < ApplicationController
 
   private
 
-  def ratings
-    this_journey_user_journey_contents.map(&:rating).compact
+  def average_rating
+    average_user_journey_contents_rating || "🤷"
   end
 
-  def average_rating
-    return (ratings.sum * 1.0 / ratings.size).round(1) if ratings.size.positive?
-
-    "🤷" # if no ratings. Not best practice, but fun
+  def average_user_journey_contents_rating
+    UserJourneyContent
+      .joins(user_journey: :journey) # association
+      .where(user_journeys: { journey: @journey }) # table
+      .average(:rating).to_f
   end
 
   def duration
@@ -65,29 +66,18 @@ class JourneysController < ApplicationController
     UserJourney.where(journey: @journey).size
   end
 
-  def this_journey_user_journey_contents
-    # Get all the user_journeys where the journey is this one
-    @user_journeys = UserJourney.where(journey: @journey)
-    # For each user_journeys get all the user_journey_contents and store them
-    user_journey_contents = []
-    @user_journeys.each do |user_journey|
-      user_journey.user_journey_contents.each do |user_journey_content|
-        user_journey_contents << user_journey_content
-      end
-    end
-    user_journey_contents
-  end
-
   def this_journey_contents_sorted
-    @journey_contents = JourneyContent.where(journey: @journey)
-    @journey_contents.order(position: :asc).map(&:content).map
+    Content
+      .joins(journey_contents: :journey)
+      .where(journey_contents: { journey: @journey })
+      .order(position: :desc)
   end
 
   def this_journey_contents_durations_in_h_and_min
     # we need to calculate durations in hours and minutes and store them in a different variable because they are not \
     # part of the content model
     contents_durations = {}
-    @contents.map do |content|
+    @contents.each do |content|
       contents_durations[content] = {}
       contents_durations[content][:hours], contents_durations[content][:minutes] = content.duration.divmod(60)
     end
@@ -113,6 +103,7 @@ class JourneysController < ApplicationController
     user = User.where(id: current_user).first
     uncomplete_user_journey_contents = user.user_journeys.where(journey: @journey).first
                                            .user_journey_contents.where(completed: false)
+    # Content.group(:category).order(:category).count
     count = {}
     CATEGORIES.each do |category|
       count[category.to_s] = uncomplete_user_journey_contents.joins(:content)

@@ -14,31 +14,18 @@ class UserJourneysController < ApplicationController
     @ujs = UserJourney.where(user: current_user)
 
     # Get journeys of only user_journeys in progress
-    #@user_journeys_started = current_user.user_journeys.where(completed: false)
-
     @user_journeys_started = current_user.user_journeys.where(completed: false)
-
-    # @user_journeys_started = []
-    # @ujs.where(completed: false).each do |uj_started|
-    #   @user_journeys_started << uj_started.journey
-    # end
 
     # Get journeys of only user_journeys completed
     @user_journeys_completed = current_user.user_journeys.where(completed: true)
 
-    # @user_journeys_completed = []
-    # @ujs.where(completed: true).each do |uj_completed|
-    #   @user_journeys_completed << uj_completed.journey
-    # end
-
-    @user_journeys_favorites =
-      current_user.user_journeys.
-      select("user_journeys.*, avg(rating) as avg_rating").
-      joins(:user_journey_contents).
-      group("user_journeys.id").
-      having("avg(rating) > 4").
-      order("avg_rating DESC").to_a
-   # raise
+    @user_journeys_favorites = current_user
+                               .user_journeys
+                               .select("user_journeys.*, avg(rating) as avg_rating")
+                               .joins(:user_journey_contents)
+                               .group("user_journeys.id")
+                               .having("avg(rating) > 4")
+                               .order("avg_rating DESC").to_a
 
     # Get journey topic
     @all_journeys_topic = {}
@@ -59,7 +46,7 @@ class UserJourneysController < ApplicationController
       flash[:notice] = 'Vous avez été enregistré sur le parcours !'
       redirect_to user_journey_path(params[:journey_id])
     else
-      flash[:alert] = 'Petit problème !'
+      flash[:alert] = 'Petit problème ! Vérifiez que vous êtes bien connecté.'
       redirect_to journey_path(params[:journey_id])
     end
   end
@@ -82,6 +69,7 @@ class UserJourneysController < ApplicationController
     @to_do_count_by_type = current_user_to_do if subscribed?
     @subscribed = subscribed?
 
+    # required to generate links to contents in user_journey show
     @user_journey = UserJourney.where(journey: @journey).where(user: current_user).first
     @user_journey_contents_ids = {}
     @user_journey.user_journey_contents.each do |user_journey_content|
@@ -118,9 +106,14 @@ class UserJourneysController < ApplicationController
   end
 
   def average_rating
-    return (ratings.sum * 1.0 / ratings.size).round(1) if ratings.size.positive?
+    average_user_journey_contents_rating || "🤷"
+  end
 
-    "🤷" # if no ratings. Not best practice, but fun
+  def average_user_journey_contents_rating
+    UserJourneyContent
+      .joins(user_journey: :journey) # association
+      .where(user_journeys: { journey: @journey }) # table
+      .average(:rating).to_f
   end
 
   def duration
@@ -146,8 +139,10 @@ class UserJourneysController < ApplicationController
   end
 
   def this_journey_contents_sorted
-    @journey_contents = JourneyContent.where(journey: @journey)
-    @journey_contents.order(position: :asc).map(&:content).map
+    Content
+      .joins(journey_contents: :journey)
+      .where(journey_contents: { journey: @journey })
+      .order(position: :desc)
   end
 
   def this_journey_contents_durations_in_h_and_min
