@@ -1,6 +1,6 @@
 // Btn for topic filters (homepage) or tabs (user_journey)
 
-.btn-topic-disabled{
+.btn-topic-disabled {
   text-align: center;
   border: 1px solid $green-primary;
   background-color: $black;
@@ -9,24 +9,26 @@
   padding: 8px 24px;
   font-weight: 400;
 
-  &:hover, &:active{
+  &:hover,
+  &:active {
     text-decoration: none;
   }
 }
 
-.btn-active{
+.btn-active {
   border: 1px solid $green-primary;
   background-color: $green-primary;
   color: $black;
 
-  &:hover, &:active{
+  &:hover,
+  &:active {
     text-decoration: none;
   }
 }
 
 // Btn sign up / login forms
 
-.btn-login{
+.btn-login {
   text-align: center;
   border: 1px solid $green-primary;
   background-color: $green-primary;
@@ -35,14 +37,15 @@
   padding: 8px;
   font-weight: 400;
 
-  &:hover, &:active{
+  &:hover,
+  &:active {
     text-decoration: none;
   }
 }
 
 // Btn search form
 
-.btn-search{
+.btn-search {
   text-align: center;
   border: 1px solid $green-primary;
   background-color: $green-primary;
@@ -51,14 +54,15 @@
   padding: 8px;
   font-weight: 600;
 
-  &:hover, &:active{
+  &:hover,
+  &:active {
     text-decoration: none;
   }
 }
 
 // Btn start journey (journey show)
 
-.btn-start{
+.btn-start {
   text-align: center;
   border: 1px solid $green-primary;
   background-color: $green-primary;
@@ -66,9 +70,22 @@
   border-radius: $border-radius;
   padding: 16px 32px;
   font-weight: 600;
-  border-radius: $border-radius-round;
+  border-radius: $border-radius;
 
-  &:hover, &:active{
+  &:hover,
+  &:active {
     text-decoration: none;
+  }
+}
+
+.button-container {
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+  width: 70%;
+
+  .button_to {
+    width: 100%;
+    display: flex;
   }
 }
