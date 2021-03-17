@@ -4,15 +4,6 @@ const displayNextQuestion = () => {
   const nextBtn = document.getElementById("nextBtn");
   const endBtn = document.getElementById("endBtn");
   const backBtn = document.getElementById("backBtn");
-  if (event.target == nextBtn){
-    console.log(nextBtn);
-  }
-  if (event.target == endBtn){
-    console.log(endBtn);
-  }
-  if (event.target == backBtn){
-    console.log(backBtn);
-  }
 
   let quizBtns = document.querySelectorAll('.quiz-next-btn');
   let quizContainer = document.querySelectorAll('.quiz-container');
