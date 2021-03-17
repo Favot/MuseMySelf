@@ -11,8 +11,6 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "journeys/index";
-
 
 // components
 
@@ -26,13 +24,10 @@
   display: none;
 }
 
-
 // used for test
-.div-test{
+.div-test {
   margin: 20px 0;
 }
-
-
 
 // prevents body content to be hidden by navbar, please do not delete
 body {
@@ -40,7 +35,7 @@ body {
 }
 
 // Used on pages: Signup, Login (Devise 'shared/links')
-.link-container{
+.link-container {
   width: 90%;
   margin: auto;
   margin-top: 12px;
@@ -48,18 +43,19 @@ body {
 }
 
 // Used for user_journeys#index
-.profile-header{
+.profile-header {
   width: 90%;
   margin: 50px auto;
 
-  h2, h1{
+  h2,
+  h1 {
     text-align: center;
     margin: 0;
     font-size: 2rem;
     line-height: 0.9;
   }
 
-  h1{
+  h1 {
     font-size: 3rem;
   }
 }

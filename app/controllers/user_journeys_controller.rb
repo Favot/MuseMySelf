@@ -14,16 +14,31 @@ class UserJourneysController < ApplicationController
     @ujs = UserJourney.where(user: current_user)
 
     # Get journeys of only user_journeys in progress
-    @user_journeys_started = []
-    @ujs.where(completed: false).each do |uj_started|
-      @user_journeys_started << uj_started.journey
-    end
+    #@user_journeys_started = current_user.user_journeys.where(completed: false)
+
+    @user_journeys_started = current_user.user_journeys.where(completed: false)
+
+    # @user_journeys_started = []
+    # @ujs.where(completed: false).each do |uj_started|
+    #   @user_journeys_started << uj_started.journey
+    # end
 
     # Get journeys of only user_journeys completed
-    @user_journeys_completed = []
-    @ujs.where(completed: true).each do |uj_completed|
-      @user_journeys_completed << uj_completed.journey
-    end
+    @user_journeys_completed = current_user.user_journeys.where(completed: true)
+
+    # @user_journeys_completed = []
+    # @ujs.where(completed: true).each do |uj_completed|
+    #   @user_journeys_completed << uj_completed.journey
+    # end
+
+    @user_journeys_favorites =
+      current_user.user_journeys.
+      select("user_journeys.*, avg(rating) as avg_rating").
+      joins(:user_journey_contents).
+      group("user_journeys.id").
+      having("avg(rating) > 4").
+      order("avg_rating DESC").to_a
+   # raise
 
     # Get journey topic
     @all_journeys_topic = {}
@@ -66,6 +81,24 @@ class UserJourneysController < ApplicationController
     # calculations about the user, skept if user is not connected yet
     @to_do_count_by_type = current_user_to_do if subscribed?
     @subscribed = subscribed?
+
+    @user_journey = UserJourney.where(journey: @journey).where(user: current_user).first
+    @user_journey_contents_ids = {}
+    @user_journey.user_journey_contents.each do |user_journey_content|
+      @user_journey_contents_ids[user_journey_content.content] = user_journey_content.id
+    end
+  end
+
+  def complete
+    if params.present?
+      user_journey = UserJourney.find(params[:id])
+
+      user_journey.completed = true
+
+      user_journey.save
+
+      redirect_to journey_path(user_journey.journey_id)
+    end
   end
 
   private
@@ -85,7 +118,7 @@ class UserJourneysController < ApplicationController
   end
 
   def average_rating
-    return (ratings.sum * 1.0 / ratings.size) if ratings.size.positive?
+    return (ratings.sum * 1.0 / ratings.size).round(1) if ratings.size.positive?
 
     "🤷" # if no ratings. Not best practice, but fun
   end
@@ -138,7 +171,7 @@ class UserJourneysController < ApplicationController
   end
 
   def subscribed?
-    return true if user_signed_in? && current_user.user_journeys.where(journey: @journey).size == 1
+    return true if user_signed_in? && current_user.user_journeys.where(journey: @journey).size >= 1
 
     false
   end

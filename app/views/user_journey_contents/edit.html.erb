@@ -1,0 +1,41 @@
+<div class="page">
+
+    <div class="content-container-top">
+      <div class="content-banner" style="background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0.2) 30%),
+      url('<%= cl_image_path @content.photo.key %>')">
+        <div class="bottom">
+          <div class="tag-category painting">
+            <%= @content.category %>
+          </div>
+          <div class="">
+            <h3><%= @content.title %></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="content-container-bottom">
+    <div class="top-text">
+      <p><%=@content.author%>, <%= @content.date %></p>
+    </div>
+    <div class="">
+      <%= @content.description %>
+    </div>
+    <div class="">
+      <%= link_to "Voir plus", @content.url %> -
+      <%= link_to "Tenter le Culture-Quizz", "#" %>
+
+    </div>
+    <br>
+
+    <div class="review" id="review">
+      <h3> Mes notes </h3>
+      <%= simple_form_for @user_journey_content do |f| %> <!-- , defaults: { input_html: { disabled: "disabled"} } -->
+      <%= f.input :rating, label: "Note", input_html: { min: 0, max: 5 } %>
+      <%= f.input :review, label: "Votre avis", placeholder: "J'ai aimé cette oeuvre dans le cadre de ce parcours, parce que..." %>
+      <%= f.input :completed, label: "Je l'ai fini !"%>
+      <%= f.button :submit, "Valider", class: "btn-login" %>
+      <% end %>
+    </div>
+  </div>
+</div>

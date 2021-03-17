@@ -1,0 +1,52 @@
+<div class="page">
+
+    <div class="content-container-top">
+      <div class="content-banner" style="background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0.2) 30%),
+      url('<%= cl_image_path @content.photo.key %>')">
+        <div class="bottom">
+          <div class="tag-category painting">
+            <%= @content.category %>
+          </div>
+          <div class="">
+            <h3><%= @content.title %></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="content-container-bottom">
+    <div class="top-text">
+      <p><%=@content.author%>, <%= @content.date %></p>
+    </div>
+    <div class="">
+      <%= @content.description %>
+    </div>
+    <div class="">
+      <%= link_to "Voir plus", @content.url, class: "fas fa-external-link-alt" %> -
+      <%= link_to "Tenter le Culture-Quizz", "#" %>
+    </div>
+    <br>
+
+    <div class="review" id="review">
+      <h3> Mes pensées &nbsp;<%= link_to "" ,
+                                 edit_user_journey_content_path(@user_journey_content, anchor: "review"),
+                                 class: "far fa-edit"
+                             %>
+      </h3>
+      <% unless @user_journey_content.rating.nil? %>
+        <p>
+          <% @user_journey_content.rating.times do %>
+          <i class="fas fa-star yellow"></i>
+          <% end %>
+          <% (5 - @user_journey_content.rating).times do %>
+            <i class="fas fa-star grey"></i>
+          <% end %>
+        </p>
+        <p><%= @user_journey_content.review %></p>
+        <p class="top-text"><%= @user_journey_content.completed ? "Ce parcours est terminé." : "Ce parcours n'est pas terminé."%></p>
+      <% else %>
+        <p class="top-text"><%= "Vous n'avez encore rien saisi sur ce parcours. Commencez à l'éditer dès maintenant."%></p>
+      <% end %>
+    </div>
+  </div>
+</div>
