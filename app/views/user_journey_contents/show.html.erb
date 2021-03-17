@@ -45,9 +45,9 @@
           <% end %>
         </p>
         <p><%= @user_journey_content.review %></p>
-        <p class="top-text"><%= @user_journey_content.completed ? "Ce parcours est terminé." : "Ce parcours n'est pas terminé."%></p>
+        <p class="top-text"><%= @user_journey_content.completed ? "Ce contenu est terminé." : "Ce contenu n'a pas été complété."%></p>
       <% else %>
-        <p class="top-text"><%= "Vous n'avez encore rien saisi sur ce parcours. Commencez à l'éditer dès maintenant."%></p>
+        <p class="top-text"><%= "Vous n'avez encore rien saisi sur ce contenu. Commencez à l'éditer dès maintenant."%></p>
       <% end %>
     </div>
   </div>
