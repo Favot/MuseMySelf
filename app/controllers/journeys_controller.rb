@@ -54,7 +54,7 @@ class JourneysController < ApplicationController
     UserJourneyContent
       .joins(user_journey: :journey) # association
       .where(user_journeys: { journey: @journey }) # table
-      .average(:rating).to_f
+      .average(:rating).to_f.round(1)
   end
 
   def duration
