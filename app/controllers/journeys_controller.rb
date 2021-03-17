@@ -10,6 +10,7 @@ class JourneysController < ApplicationController
   }
 
   def index
+    @topics = Topic.all
     @journeys = Journey.all
     @journeys = @journeys.where('name ILIKE ?', "%#{params[:search]['query']}%") if params[:search].present?
     @journeys = @journeys.where(topic_id: params[:topic_id]) if params[:topic_id].present?

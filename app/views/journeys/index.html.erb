@@ -6,7 +6,14 @@
 <!-- Search Results -->
 <% if @journeys.size == 0 %>
   <!-- If 0 match result -->
-  <p>Désolé nous n'avons pas encore de Parcours correspondant à votre recherche</p>
+  <div class="div-with-margin">
+    <p>Désolé nous n'avons pas encore de parcours correspondant à votre recherche</p>
+  </div>
+  <!-- Caroussel tags -->
+  <div class="content-title">
+    <h3>Explorer les thèmes</h3>
+  </div>
+  <%= render 'shared/caroussel_tags', data: @topics %>
   <!-- Random suggestion of a journey -->
   <div class="content-title">
     <h3>Et si vous essayiez...</h3>
@@ -21,21 +28,23 @@
 <% else %>
   <!-- If 2 or more match results -->
   <div class="content-title">
-  <% if params[:search].present? %>
-   
-     <h3>Résultats pour "<%= params[:search]['query'] %>"</h3>
-  <% elsif params[:topic_id].present? %>
-  
-     <h3>Résultats pour #<%= @topic[0].name %></h3>
-
-  <% else %>
-
+    <% if params[:search].present? %>
+      <h3>Résultats pour "<%= params[:search]['query'] %>"</h3>
+    <% elsif params[:topic_id].present? %>
+      <!-- Caroussel tags -->
+      <div class="content-title">
+        <h3>Explorer les thèmes</h3>
+      </div>
+      <%= render 'shared/caroussel_tags', data: @topics %>
+      <br><h3>Résultats pour #<%= @topic[0].name %></h3>
+    <% else %>
+      <!-- Caroussel tags -->
+      <div class="content-title">
+        <h3>Explorer les thèmes</h3>
+      </div>
+      <%= render 'shared/caroussel_tags', data: @topics %>
       <h3>Tous nos parcours</h3>
-
-  <% end %>
+    <% end %>
   </div>
   <%= render 'shared/vertical_cards', data: @journeys %>
-
- 
 <% end %>
-
