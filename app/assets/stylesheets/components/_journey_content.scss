@@ -34,10 +34,40 @@ section {
   align-items: center;
   justify-content: center;
   // snippets
-  .counter {
+  // .counter {
+  //   width: 24px;
+  //   height: 24px;
+  //   background-color: $red-incorrect;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   position: absolute;
+  //   right: -8px;
+  //   top: -12px;
+  //   border-radius: 50%;
+  //   p {
+  //     margin: 0;
+  //   }
+  // }
+  .counter-todo {
     width: 24px;
     height: 24px;
-    background-color: $red-youtube;
+    background-color: $red-incorrect;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: -8px;
+    top: -12px;
+    border-radius: 50%;
+    p {
+      margin: 0;
+    }
+  }
+  .counter-completed {
+    width: 24px;
+    height: 24px;
+    background-color: $green-primary;
     display: flex;
     align-items: center;
     justify-content: center;

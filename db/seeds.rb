@@ -472,7 +472,7 @@ user_journey_content_2 = UserJourneyContent.new(
   review: "J'adore la pièce de théatre 'Le Malade Imaginaire', mais je n'aime pas trop la musique qui l'accompagne...",
   user_journey: user_journey_4,
   content: music17th_2,
-  completed: true,
+  completed: false,
   position: 2
 )
 user_journey_content_2.save!
@@ -633,7 +633,7 @@ answer_c2_q1_3 = Answer.new(
 
 answer_c2_q1_3.save!
 
-=======
+
 user_journey_content_3 = UserJourneyContent.new(
   rating: 5,
   review: "Très belle réalisation de Alain Corneau",

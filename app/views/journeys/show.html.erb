@@ -18,27 +18,27 @@
   <div class="description">
     <p><%= @journey.summary %></p>
   </div>
-  <section>
+  <!-- <section>
     <div class="content-journey">
-        <% @content_count_by_type.each do |key, value| %>
-          <%  unless value.zero?  %>
+        <% #@content_count_by_type.each do |key, value| %>
+          <% # unless value.zero?  %>
             <div class="card-content">
-              <% if @subscribed %>
-              <!<%= image_tag("#{key}-content.svg") %>
+              <% #if @subscribed %>
+              <!<%= #image_tag("#{key}-content.svg") %>
                 <div class="counter">
-                  <p><%= "#{@to_do_count_by_type[key]}/#{value}" %></p>
+                  <p><%= #{}"#{@to_do_count_by_type[key]}/#{value}" %></p>
                 </div>
-                <% else %>
-                <%= image_tag("#{key}-content.svg") %>
+                <% #else %>
+                <%= #image_tag("#{key}-content.svg") %>
                 <div class="counter">
-                  <p><%= "#{value}" %></p>
+                  <p><%= #{}"#{value}" %></p>
                 </div>
-              <% end %>
+              <% #end %>
             </div>
-          <% end %>
-        <% end %>
+          <% #end %>
+        <% #end %>
     </div>
-  </section>
+  </section> -->
 
 
       <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
@@ -70,9 +70,9 @@
         </div>
       </div>
     </div>
-        
-    
-    
+
+
+
     <% if position % 2 == 0 && position < @contents.size  %>
         <div class="svgLeftToRigth">
           <svg width="305" height="171" viewBox="0 0 305 171" fill="none" xmlns="http://www.w3.org/2000/svg">

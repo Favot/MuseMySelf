@@ -18,25 +18,28 @@
     <p><%= @journey.summary %></p>
   </div>
   <section>
-    <div class="content-journey">
-        <% @content_count_by_type.each do |key, value| %>
-          <%  unless value.zero?  %>
-            <div class="card-content">
-              <% if @subscribed %>
-                <%= image_tag("#{key}-content.svg") %>
-                <div class="counter">
-                  <p><%= "#{@to_do_count_by_type[key]}/#{value}" %></p>
-                </div>
-                <% else %>
-                <%= image_tag("#{key}-content.svg") %>
-                <div class="counter">
-                  <p><%= "#{value}" %></p>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
+
+  <div class="content-journey">
+      <% @contents.each do |content| %>
+      <div class="card-content">
+        <!-- if user subccribed -->
+        <% if @subscribed && @user_journey_content_completed == 0 %>
+          <%= image_tag("#{@tags[content.category]}-content.svg") %>
+          <div class="counter-todo">
+            <p><%= "#{@user_journey_content_to_do.size}" %></p>
+          </div>
+        <!-- if visitor -->
+        <% else %>
+          <%= image_tag("#{@tags[content.category]}-content.svg") %>
+          <div class="counter-completed">
+            <p>
+            <i class="fa fa-check" aria-hidden="true"></i>
+            </p>
+          </div>
         <% end %>
-    </div>
+      </div>
+      <% end %>
+  </div>
   </section>
 
   </div>
@@ -65,9 +68,9 @@
         </div>
       </div>
     </div>
-        
-    
-    
+
+
+
     <% if position % 2 == 0 && position < @contents.size  %>
         <div class="svgLeftToRigth">
           <svg width="305" height="171" viewBox="0 0 305 171" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,8 +94,8 @@
   <% else %>
 
     <div>Vous avez déjà complété ce parcours</div>
-  
+
   <% end %>
-  
-  
+
+
 </div>

@@ -38,7 +38,6 @@ class UserJourneysController < ApplicationController
       group("user_journeys.id").
       having("avg(rating) > 4").
       order("avg_rating DESC").to_a
-   # raise
 
     # Get journey topic
     @all_journeys_topic = {}
@@ -65,7 +64,8 @@ class UserJourneysController < ApplicationController
   end
 
   def show
-    @journey = Journey.find(params[:id])
+    @user_journey = UserJourney.includes(:journey, :user_journey_contents, :contents).find(params[:id])
+    @journey = @user_journey.journey
     @tags = TAGS
 
     # calculations about the journey
@@ -74,7 +74,8 @@ class UserJourneysController < ApplicationController
     @count_subscribers = count_subscribers
 
     # calculations about the journey contents
-    @contents = this_journey_contents_sorted.to_a # SQL relation => Array
+    @contents = @user_journey.contents
+    # @contents = this_journey_contents_sorted.to_a # SQL relation => Array
     @content_count_by_type = count_by_type
     @contents_durations = this_journey_contents_durations_in_h_and_min
 
@@ -82,11 +83,16 @@ class UserJourneysController < ApplicationController
     @to_do_count_by_type = current_user_to_do if subscribed?
     @subscribed = subscribed?
 
-    @user_journey = UserJourney.where(journey: @journey).where(user: current_user).first
     @user_journey_contents_ids = {}
     @user_journey.user_journey_contents.each do |user_journey_content|
       @user_journey_contents_ids[user_journey_content.content] = user_journey_content.id
     end
+
+    # Get content of only user_journey_contents completed
+    @user_journey_content_completed = @user_journey.user_journey_contents.select{ |ujc| ujc.completed }
+
+    # Get content of only user_journey_contents not completed
+    @user_journey_content_to_do = @user_journey.user_journey_contents.select{ |ujc| !ujc.completed }
   end
 
   def complete

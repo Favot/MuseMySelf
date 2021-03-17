@@ -4,7 +4,7 @@
 
     <!-- Photo -->
     <% if @all_journeys_topic[user_journey.journey] == "Photographie" %>
-      <%= link_to journey_path(user_journey.journey), class: "card-journey photo" do %>
+      <%= link_to user_journey_path(user_journey), class: "card-journey photo" do %>
         <!-- Text -->
         <h4><%= user_journey.journey.name %></h4>
         <p><%= "#{user_journey.journey.summary.split.first(4).join(" ")}..." %></p>
@@ -35,7 +35,7 @@
 
     <!-- Art -->
     <% if @all_journeys_topic[user_journey.journey] == "Art" %>
-      <%= link_to journey_path(user_journey.journey), class: "card-journey art" do %>
+      <%= link_to user_journey_path(user_journey), class: "card-journey art" do %>
         <!-- Text -->
         <h4><%= user_journey.journey.name %></h4>
         <p><%= "#{user_journey.journey.summary.split.first(4).join(" ")}..." %></p>
@@ -62,7 +62,7 @@
 
     <!-- Architecture -->
     <% if @all_journeys_topic[user_journey.journey] == "Architecture" %>
-      <%= link_to journey_path(user_journey.journey), class: "card-journey architecture" do %>
+      <%= link_to user_journey_path(user_journey), class: "card-journey architecture" do %>
         <!-- Text -->
         <h4><%= user_journey.journey.name %></h4>
         <p><%= "#{user_journey.journey.summary.split.first(4).join(" ")}..." %></p>
@@ -89,7 +89,7 @@
 
     <!-- Music -->
     <% if @all_journeys_topic[user_journey.journey] == "Musique" %>
-      <%= link_to journey_path(user_journey.journey), class: "card-journey music" do %>
+      <%= link_to user_journey_path(user_journey), class: "card-journey music" do %>
         <!-- Text -->
         <h4><%= user_journey.journey.name %></h4>
         <p><%= "#{user_journey.journey.summary.split.first(4).join(" ")}..." %></p>
