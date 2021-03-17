@@ -216,7 +216,7 @@ art_5 = Journey.create!(
 
 
 # -- CONTENTS + JOURNEY_CONTENTS for demo journey 'music17th'
-puts "Creating 6 contents and linking them to a journey"
+puts "Creating 6 contents and linking them to the demo journey music_17th"
 
 # content 1
 music17th_1 = Content.new(
@@ -397,7 +397,7 @@ journey_content_6 = JourneyContent.create!(
 
 
 # -- QUIZ for the last content of demo journey 'music17th'
-puts  "Creating 3 questions (with 3 answers possible for each) for one content"
+puts  "Creating 3 questions (with 3 possible answers for each) for music_17th 6th content"
 
 # question 1 jc 6 + answers
 question_1 = QuizQuestion.create!(
@@ -432,7 +432,7 @@ Answer.create!(content: "1773", correct: false, quiz_question: question_3)
 
 
 # -- CONTENTS + JOURNEY_CONTENTS for Journey 'music_5' #jazz
-puts "Creating 5 contents and linking them to another journey"
+puts "Creating 5 contents and linking them to the music_5 jazz journey"
 
 # content 1
 jazz_1 = Content.new(
@@ -652,31 +652,86 @@ JourneyContent.create!(
 puts "Faking users registered to journeys and some & rating reviews on contents"
 
 # -- lucas
-puts "Faking data for user lucas"
+puts "Creating user_journey_contents for Lucas's music_17th journey"
 
 # one user_journey
 user_journey_lucas_1 = UserJourney.create!(
   journey: music17th,
   user: lucas,
-  completed: true
+  completed: false
 )
 
-# one user_journey
-user_journey_lucas_2 = UserJourney.create!(
-  journey: music_4,
-  user: lucas,
-  completed: true
+UserJourneyContent.create!(
+  rating: 4,
+  review: "Je n'apprécie pas le baroque",
+  user_journey: user_journey_lucas_1,
+  content: music17th_1,
+  completed: true,
+  position: 1
 )
+
+UserJourneyContent.create!(
+  rating: 3,
+  review: "C'est assez impressionnant d'écouter la musique après avoir lu la pièce. On a l'impression d'être projeté 400 ans en arrière.",
+  user_journey: user_journey_lucas_1,
+  content: music17th_2,
+  completed: true,
+  position: 2
+)
+
+UserJourneyContent.create!(
+  rating: 4,
+  review: "C'est une oeuvre extraordinaure de réalisme. La musique crée une atmosphère unique. Très belle réalisation d'Alain Corneau",
+  user_journey: user_journey_lucas_1,
+  content: music17th_3,
+  completed: true,
+  position: 3
+)
+
+UserJourneyContent.create!(
+  rating: 4,
+  review: "Etonnant de réalisme",
+  user_journey: user_journey_lucas_1,
+  content: music17th_4,
+  completed: true,
+  position: 4
+)
+
+UserJourneyContent.create!(
+  rating: nil,
+  review: nil,
+  user_journey: user_journey_lucas_1,
+  content: music17th_5,
+  completed: false,
+  position: 5
+)
+
+UserJourneyContent.create!(
+  rating: 2,
+  review: "Une de mes pièces de théâtre préférées ! Mais je ne comprends absolument pas ce qu'elle apporte à ce parcours. Cela n'a rien d'emblématique de la période et se réfère plutôt à l'époque sombre de la fin XIVe.",
+  user_journey: user_journey_lucas_1,
+  content: music17th_6,
+  completed: true,
+  position: 6
+)
+
+
+# one user_journey => Do not create if no user_journey_content
+# user_journey_lucas_2 = UserJourney.create!(
+#   journey: music_4,
+#   user: lucas,
+#   completed: true
+# )
 
 # -- marie
-puts "Faking data for user marie"
+# puts "Faking data for user marie"
 
-# one user_journey + user_journey_contents
-user_journey_marie_1 = UserJourney.create!(
-  journey: music17th,
-  user: marie,
-  completed: true
-)
+# one user_journey => Do not create if no user_journey_content
+# user_journey_marie_1 = UserJourney.create!(
+#   journey: music17th,
+#   user: marie,
+#   completed: true
+# )
 
 # UserJourneyContent.create!(
 #   rating: 3,
@@ -697,7 +752,7 @@ user_journey_marie_1 = UserJourney.create!(
 # )
 
 # -- chris
-puts "Faking data for user chris"
+puts "Faking data for user chris (1 user journey on music 17th + user_journey_contents)"
 
 # one user_journey + user_journey_contents
 user_journey_chris_1 = UserJourney.create!(
