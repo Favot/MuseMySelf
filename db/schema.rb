@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_03_16_114016) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +36,15 @@ ActiveRecord::Schema.define(version: 2021_03_16_114016) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.string "content"
+    t.boolean "correct", default: false
+    t.bigint "quiz_question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quiz_question_id"], name: "index_answers_on_quiz_question_id"
   end
 
   create_table "contents", force: :cascade do |t|
@@ -67,10 +78,27 @@ ActiveRecord::Schema.define(version: 2021_03_16_114016) do
     t.index ["topic_id"], name: "index_journeys_on_topic_id"
   end
 
+  create_table "quiz_questions", force: :cascade do |t|
+    t.string "label"
+    t.bigint "journey_content_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["journey_content_id"], name: "index_quiz_questions_on_journey_content_id"
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_answers", force: :cascade do |t|
+    t.bigint "answer_id", null: false
+    t.bigint "user_journey_content_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_id"], name: "index_user_answers_on_answer_id"
+    t.index ["user_journey_content_id"], name: "index_user_answers_on_user_journey_content_id"
   end
 
   create_table "user_journey_contents", force: :cascade do |t|
@@ -110,9 +138,13 @@ ActiveRecord::Schema.define(version: 2021_03_16_114016) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "answers", "quiz_questions"
   add_foreign_key "journey_contents", "contents"
   add_foreign_key "journey_contents", "journeys"
   add_foreign_key "journeys", "topics"
+  add_foreign_key "quiz_questions", "journey_contents"
+  add_foreign_key "user_answers", "answers"
+  add_foreign_key "user_answers", "user_journey_contents"
   add_foreign_key "user_journey_contents", "contents"
   add_foreign_key "user_journey_contents", "user_journeys"
   add_foreign_key "user_journeys", "journeys"

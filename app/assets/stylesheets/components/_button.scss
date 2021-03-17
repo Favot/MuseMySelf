@@ -72,3 +72,14 @@
     text-decoration: none;
   }
 }
+
+// Btn back to previous page (quiz)
+.btn-back, .btn-back:hover, .btn-back:active{
+  margin-top: 1rem;
+
+  i{
+    color: $white;
+    padding-left: 2rem;
+    padding-top: 1rem;
+  }
+}
