@@ -44,7 +44,7 @@ class UserJourneysController < ApplicationController
     if @user_journey.save
       create_user_journey_content(@journey_contents)
       flash[:notice] = 'Vous avez été enregistré sur le parcours !'
-      redirect_to user_journey_path(params[:journey_id])
+      redirect_to user_journey_path(user_journey)
     else
       flash[:alert] = 'Petit problème ! Vérifiez que vous êtes bien connecté(e).'
       redirect_to journey_path(params[:journey_id])
@@ -62,6 +62,9 @@ class UserJourneysController < ApplicationController
     @count_subscribers = count_subscribers
 
     # calculations about the journey contents
+    @user_journey_contents         = @user_journey.user_journey_contents
+    @user_journey_contents_by_type = @user_journey_contents.group_by { |ujc| ujc.content.category }
+
     @contents = @user_journey.contents
     # @contents = this_journey_contents_sorted.to_a # SQL relation => Array
     @content_count_by_type = count_by_type

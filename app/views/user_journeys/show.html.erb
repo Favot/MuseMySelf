@@ -20,25 +20,24 @@
   <section>
 
   <div class="content-journey">
-      <% @contents.each do |content| %>
-      <div class="card-content">
-        <!-- if user subccribed -->
-        <% if @subscribed && @user_journey_content_completed == 0 %>
-          <%= image_tag("#{@tags[content.category]}-content.svg") %>
-          <div class="counter-todo">
-            <p><%= "#{@user_journey_content_to_do.size}" %></p>
-          </div>
-        <!-- if visitor -->
-        <% else %>
-          <%= image_tag("#{@tags[content.category]}-content.svg") %>
-          <div class="counter-completed">
-            <p>
-            <i class="fa fa-check" aria-hidden="true"></i>
-            </p>
-          </div>
-        <% end %>
-      </div>
+    <% @user_journey_contents_by_type.each do |key, value| %>
+    <div class="card-content">
+      <!-- if completed -->
+      <%= image_tag("#{@tags[key]}-content.svg") %>
+      <% if value.size == value.select{|ujc| ujc.completed}.size %>
+        <div class="counter-completed">
+          <p>
+          <i class="fa fa-check" aria-hidden="true"></i>
+          </p>
+        </div>
+      <!-- if not completed -->
+      <% else %>
+        <div class="counter-todo">
+          <p><%= "#{value.size - value.select{|ujc| ujc.completed}.size}" %></p>
+        </div>
       <% end %>
+    </div>
+    <% end %>
   </div>
   </section>
 
