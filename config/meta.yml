@@ -1,5 +1,5 @@
 meta_product_name: "MuseMySelf"
 meta_title: "MuseMySelf - Parcourez la culture !"
 meta_description: "Musemyself propose des parcours culturels faits-maison pour vous permettre de vous immerger complètement dans un voyage thématique, sans la frustration de devoir écumer Google ou Wikipédia pour trouver du contenu culturel de qualité sur les sujets qui vous intéressent."
-meta_image: "cover.png" # should exist in `app/assets/images/`
-twitter_account: "@MuseeLouvre"   # required for Twitter Cards
+meta_image: "cover.jpg" # should exist in `app/assets/images/`
+twitter_account: "@MuseeLouvre" # required for Twitter Cards
