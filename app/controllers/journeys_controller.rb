@@ -10,6 +10,7 @@ class JourneysController < ApplicationController
   }
 
   def index
+    @topics = Topic.all
     @journeys = Journey.all
     @journeys = @journeys.where('name ILIKE ?', "%#{params[:search]['query']}%") if params[:search].present?
     @journeys = @journeys.where(topic_id: params[:topic_id]) if params[:topic_id].present?
@@ -35,7 +36,7 @@ class JourneysController < ApplicationController
     @count_subscribers = count_subscribers
 
     # calculations about the journey contents
-    @contents = this_journey_contents_sorted.to_a # SQL relation => Array
+    @contents = this_journey_contents_sorted.reverse.to_a # SQL relation => Array
     @content_count_by_type = count_by_type
     @contents_durations = this_journey_contents_durations_in_h_and_min
 

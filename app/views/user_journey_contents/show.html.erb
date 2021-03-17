@@ -24,6 +24,8 @@
     <div class="">
       <%= link_to "Voir plus", @content.url, class: "fas fa-external-link-alt" %> -
       <%= link_to "Tenter le Culture-Quiz", user_journey_content_quiz_path(@user_journey_content) %>
+      <br>
+      <%= link_to "Retourner au parcours", user_journey_path(@current_journey_id) %>
     </div>
     <br>
 
