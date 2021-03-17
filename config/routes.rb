@@ -12,7 +12,10 @@ Rails.application.routes.draw do
       patch :complete
     end
   end
-  resources :user_journey_contents, only: %i[show edit update]
+  resources :user_journey_contents, only: %i[show edit update] do
+    resource :quiz, only: %i[show]
+    resources :user_answers, only: %i[create]
+  end
 
   get "components", to: "pages#components"
 end

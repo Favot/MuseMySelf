@@ -1,6 +1,7 @@
 class JourneyContent < ApplicationRecord
   belongs_to :content
   belongs_to :journey
+  has_many :quiz_questions
 
   # validation really ligth only to check the seed are good
 

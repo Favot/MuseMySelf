@@ -78,6 +78,7 @@
   }
 }
 
+// Btn to complete a journey
 .button-container {
   margin-top: 2em;
   display: flex;
@@ -87,5 +88,16 @@
   .button_to {
     width: 100%;
     display: flex;
+}
+  
+// Btn back to previous page (quiz)
+.btn-back, .btn-back:hover, .btn-back:active{
+  margin-top: 1rem;
+
+  i{
+    color: $white;
+    padding-left: 2rem;
+    padding-top: 1rem;
+
   }
 }

@@ -1,0 +1,14 @@
+<!-- Partial for quiz#show -->
+
+<!-- Btn back -->
+<%= link_to '#', class: "btn-back" do  %>
+  <i class="fas fa-chevron-left"></i>
+<% end %>
+
+<!-- Page header -->
+<div class="quiz-header">
+  <!-- Content title -->
+  <h4><%= @user_journey_content.content.title %></h4>
+  <!-- Content aythor & date -->
+  <p><%= "#{@user_journey_content.content.author}, #{@user_journey_content.content.date}" %></p>
+</div>
