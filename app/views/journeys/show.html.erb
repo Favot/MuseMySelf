@@ -17,32 +17,28 @@
   <div class="description">
     <p><%= @journey.summary %></p>
   </div>
-  <!-- <section>
+
+  <section>
     <div class="content-journey">
-        <% #@content_count_by_type.each do |key, value| %>
-          <% # unless value.zero?  %>
-            <div class="card-content">
-              <% #if @subscribed %>
-              <!<%= #image_tag("#{key}-content.svg") %>
-                <div class="counter">
-                  <p><%= #{}"#{@to_do_count_by_type[key]}/#{value}" %></p>
-                </div>
-                <% #else %>
-                <%= #image_tag("#{key}-content.svg") %>
-                <div class="counter">
-                  <p><%= #{}"#{value}" %></p>
-                </div>
-              <% #end %>
+      <% @contents_by_type.each do |key, value| %>
+
+       <% if value.any? %>
+          <div class="card-content">
+            <%= image_tag("#{@tags[key]}-content.svg") %>
+            <div class="counter-todo">
+              <p><%= "#{value.size}" %></p>
             </div>
-          <% #end %>
-        <% #end %>
-    </div>
-  </section> -->
+          </div>
+       <% end %>
 
-
-      <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
-        <%= f.submit "S'inscrire au parcours", class:'btn-start' %>
       <% end %>
+    </div>
+  </section>
+
+
+  <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
+    <%= f.submit "S'inscrire au parcours", class:'btn-start' %>
+  <% end %>
 
   </div>
 </div>
