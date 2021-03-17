@@ -1,6 +1,3 @@
-<!-- Header -->
-<%= render 'shared/quiz_header' %>
-
 <% user_correct_answers_counter = 0 %>
 <% @user_answers.each do |user_answer| %>
   <% if user_answer.answer.correct %>
@@ -8,22 +5,24 @@
   <% end %>
 <% end %>
 
+<!-- Header -->
+<%= render 'shared/quiz_header' %>
+
 <!-- Message -->
 <div class="quiz-question">
   <% if user_correct_answers_counter == @quiz_questions.size %>
-    <h2><%= "Félicitations tu as répondu correctement à toutes les questions ! 🎉" %></h2>
+    <h2>Félicitations tu as répondu correctement à toutes les questions&nbsp;!&nbsp;🎉</h2>
   <% elsif user_correct_answers_counter == 0 %>
-    <h2><%= "Dommage tu feras mieux au prochain quiz !" %></h2>
+    <h2>Dommage tu feras mieux au prochain quiz&nbsp;!</h2>
   <% elsif user_correct_answers_counter == 1 %>
-    <h2><%= "Bravo tu as #{user_correct_answers_counter} bonne réponse ! 🎉" %></h2>
+    <h2><%= user_correct_answers_counter %> bonne réponse, tu es sur la bonne voie&nbsp;!&nbsp;🎉</h2>
   <% else %>
-    <h2><%= "Bravo tu as #{user_correct_answers_counter} bonnes réponses ! 🎉" %></h2>
+    <h2>Bravo tu as <%= user_correct_answers_counter %> bonnes réponses&nbsp;!&nbsp;🎉</h2>
   <% end %>
 </div>
 
 <!-- Feedback -->
 <% step = 0 %>
-
 <div class="feedback-container">
   <% @quiz_questions.each do |question| %>
     <!-- Question -->
@@ -40,4 +39,3 @@
   <!-- CTA btn -->
   <%= link_to "Revenir au contenu", user_journey_content_path(@user_journey_content), class: "btn-start", id: "backBtn"%>
 </div>
-
