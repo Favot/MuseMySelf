@@ -14,16 +14,31 @@ class UserJourneysController < ApplicationController
     @ujs = UserJourney.where(user: current_user)
 
     # Get journeys of only user_journeys in progress
-    @user_journeys_started = []
-    @ujs.where(completed: false).each do |uj_started|
-      @user_journeys_started << uj_started.journey
-    end
+    #@user_journeys_started = current_user.user_journeys.where(completed: false)
+
+    @user_journeys_started = current_user.user_journeys.where(completed: false)
+
+    # @user_journeys_started = []
+    # @ujs.where(completed: false).each do |uj_started|
+    #   @user_journeys_started << uj_started.journey
+    # end
 
     # Get journeys of only user_journeys completed
-    @user_journeys_completed = []
-    @ujs.where(completed: true).each do |uj_completed|
-      @user_journeys_completed << uj_completed.journey
-    end
+    @user_journeys_completed = current_user.user_journeys.where(completed: true)
+
+    # @user_journeys_completed = []
+    # @ujs.where(completed: true).each do |uj_completed|
+    #   @user_journeys_completed << uj_completed.journey
+    # end
+
+    @user_journeys_favorites =
+      current_user.user_journeys.
+      select("user_journeys.*, avg(rating) as avg_rating").
+      joins(:user_journey_contents).
+      group("user_journeys.id").
+      having("avg(rating) > 4").
+      order("avg_rating DESC").to_a
+   # raise
 
     # Get journey topic
     @all_journeys_topic = {}
