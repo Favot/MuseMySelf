@@ -22,31 +22,37 @@
   color: $black;
   border-radius: $border-radius;
   height: 217px;
-  padding: 1rem; // 16px
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   // Display an icon on the card background
   position: relative;
+
   .card-journey-timer {
-    display:flex;
-    align-items:center;
-    position:absolute;
-    top:20px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 20px;
     opacity: .7;
+    justify-content: space-between;
+    z-index: 5;
+    min-width: 85%;
 
     h4 {
-      font-family:$body-font;
-      font-size:16px;
+      font-family: $body-font;
+      font-size: 16px;
       margin-top: -6px;
-      margin-bottom:0;
+      margin-bottom: 0;
+      margin-right: 16px;
     }
 
     img {
-      width:32px;
-      margin-right:8px;
+      width: 32px;
+      margin-right: 4px;
     }
   }
+
   .card-bg-icon{
     align-self: flex-end;
     background-repeat: no-repeat;

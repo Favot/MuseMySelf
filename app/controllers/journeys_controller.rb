@@ -27,7 +27,8 @@ class JourneysController < ApplicationController
     # to get journey duration
     @all_journeys_duration = {}
     Journey.all.each do |journey|
-      @all_journeys_duration[journey] = format_duration(Content.joins(journey_contents: :journey).where(journey_contents: { journey: journey }).sum(&:duration) * 60)
+      seconds = Content.joins(journey_contents: :journey).where(journey_contents: { journey: journey }).sum(&:duration) * 60
+      @all_journeys_duration[journey] = [format_duration(seconds), rand(50..300), rand(39..49).fdiv(10)]
     end
   end
 
@@ -45,7 +46,7 @@ class JourneysController < ApplicationController
     @contents = @journey.contents
     # @contents = this_journey_contents_sorted.reverse.to_a # SQL relation => Array
     @contents_by_type = @journey.contents.group_by(&:category)
-   
+
     @content_count_by_type = count_by_type
     @contents_durations = this_journey_contents_durations_in_h_and_min
 
@@ -59,11 +60,11 @@ class JourneysController < ApplicationController
   def format_duration(seconds)
     # seconds must be < to 24 hours
     if seconds.zero?
-      Time.at(rand(36_000..72_000)).utc.strftime("%Hh")
+      Time.at(rand(10_000..72_000)).utc.strftime("%kh")
     # elsif seconds < 3600
     #   Time.at(seconds).utc.strftime("%Mmin")
     else
-      Time.at(seconds).utc.strftime("%Hh")
+      Time.at(seconds).utc.strftime("%kh")
     end
   end
 

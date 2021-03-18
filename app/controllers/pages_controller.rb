@@ -23,7 +23,7 @@ class PagesController < ApplicationController
     @all_journeys_duration = {}
     Journey.all.each do |journey|
       seconds = Content.joins(journey_contents: :journey).where(journey_contents: { journey: journey }).sum(&:duration) * 60
-      @all_journeys_duration[journey] = format_duration(seconds)
+      @all_journeys_duration[journey] = [format_duration(seconds), rand(50..300), rand(39..49).fdiv(10)]
     end
   end
 
@@ -35,11 +35,11 @@ class PagesController < ApplicationController
   def format_duration(seconds)
     # seconds must be < to 24 hours
     if seconds.zero?
-      Time.at(rand(36_000..72_000)).utc.strftime("%Hh")
+      Time.at(rand(10_000..72_000)).utc.strftime("%kh")
     # elsif seconds < 3600
     #   Time.at(seconds).utc.strftime("%Mmin")
     else
-      Time.at(seconds).utc.strftime("%Hh")
+      Time.at(seconds).utc.strftime("%kh")
     end
   end
 end
