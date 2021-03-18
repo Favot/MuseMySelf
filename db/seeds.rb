@@ -496,7 +496,6 @@ jazz_2.save!
 JourneyContent.create!(
   journey: music_5,
   content: jazz_2,
->>>>>>> master
   position: 2
 )
 
