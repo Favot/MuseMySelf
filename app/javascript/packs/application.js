@@ -25,6 +25,7 @@ import "bootstrap";
 
 // JS Tabs for 'user_journey_content/quiz#show'
 import { displayNextQuestion } from "../components/quiz";
+import { animationContentCard } from "../components/animation_content_card";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -32,73 +33,12 @@ import { displayNextQuestion } from "../components/quiz";
 document.addEventListener("turbolinks:load", () => {
   // Call your functions here, e.g:
   // initSelect2();
+  animationContentCard();
   displayNextQuestion();
 });
 
 // JS Tabs for 'user_journeys#index'
 import { displayTab } from "../components/tabs";
-document.addEventListener("click", () => {
-  displayTab();
-});
+document.addEventListener("click", displayTab);
 
-const animatedContentLeft = document.querySelectorAll(".animated-contend-left");
-
-const loadLeft = (target) => {
-  const io = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const contentTarget = entry.target;
-
-        contentTarget.classList.add("animation-contend-left");
-
-        observer.disconnect();
-      }
-    });
-  });
-
-  io.observe(target);
-};
-
-animatedContentLeft.forEach(loadLeft);
-
-const animatedContentRight = document.querySelectorAll(
-  ".animated-contend-right"
-);
-
-const loadRight = (target) => {
-  const io = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const contentTarget = entry.target;
-
-        contentTarget.classList.add("animation-contend-right");
-
-        observer.disconnect();
-      }
-    });
-  });
-
-  io.observe(target);
-};
-
-animatedContentRight.forEach(loadRight);
-
-const animatedSvg = document.querySelectorAll(".svg-animated");
-
-const loadSvg = (target) => {
-  const io = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const contentTarget = entry.target;
-
-        contentTarget.classList.add("svg-show");
-
-        observer.disconnect();
-      }
-    });
-  });
-
-  io.observe(target);
-};
-
-animatedSvg.forEach(loadSvg);
+//  import animation for the content card

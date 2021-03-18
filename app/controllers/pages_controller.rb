@@ -14,10 +14,10 @@ class PagesController < ApplicationController
     end
 
     # last 3 journey
-    @last_journeys = Journey.all.last(3).reverse
+    @last_journeys = Journey.all.last(5).reverse
 
     # 3 randoms journey
-    @random_journeys = Journey.all.sample(3)
+    @random_journeys = Journey.all.sample(7)
 
     # to get journey duration
     @all_journeys_duration = {}

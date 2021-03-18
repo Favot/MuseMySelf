@@ -116,7 +116,7 @@ class JourneysController < ApplicationController
   end
 
   def subscribed?
-    @user_journey = current_user.user_journeys.find_by(journey: @journey)
+    @user_journey = current_user&.user_journeys&.find_by(journey: @journey)
     return true if user_signed_in? && @user_journey.present?
 
     false
