@@ -18,6 +18,13 @@ class PagesController < ApplicationController
 
     # 3 randoms journey
     @random_journeys = Journey.all.sample(3)
+
+    # to get journey duration
+    @all_journeys_duration = {}
+    Journey.all.each do |journey|
+      seconds = Content.joins(journey_contents: :journey).where(journey_contents: { journey: journey }).sum(&:duration) * 60
+      @all_journeys_duration[journey] = format_duration(seconds)
+    end
   end
 
   def components

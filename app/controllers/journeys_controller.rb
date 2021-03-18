@@ -23,6 +23,12 @@ class JourneysController < ApplicationController
     Journey.all.each do |journey|
       @all_journeys_topic[journey] = journey.topic.name
     end
+
+    # to get journey duration
+    @all_journeys_duration = {}
+    Journey.all.each do |journey|
+      @all_journeys_duration[journey] = format_duration(Content.joins(journey_contents: :journey).where(journey_contents: { journey: journey }).sum(&:duration) * 60)
+    end
   end
 
   def show
