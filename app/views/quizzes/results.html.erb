@@ -1,41 +1,26 @@
-<% user_correct_answers_counter = 0 %>
-<% @user_answers.each do |user_answer| %>
-  <% if user_answer.answer.correct %>
-    <% user_correct_answers_counter += 1 %>
-  <% end %>
-<% end %>
-
 <!-- Header -->
 <%= render 'shared/quiz_header' %>
 
 <!-- Message -->
 <div class="quiz-question">
-  <% if user_correct_answers_counter == @quiz_questions.size %>
+  <% if @correct_answers_count == @quiz_questions.size %>
     <h2>Félicitations tu as répondu correctement à toutes les questions&nbsp;!&nbsp;🎉</h2>
-  <% elsif user_correct_answers_counter == 0 %>
+  <% elsif @correct_answers_count == 0 %>
     <h2>Dommage tu feras mieux au prochain quiz&nbsp;!</h2>
-  <% elsif user_correct_answers_counter == 1 %>
-    <h2><%= user_correct_answers_counter %> bonne réponse, tu es sur la bonne voie&nbsp;!&nbsp;🎉</h2>
+  <% elsif @correct_answers_count == 1 %>
+    <h2>Une bonne réponse, tu es sur la bonne voie&nbsp;!&nbsp;🎉</h2>
   <% else %>
-    <h2>Bravo tu as <%= user_correct_answers_counter %> bonnes réponses&nbsp;!&nbsp;🎉</h2>
+    <h2>Bravo tu as <%= @correct_answers_count %> bonnes réponses&nbsp;!&nbsp;🎉</h2>
   <% end %>
 </div>
 
 <!-- Feedback -->
-<% step = 0 %>
-
 <div class="feedback-container">
-  <% @quiz_questions.each do |question| %>
+  <% @comparison.each do |element| %>
     <!-- Question -->
-    <h4><%= question.label %></h4>
-    <!-- if correct answer -->
-    <% if @comparison[:user_answers][step] == @comparison[:correct_answers][step] %>
-      <p class="correct">La bonne réponse était <strong><%= @comparison[:correct_answers][step] %></strong></p>
-    <!-- if incorrect answer -->
-    <% else %>
-      <p class="incorrect">Tu as répondu <strong><%= @comparison[:user_answers][step] %></strong>, la bonne réponse était <strong><%= @comparison[:correct_answers][step] %></strong> !</p>
-    <% end %>
-    <% step += 1 %>
+    <h4><%= element[:question] %></h4>
+    <!-- Feedback -->
+    <p class="<%= element[:correct] ? "correct" : "incorrect" %>"><%= element[:correction] %></p>
   <% end %>
   <!-- CTA btn -->
   <%= link_to "Revenir au contenu", user_journey_content_path(@user_journey_content), class: "btn-start", id: "backBtn"%>

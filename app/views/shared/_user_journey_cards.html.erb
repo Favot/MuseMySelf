@@ -1,5 +1,5 @@
 <!-- User Journey cards -->
-<% data.each do |user_journey| %>
+<% data[:user_journeys].each do |user_journey| %>
   <div class="card-journey-item <%= @all_journeys_topic[user_journey.journey].downcase %>">
     <%= link_to user_journey_path(user_journey), class: "card-journey" do %>
 
@@ -26,9 +26,11 @@
 
       <!-- Tag progression only fo user_journeys#index -->
       <div class="tag-progression">
-        <% if data == @user_journeys_started %>
-          ÉTAPE ...
-        <% elsif data == @user_journeys_completed %>
+        <% if data[:user_journeys] %>
+          <%= "#{data[:progress][user_journey][:completed]} / #{data[:progress][user_journey][:total]}" %>
+        <% end %>
+        <!-- Tag completed only fo user_journeys#index -->
+        <% if data[:user_journeys] == @user_journeys_completed %>
           <%= "COMPLÉTÉ LE #{user_journey.journey.updated_at.strftime('%d.%m.%Y')}" %>
         <% end %>
 
