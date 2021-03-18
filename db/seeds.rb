@@ -669,14 +669,14 @@ user_journey_lucas_2 = UserJourney.create!(
 )
 
 # -- marie
-# puts "Faking data for user marie"
+puts "Faking data for user marie"
 
-# -- one user_journey + user_journey_contents
-# user_journey_marie_1 = UserJourney.create!(
-#   journey: music17th,
-#   user: marie,
-#   completed: true
-# )
+# one user_journey + user_journey_contents
+user_journey_marie_1 = UserJourney.create!(
+  journey: music17th,
+  user: marie,
+  completed: true
+)
 
 # UserJourneyContent.create!(
 #   rating: 3,
