@@ -6,12 +6,12 @@
     <h1><%= @journey.name %></h1>
   </div>
   <div class="stats">
-    <div class="subscribe"><%= @count_subscribers %>
-    </div>
-    <div class="rating"><%= @average_rating %>
-    </div>
-    <div class="duration"><%= @duration %>
-    </div>
+    <%= image_tag("users-journey.svg") %>
+    <div class="text"><%= @count_subscribers%></div>
+    <%= image_tag("star-journey.svg") %>
+    <div class="text"><%= @average_rating %></div>
+    <%= image_tag("clock-journey.svg") %>
+    <div class="text"><%= @duration %></div>
   </div>
 
   <div class="description">
@@ -48,7 +48,7 @@
   <% @contents.each do |content| %>
     <% position += 1 %>
     <div class="animated-contend-<%= position % 2 == 0 ? "left"  : "right"  %>">
-      
+
       <div class="show-content  <%= position % 2 == 0 ? "content-left"  : "content-right"  %>">
         <div class="number <%= @tags[content.category] %>">
           <%= position  %>
