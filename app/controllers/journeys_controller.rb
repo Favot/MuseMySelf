@@ -26,17 +26,20 @@ class JourneysController < ApplicationController
   end
 
   def show
-    @journey = Journey.find(params[:id])
+    @journey = Journey.includes(:contents).find(params[:id])
     @tags = TAGS
 
-    redirect_to user_journey_path if subscribed?
+    redirect_to user_journey_path(@user_journey) if subscribed?
     # calculations about the journey
     @average_rating = average_rating
     @duration = "#{duration[0]} h #{duration[1]} min"
     @count_subscribers = count_subscribers
 
     # calculations about the journey contents
-    @contents = this_journey_contents_sorted.reverse.to_a # SQL relation => Array
+    @contents = @journey.contents
+    # @contents = this_journey_contents_sorted.reverse.to_a # SQL relation => Array
+    @contents_by_type = @journey.contents.group_by(&:category)
+   
     @content_count_by_type = count_by_type
     @contents_durations = this_journey_contents_durations_in_h_and_min
 
@@ -95,7 +98,8 @@ class JourneysController < ApplicationController
   end
 
   def subscribed?
-    return true if user_signed_in? && current_user.user_journeys.where(journey: @journey).size >= 1
+    @user_journey = current_user.user_journeys.find_by(journey: @journey)
+    return true if user_signed_in? && @user_journey.present?
 
     false
   end

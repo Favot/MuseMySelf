@@ -44,7 +44,7 @@ class UserJourneysController < ApplicationController
     if @user_journey.save
       create_user_journey_content(@journey_contents)
       flash[:notice] = 'Vous avez été enregistré sur le parcours !'
-      redirect_to user_journey_path(params[:journey_id])
+      redirect_to user_journey_path(user_journey)
     else
       flash[:alert] = 'Petit problème ! Vérifiez que vous êtes bien connecté(e).'
       redirect_to journey_path(params[:journey_id])
@@ -52,7 +52,8 @@ class UserJourneysController < ApplicationController
   end
 
   def show
-    @journey = Journey.find(params[:id])
+    @user_journey = UserJourney.includes(:journey, :user_journey_contents, :contents).find(params[:id])
+    @journey = @user_journey.journey
     @tags = TAGS
 
     # calculations about the journey
@@ -61,7 +62,12 @@ class UserJourneysController < ApplicationController
     @count_subscribers = count_subscribers
 
     # calculations about the journey contents
-    @contents = this_journey_contents_sorted.reverse.to_a # SQL relation => Array
+    @user_journey_contents         = @user_journey.user_journey_contents
+    @user_journey_contents_by_type = @user_journey_contents.group_by { |ujc| ujc.content.category }
+
+    @contents = @user_journey.contents
+    # @contents = this_journey_contents_sorted.to_a # SQL relation => Array
+
     @content_count_by_type = count_by_type
     @contents_durations = this_journey_contents_durations_in_h_and_min
 
@@ -69,12 +75,16 @@ class UserJourneysController < ApplicationController
     @to_do_count_by_type = current_user_to_do if subscribed?
     @subscribed = subscribed?
 
-    # required to generate links to contents in user_journey show
-    @user_journey = UserJourney.where(journey: @journey).where(user: current_user).first
     @user_journey_contents_ids = {}
     @user_journey.user_journey_contents.each do |user_journey_content|
       @user_journey_contents_ids[user_journey_content.content] = user_journey_content.id
     end
+
+    # Get content of only user_journey_contents completed
+    @user_journey_content_completed = @user_journey.user_journey_contents.select{ |ujc| ujc.completed }
+
+    # Get content of only user_journey_contents not completed
+    @user_journey_content_to_do = @user_journey.user_journey_contents.select{ |ujc| !ujc.completed }
   end
 
   def complete

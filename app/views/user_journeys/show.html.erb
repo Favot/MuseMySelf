@@ -18,25 +18,27 @@
     <p><%= @journey.summary %></p>
   </div>
   <section>
-    <div class="content-journey">
-        <% @content_count_by_type.each do |key, value| %>
-          <%  unless value.zero?  %>
-            <div class="card-content">
-              <% if @subscribed %>
-                <%= image_tag("#{key}-content.svg") %>
-                <div class="counter">
-                  <p><%= "#{@to_do_count_by_type[key]}/#{value}" %></p>
-                </div>
-                <% else %>
-                <%= image_tag("#{key}-content.svg") %>
-                <div class="counter">
-                  <p><%= "#{value}" %></p>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %>
+
+  <div class="content-journey">
+    <% @user_journey_contents_by_type.each do |key, value| %>
+    <div class="card-content">
+      <!-- if completed -->
+      <%= image_tag("#{@tags[key]}-content.svg") %>
+      <% if value.size == value.select{|ujc| ujc.completed}.size %>
+        <div class="counter-completed">
+          <p>
+          <i class="fa fa-check" aria-hidden="true"></i>
+          </p>
+        </div>
+      <!-- if not completed -->
+      <% else %>
+        <div class="counter-todo">
+          <p><%= "#{value.size - value.select{|ujc| ujc.completed}.size}" %></p>
+        </div>
+      <% end %>
     </div>
+    <% end %>
+  </div>
   </section>
 
   </div>
@@ -67,9 +69,9 @@
           </div>
         </div>
       </div>
-    </div>    
-    
-    
+
+    </div>
+
     <% if position % 2 == 0 && position < @contents.size  %>
         <div class="svg-animated svgLeftToRigth">
           <svg width="305" height="171" viewBox="0 0 305 171" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +87,7 @@
     <% end %>
   <% end %>
   <% if @user_journey.completed == false %>
-  
+
 
   <div class="button-container">
       <%= button_to "Terminer ce parcours", complete_user_journey_path(@user_journey.id), method: :patch , class: "btn-search form-btn compeleted-button" %>
@@ -94,8 +96,7 @@
   <% else %>
 
     <div>Vous avez complété ce parcours</div>
-  
+
   <% end %>
 </div>
 
-  
