@@ -816,18 +816,18 @@ UserJourneyContent.create!(
 )
 
 # one user journey
-user_journey_chris_2 = UserJourney.create!(
-  journey: music_4,
-  user: chris,
-  completed: false
-)
+# user_journey_chris_2 = UserJourney.create!(
+#  journey: music_4,
+#  user: chris,
+#  completed: false
+# )
 
 # one user journey
-user_journey_chris_3 = UserJourney.create!(
-  journey: architecture_4,
-  user: chris,
-  completed: true
-)
+# user_journey_chris_3 = UserJourney.create!(
+#  journey: architecture_4,
+#  user: chris,
+#  completed: true
+# )
 
 
 
