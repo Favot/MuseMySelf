@@ -5,7 +5,10 @@
 .journey-show {
   background-image: url(image-path("bgjourneyshow.svg"));
   margin-top: 80px;
-  background-size: cover;
+  width: 90%;
+  margin: 0 auto !important;
+  background-size: contain;
+  background-repeat: repeat;
   display: flex;
   flex-direction: column;
   align-items: center;

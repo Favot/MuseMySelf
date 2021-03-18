@@ -1,15 +1,13 @@
 <div class="page">
 
     <div class="content-container-top">
-      <div class="content-banner" style="background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0.2) 30%),
+      <div class="content-banner" style="background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%),
       url('<%= cl_image_path @content.photo.key %>')">
         <div class="bottom">
           <div class="tag-category painting">
             <%= @content.category %>
           </div>
-          <div class="">
-            <h3><%= @content.title %></h3>
-          </div>
+          <h3 class="title"><%= @content.title %></h3>
         </div>
       </div>
     </div>
@@ -18,14 +16,12 @@
     <div class="top-text">
       <p><%=@content.author%>, <%= @content.date %></p>
     </div>
-    <div class="">
+    <div class="main-desc">
       <%= @content.description %>
     </div>
     <div class="">
       <%= link_to "Voir plus", @content.url, class: "fas fa-external-link-alt" %> -
       <%= link_to "Tenter le Culture-Quiz", user_journey_content_quiz_path(@user_journey_content) %>
-      <br>
-      <%= link_to "Retourner au parcours", user_journey_path(@current_journey_id) %>
     </div>
     <br>
 
@@ -52,3 +48,6 @@
     </div>
   </div>
 </div>
+
+<div class="div-with-margin"><%= link_to "Retourner au parcours", user_journey_path(@current_journey_id) %></div>
+

@@ -3,16 +3,16 @@
 .caroussel-container{
   display: flex;
   overflow: scroll;
-  padding: 0 5px;
+  padding: 0 16px;
+
+  // Specific for Caroussel cards
+  .card-journey{
+    margin: 0 5px;
+    min-width: 98%;
+    flex-grow: 1;
+  }
 }
 
 .caroussel-item{
   margin: 0 5px;
-}
-
-// Specific for Caroussel cards
-
-.caroussel-item-card{
-  margin: 0 5px;
-  min-width: 95%;
 }

@@ -18,8 +18,28 @@ class PagesController < ApplicationController
 
     # 3 randoms journey
     @random_journeys = Journey.all.sample(3)
+
+    # to get journey duration
+    @all_journeys_duration = {}
+    Journey.all.each do |journey|
+      seconds = Content.joins(journey_contents: :journey).where(journey_contents: { journey: journey }).sum(&:duration) * 60
+      @all_journeys_duration[journey] = format_duration(seconds)
+    end
   end
 
   def components
+  end
+
+  private
+
+  def format_duration(seconds)
+    # seconds must be < to 24 hours
+    if seconds.zero?
+      Time.at(rand(36_000..72_000)).utc.strftime("%Hh")
+    # elsif seconds < 3600
+    #   Time.at(seconds).utc.strftime("%Mmin")
+    else
+      Time.at(seconds).utc.strftime("%Hh")
+    end
   end
 end

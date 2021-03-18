@@ -38,8 +38,17 @@
 }
 
 // Form input
+#search_query {
+  border: none;
+  font-size: 33px;
+  border-radius: 0px !important;
+  padding:0px 0px 10px 0px !important;
+  font-weight: 500;
+  font-family: 'DM Serif Display';
+  border-bottom: 1px solid white;
+}
 
-.form-input{
+.form-input {
   border: 1px solid $light-gray;
   color: $light-gray;
   flex-grow: 1;

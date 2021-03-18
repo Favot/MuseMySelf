@@ -23,6 +23,12 @@ class JourneysController < ApplicationController
     Journey.all.each do |journey|
       @all_journeys_topic[journey] = journey.topic.name
     end
+
+    # to get journey duration
+    @all_journeys_duration = {}
+    Journey.all.each do |journey|
+      @all_journeys_duration[journey] = format_duration(Content.joins(journey_contents: :journey).where(journey_contents: { journey: journey }).sum(&:duration) * 60)
+    end
   end
 
   def show
@@ -49,6 +55,17 @@ class JourneysController < ApplicationController
   end
 
   private
+
+  def format_duration(seconds)
+    # seconds must be < to 24 hours
+    if seconds.zero?
+      Time.at(rand(36_000..72_000)).utc.strftime("%Hh")
+    # elsif seconds < 3600
+    #   Time.at(seconds).utc.strftime("%Mmin")
+    else
+      Time.at(seconds).utc.strftime("%Hh")
+    end
+  end
 
   def average_rating
     average_user_journey_contents_rating || "🤷"

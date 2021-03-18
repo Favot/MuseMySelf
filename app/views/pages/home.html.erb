@@ -9,7 +9,7 @@
 <!-- Title -->
 <div class="home-title">
   <h1>Muse My Self</h1>
-  <p>Parcourez la culture !</p>
+  <p>Parcourez la culture&nbsp;!</p>
 </div>
 
 <!-- Search form -->
@@ -27,10 +27,16 @@
 <div class="content-title">
   <h3>Nouveautés</h3>
 </div>
-<%= render 'shared/caroussel_cards', data: @last_journeys %>
+<!-- Journey cards caroussel display -->
+<div class="caroussel-container">
+  <%= render 'shared/journey_cards', data: @last_journeys %>
+</div>
 
 <!-- Caroussel cards 2 -->
 <div class="content-title">
   <h3>Notre séléction pour vous</h3>
 </div>
-<%= render 'shared/caroussel_cards', data: @random_journeys %>
+<!-- Journey cards caroussel display -->
+<div class="caroussel-container">
+  <%= render 'shared/journey_cards', data: @random_journeys %>
+</div>

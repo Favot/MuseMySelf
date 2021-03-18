@@ -10,53 +10,68 @@
   <div class="div-with-margin">
     <p>Désolé nous n'avons pas encore de parcours correspondant à votre recherche</p>
   </div>
-
   <!-- Caroussel tags -->
   <div class="content-title">
     <h3>Explorer les thèmes</h3>
   </div>
   <%= render 'shared/caroussel_tags', data: @topics %>
-
   <!-- Random suggestion of a journey -->
   <div class="content-title">
     <h3>Et si vous essayiez...</h3>
   </div>
-  <%= render 'shared/vertical_cards', data: @journey_suggestions %>
+  <!-- Journey cards vertical display -->
+  <div class="cards-container-vertical">
+    <%= render 'shared/journey_cards', data: @journey_suggestions %>
+  </div>
 
 <% elsif @journeys.size == 1 %>
+
   <!-- If only 1 match result -->
   <div class="content-title">
-    <h3>Ce Parcours est fait pour vous !</h3>
+    <h3>Ce Parcours est fait pour vous&nbsp;!</h3>
   </div>
-  <%= render 'shared/vertical_cards', data: @journeys %>
+  <!-- Journey cards vertical display -->
+  <div class="cards-container-vertical">
+    <%= render 'shared/journey_cards', data: @journeys %>
+  </div>
 
 <% else %>
 
   <!-- If 2 or more match results -->
-  <div class="content-title">
-
+  <div class="search-result-container">
     <% if params[:search].present? %>
-      <h3>Résultats pour "<%= params[:search]['query'] %>"</h3>
+
+      <div class="content-title">
+        <h3>Résultats pour "<%= params[:search]['query'] %>"</h3>
+      </div>
 
     <% elsif params[:topic_id].present? %>
+
       <!-- Caroussel tags -->
       <div class="content-title">
         <h3>Explorer les thèmes</h3>
       </div>
       <%= render 'shared/caroussel_tags', data: @topics %>
-      <br><br>
-      <h3>Résultats pour #<%= @topic[0].name %></h3>
+      <div class="content-title">
+        <h3>Résultats pour #<%= @topic[0].name %></h3>
+      </div>
 
     <% else %>
+
       <!-- Caroussel tags -->
       <div class="content-title">
         <h3>Explorer les thèmes</h3>
       </div>
       <%= render 'shared/caroussel_tags', data: @topics %>
+      <div class="content-title">
+        <h3>Tous nos parcours</h3>
+      </div>
 
-      <h3>Tous nos parcours</h3>
     <% end %>
   </div>
+  <!-- Journey cards vertical display -->
+  <div class="cards-container-vertical">
+    <%= render 'shared/journey_cards', data: @journeys %>
+  </div>
 
-  <%= render 'shared/vertical_cards', data: @journeys %>
 <% end %>
