@@ -27,7 +27,8 @@ class JourneysController < ApplicationController
     # to get journey duration
     @all_journeys_duration = {}
     Journey.all.each do |journey|
-      @all_journeys_duration[journey] = format_duration(Content.joins(journey_contents: :journey).where(journey_contents: { journey: journey }).sum(&:duration) * 60)
+      @all_journeys_duration[journey] =
+        format_duration(Content.joins(journey_contents: :journey).where(journey_contents: { journey: journey }).sum(&:duration) * 60)
     end
   end
 
@@ -45,7 +46,7 @@ class JourneysController < ApplicationController
     @contents = @journey.contents
     # @contents = this_journey_contents_sorted.reverse.to_a # SQL relation => Array
     @contents_by_type = @journey.contents.group_by(&:category)
-   
+
     @content_count_by_type = count_by_type
     @contents_durations = this_journey_contents_durations_in_h_and_min
 
@@ -115,7 +116,7 @@ class JourneysController < ApplicationController
   end
 
   def subscribed?
-    @user_journey = current_user.user_journeys.find_by(journey: @journey)
+    @user_journey = current_user&.user_journeys&.find_by(journey: @journey)
     return true if user_signed_in? && @user_journey.present?
 
     false

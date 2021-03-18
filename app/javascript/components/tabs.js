@@ -1,9 +1,9 @@
 // Show tabs for user_journeys#index
 
-const displayTab = () => {
-  const tabs = document.querySelector(".tabs");
+const displayTab = (event) => {
   const tabButtons = document.querySelectorAll(".tab-button");
   const tabContents = document.querySelectorAll(".tab-content");
+
   const id = event.target.dataset.id;
 
   if (id) {
@@ -22,4 +22,4 @@ const displayTab = () => {
   }
 };
 
-export {displayTab}
+export { displayTab };
