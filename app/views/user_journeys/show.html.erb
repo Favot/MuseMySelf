@@ -1,13 +1,10 @@
-
 <div class="container">
   <div class="text-center">
 
     <div class="category">
       <span class="tag-topic theater"><%= @journey.topic.name %></span>
     </div>
-    <div class="journey-name">
-      <h1><%= @journey.name %></h1>
-    </div>
+
     <div class="stats">
       <div class="subscribe">
         <%= image_tag('user-white.svg')%>
@@ -23,11 +20,15 @@
       </div>
     </div>
 
-    <div class="description">
+    <div class="journey-name">
+      <h1><%= @journey.name %></h1>
+    </div>
+
+    <div class="journey-description">
       <p><%= @journey.summary %></p>
     </div>
-    <section>
 
+    <section>
     <div class="content-journey">
       <% @user_journey_contents_by_type.each do |key, value| %>
       <div class="card-content">
