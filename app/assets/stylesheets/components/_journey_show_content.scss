@@ -169,14 +169,14 @@
   animation: slideIn 2s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
-  animation-delay: 1.2s;
+  animation-delay: 0.6s;
   z-index: 1;
 
   .number {
     animation: zoomIn 1s;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    animation-delay: 2s;
+    animation-delay: 1.8s;
   }
 
   * {
@@ -188,7 +188,7 @@
 .animated-contend-right {
   width: 100%;
   opacity: 0;
-  transition: all 600ms;
+  transition: all 500ms;
   transform: translateX(-100%);
   z-index: 1;
 
@@ -201,14 +201,14 @@
   animation: slideIn 2s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
-  animation-delay: 1.2s;
+  animation-delay: 0.6s;
   z-index: 1;
 
   .number {
     animation: zoomIn 1s;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    animation-delay: 2s;
+    animation-delay: 1.8s;
   }
 
   * {
