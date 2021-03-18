@@ -24,12 +24,10 @@
     <div class="">
       <%= link_to "Voir plus", @content.url %> -
       <%= link_to "Tenter le Culture-Quiz", user_journey_content_quiz_path(@user_journey_content) %>
-
     </div>
     <br>
-
     <div class="review" id="review">
-      <h3> Mes notes </h3>
+      <h3> Mes pensées </h3>
       <%= simple_form_for @user_journey_content do |f| %> <!-- , defaults: { input_html: { disabled: "disabled"} } -->
       <%= f.input :rating, label: "Note", input_html: { min: 0, max: 5 } %>
       <%= f.input :review, label: "Votre avis", placeholder: "J'ai aimé cette oeuvre dans le cadre de ce parcours, parce que..." %>
