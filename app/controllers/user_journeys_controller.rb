@@ -32,6 +32,14 @@ class UserJourneysController < ApplicationController
     Journey.all.each do |journey|
       @all_journeys_topic[journey] = journey.topic.name
     end
+
+    @user_journeys_progress = {}
+    user_journeys = UserJourney.includes(:journey, :user_journey_contents, :contents).where(user: current_user)
+    user_journeys.each do |user_journey|
+      @user_journeys_progress[user_journey] = {}
+      @user_journeys_progress[user_journey][:completed] = user_journey.user_journey_contents.where(completed: true).count
+      @user_journeys_progress[user_journey][:total] = user_journey.user_journey_contents.count
+    end
   end
 
   def create
