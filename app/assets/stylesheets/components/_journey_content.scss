@@ -122,3 +122,63 @@ section {
     border: 1px solid $pink-audio;
   }
 }
+
+.painting-number-bg-completed {
+  background-color: $blue-painting;
+
+  .painting {
+    border: 1px solid $blue-painting;
+  }
+  p{
+    color: $black;
+    margin-top: .3em;
+  }
+}
+
+.theater-number-bg-completed {
+  background-color: $purple-theater;
+
+  .theater {
+    border: 1px solid $purple-theater;
+  }
+  p{
+    color: $black;
+    margin-top: .3em;
+  }
+}
+
+.movie-number-bg-completed {
+  background-color: $yellow-movie;
+
+  .movie {
+    border: 1px solid $yellow-movie;
+  }
+  p{
+    color: $black;
+    margin-top: .3em;
+  }
+}
+
+.book-number-bg-completed {
+  background-color: $lime-book;
+
+  .book {
+    border: 1px solid $lime-book;
+  }
+  p{
+    color: $black;
+    margin-top: .3em;
+  }
+}
+
+.audio-number-bg-completed {
+  background-color: $pink-audio;
+
+  .audio {
+    border: 1px solid $pink-audio;
+  }
+  p{
+    color: $black;
+    margin-top: .3em;
+  }
+}

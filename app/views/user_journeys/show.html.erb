@@ -46,14 +46,22 @@
 
 <div class="container journey-show">
    <% position = 0 %>
-  <% @contents.each do |content| %>
+  <% @contents.each_with_index do |content, index| %>
     <% position += 1 %>
     <div class="animated-contend-<%= position % 2 == 0 ? "left"  : "right"  %>">
-      
+
       <div class="show-content  <%= position % 2 == 0 ? "content-left"  : "content-right"  %>">
-        <div class="number <%= @tags[content.category] %>">
-          <%= position  %>
-        </div>
+        <% if @user_journey_contents[index].completed  %>
+          <div class="number <%= @tags[content.category] %> <%= @tags[content.category] %>-<%= "number-bg-completed"%>">
+            <p>
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </p>
+          </div>
+        <% else  %>
+          <div class="number <%= @tags[content.category] %>">
+            <%= position  %>
+          </div>
+      <% end %>
         <div class="topic-and-title-block <%= position % 2 == 0 ? "block-left"  : "block-right"  %>">
           <div class="icon-topic-<%= @tags[content.category] %>  <%= position % 2 == 0 ? "icon-topic-left"  : "icon-topic-right"  %>">
             <%= image_tag("#{@tags[content.category]}.svg") %>

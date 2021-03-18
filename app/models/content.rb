@@ -14,4 +14,8 @@ class Content < ApplicationRecord
   validates :duration, presence: true
   validates :url, presence: true
   validates :description, presence: true
+#
+ # def validated_by_user?(user)
+  #  user_journey_contents.where(journey_contents: {user: user}).completed
+  #end
 end
