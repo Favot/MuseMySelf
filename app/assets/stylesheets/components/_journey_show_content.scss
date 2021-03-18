@@ -65,16 +65,22 @@
 
 .stats {
   display: flex;
-  justify-content: space-around;
-  opacity: 0.5;
-  margin: 12px 0;
+  justify-content: space-evenly;
+  opacity: 0.8;
+
+  img{
+    width: 34px;
+    margin-left: 5px;
+  }
+  .text{
+    margin-top: 7px;
+  }
 }
 
 .description {
   text-align: center;
   line-height: 1.7rem;
 }
-
 .subscribe,
 .rating,
 .duration {
