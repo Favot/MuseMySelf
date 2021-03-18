@@ -10,15 +10,15 @@
     </div>
     <div class="stats">
       <div class="subscribe">
-        <%= image_tag('subscribers-icon.svg')%>
+        <%= image_tag('user-white.svg')%>
         <%= @count_subscribers %>
       </div>
       <div class="rating">
-        <%= image_tag('rating-icon.svg')%>
+        <%= image_tag('star-white.svg')%>
         <%= @average_rating %>/5
       </div>
       <div class="duration">
-        <%= image_tag('duration-icon.svg')%>
+        <%= image_tag('clock-white.svg')%>
         <%= @duration %>
       </div>
     </div>
@@ -51,7 +51,7 @@
     <% end %>
 
     </div>
-  
+
 
 
   <div class="journey-show">
@@ -59,7 +59,7 @@
     <% @contents.each do |content| %>
       <% position += 1 %>
       <div class="animated-contend-<%= position % 2 == 0 ? "left"  : "right"  %>">
-        
+
         <div class="show-content  <%= position % 2 == 0 ? "content-left"  : "content-right"  %>">
           <div class="number <%= @tags[content.category] %>">
             <%= position  %>
