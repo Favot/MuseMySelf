@@ -32,16 +32,17 @@
 
 .icon-topic-right {
   position: relative;
-  top: 44px;
+  top: -6px;
+  left: 105px;
+
   z-index: 3;
-  left: 69px;
 }
 
 .icon-topic-left {
   position: relative;
-  top: 44px;
+  top: -6px;
+  right: 105px;
   z-index: 3;
-  right: 69px;
 }
 
 .container {
@@ -144,5 +145,57 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+  }
+}
+
+.animated-contend-left {
+  width: 100%;
+  opacity: 1;
+  transition: all 6000ms;
+
+  transform: translateX(100%);
+  z-index: 1;
+}
+
+.animation-contend-left {
+  transform: translateX(0);
+  transition: all 6000ms;
+  z-index: 1;
+  * {
+    transition: all 6000ms;
+    z-index: 1;
+  }
+}
+
+.animated-contend-right {
+  width: 100%;
+  opacity: 1;
+  transition: all 6000ms;
+
+  transform: translateX(-100%);
+  z-index: 1;
+}
+.animation-contend-right {
+  transform: translateX(0);
+  transition: all 6000ms;
+  z-index: 1;
+  * {
+    transition: all 6000ms;
+    z-index: 1;
+  }
+}
+
+.svg-animated {
+  * {
+    opacity: 0;
+    transition: all 6000ms;
+    z-index: 1;
+  }
+}
+
+.svg-show {
+  * {
+    opacity: 1;
+    transition: all 6000ms;
   }
 }
