@@ -53,6 +53,17 @@ class JourneysController < ApplicationController
 
   private
 
+  def format_duration(seconds)
+    # seconds must be < to 24 hours
+    if seconds.zero?
+      Time.at(rand(36_000..72_000)).utc.strftime("%Hh")
+    # elsif seconds < 3600
+    #   Time.at(seconds).utc.strftime("%Mmin")
+    else
+      Time.at(seconds).utc.strftime("%Hh")
+    end
+  end
+
   def average_rating
     average_user_journey_contents_rating || "🤷"
   end
