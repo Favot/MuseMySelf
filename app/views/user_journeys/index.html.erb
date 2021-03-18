@@ -21,39 +21,25 @@
   <div id="myTabsContent">
     <!-- Started -->
     <div class="tab-content show" id="pending">
-
-
-        <!-- User Journey cards vertical display -->
-        <div class="cards-container-vertical">
-          <%= render 'shared/user_journey_cards', data: @user_journeys_started %>
-        </div>
-
-
+      <!-- User Journey cards vertical display -->
+      <div class="cards-container-vertical">
+        <%= render 'shared/user_journey_cards', data: @user_journeys_started %>
+      </div>
     </div>
     <!-- Completed -->
     <div class="tab-content" id="completed">
-
-
-        <!-- User Journey cards vertical display -->
-        <div class="cards-container-vertical">
-          <%= render 'shared/user_journey_cards', data: @user_journeys_completed %>
-        </div>
-
-
+      <!-- User Journey cards vertical display -->
+      <div class="cards-container-vertical">
+        <%= render 'shared/user_journey_cards', data: @user_journeys_completed %>
+      </div>
     </div>
     <!-- Best rating -->
     <div class="tab-content" id="favorite">
       <div class="cards-container-vertical">
-
-
-
-
         <!-- User Journey cards vertical display -->
         <div class="cards-container-vertical">
           <%= render 'shared/user_journey_cards', data: @user_journeys_favorites %>
         </div>
-
-
       </div>
     </div>
   </div>
