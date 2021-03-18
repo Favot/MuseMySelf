@@ -8,11 +8,36 @@
   margin: auto;
   padding: 0 16px;
 
-  .card-journey{
+  .art, .architecture, .photographie, .musique{
     margin: 0;
     margin-bottom: 10px;
     flex-grow: 1;
   }
+}
+
+// Specific for journey cards background color
+
+.art{
+  min-width: 100%;
+  border-radius: $border-radius;
+  background-color: $blue-painting;
+}
+.architecture{
+  min-width: 100%;
+  border-radius: $border-radius;
+  background-color: $yellow-movie;
+}
+
+.photographie{
+  min-width: 100%;
+  border-radius: $border-radius;
+  background-color: $pink-audio;
+}
+
+.musique{
+  min-width: 100%;
+  border-radius: $border-radius;
+  background-color: $purple-theater;
 }
 
 // Journey card without background color
@@ -26,6 +51,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  z-index: 5;
   // Display an icon on the card background
   position: relative;
 
@@ -58,6 +84,7 @@
     background-repeat: no-repeat;
     opacity: 0.2;
     position: absolute;
+
   }
 
   &:hover, &:active{
@@ -89,3 +116,6 @@
 .card-journey.music{
   background-color: $purple-theater;
 }
+
+
+
