@@ -16,21 +16,26 @@ class QuizzesController < ApplicationController
       @quiz_questions = QuizQuestion.where(journey_content: @journey_content)
       @correct_answers = @answers.where(correct: true)
       @user_answers = @user_journey_content.user_answers
-      # store data in arrays then store it in a unique hash
-      correct_answers = []
-      @correct_answers.each do |correct_answer|
-        correct_answers << correct_answer.content
+      @quiz_summary = @quiz_questions.map do |quiz_question|
+        {
+          question: quiz_question.label,
+          correct_answer: quiz_question.correct_answer,
+          user_answer: quiz_question.user_answers.find_by(user_journey_content: @user_journey_content)
+        }
       end
-      # store data in arrays then store it in a unique hash
-      user_answers = []
-      @user_answers.each do |user_answer|
-        user_answers << user_answer.answer.content
+      # results
+      @correct_answers_count = 0
+      @comparison = @quiz_summary.map do |element|
+        correct_answer = "Bravo, la bonne réponse était #{element[:correct_answer].content} !"
+        wrong_answer   = "Tu as répondu #{element[:user_answer].answer.content}, la bonne réponse était #{element[:correct_answer].content} !"
+        correction = element[:user_answer].answer.correct ? correct_answer : wrong_answer
+        @correct_answers_count += 1 if element[:user_answer].answer.correct
+        {
+          question:   element[:question],
+          correction: correction,
+          correct:    element[:user_answer].answer.correct
+        }
       end
-      # store data in a unique hash
-      @comparison = {
-        correct_answers: correct_answers,
-        user_answers: user_answers
-      }
       # render template for results
       render :results
     else
