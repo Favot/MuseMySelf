@@ -1,0 +1,40 @@
+<!-- User Journey cards -->
+<% data.each do |user_journey| %>
+  <div class="card-journey-item <%= @all_journeys_topic[user_journey.journey].downcase %>">
+    <%= link_to user_journey_path(user_journey), class: "card-journey" do %>
+
+      <!-- Text -->
+      <h4><%= user_journey.journey.name %></h4>
+      <p><%= "#{user_journey.journey.summary.split.first(4).join(" ")}..." %></p>
+
+      <!-- Background icon -->
+      <div class="card-bg-icon">
+        <!-- Photo -->
+        <% if "#{@all_journeys_topic[user_journey.journey]}" == "Photographie" %>
+          <%= image_tag("journey-photo.svg") %>
+        <!-- Art -->
+        <% elsif @all_journeys_topic[user_journey.journey] == "Art" %>
+          <%= image_tag("journey-art.svg") %>
+        <!-- Architecture -->
+        <% elsif @all_journeys_topic[user_journey.journey] == "Architecture" %>
+          <%= image_tag("journey-architecture.svg") %>
+        <!-- Music -->
+        <% elsif @all_journeys_topic[user_journey.journey] == "Musique" %>
+          <%= image_tag("journey-music.svg") %>
+        <% end %>
+      </div>
+
+      <!-- Tag progression only fo user_journeys#index -->
+      <% if data == @user_journeys_started %>
+        <div class="tag-progression">ÉTAPE ...</div>
+      <!-- Tag completed only fo user_journeys#index -->
+      <% elsif data == @user_journeys_completed %>
+        <div class="tag-progression"><%= "COMPLÉTÉ LE #{user_journey.journey.updated_at.strftime('%d.%m.%Y')}" %></div>
+      <!-- Icon only for favs -->
+      <% elsif data == @user_journeys_favorites %>
+        <div class="tag-progression"><i class="fas fa-heart"></i></div>
+      <% end %>
+
+    <% end %>
+  </div>
+<% end %>
