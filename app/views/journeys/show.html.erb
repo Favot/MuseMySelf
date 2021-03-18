@@ -1,53 +1,55 @@
-<div class="container text-center">
-  <div class="category">
-    <span class="tag-topic theater"><%= @journey.topic.name %></span>
-  </div>
-  <div class="journey-name">
-    <h1><%= @journey.name %></h1>
-  </div>
-  <div class="stats">
-    <div class="subscribe">
-      <%= image_tag('subscribers-icon.svg')%>
-      <%= @count_subscribers %>
-    </div>
-    <div class="rating">
-      <%= image_tag('rating-icon.svg')%>
-      <%= @average_rating %>/5
-    </div>
-    <div class="duration">
-      <%= image_tag('duration-icon.svg')%>
-      <%= @duration %>
-    </div>
-  </div>
 
-  <div class="description">
-    <p><%= @journey.summary %></p>
-  </div>
+<div class="container">
+  <div class="text-center">
+    <div class="category">
+      <span class="tag-topic theater"><%= @journey.topic.name %></span>
+    </div>
+    <div class="journey-name">
+      <h1><%= @journey.name %></h1>
+    </div>
+    <div class="stats">
+      <div class="subscribe">
+        <%= image_tag('subscribers-icon.svg')%>
+        <%= @count_subscribers %>
+      </div>
+      <div class="rating">
+        <%= image_tag('rating-icon.svg')%>
+        <%= @average_rating %>/5
+      </div>
+      <div class="duration">
+        <%= image_tag('duration-icon.svg')%>
+        <%= @duration %>
+      </div>
+    </div>
 
-  <section>
-    <div class="content-journey">
-      <% @contents_by_type.each do |key, value| %>
+    <div class="description">
+      <p><%= @journey.summary %></p>
+    </div>
 
-       <% if value.any? %>
-          <div class="card-content">
-            <%= image_tag("#{@tags[key]}-content.svg") %>
-            <div class="counter-todo">
-              <p><%= "#{value.size}" %></p>
+    <section>
+      <div class="content-journey">
+        <% @contents_by_type.each do |key, value| %>
+
+        <% if value.any? %>
+            <div class="card-content">
+              <%= image_tag("#{@tags[key]}-content.svg") %>
+              <div class="counter-todo">
+                <p><%= "#{value.size}" %></p>
+              </div>
             </div>
-          </div>
-       <% end %>
+        <% end %>
 
-      <% end %>
+        <% end %>
+      </div>
+    </section>
+
+
+    <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
+      <%= f.submit "S'inscrire au parcours", class:'btn-start' %>
+    <% end %>
+
     </div>
-  </section>
-
-
-  <%= simple_form_for(@journey, method: :post, url: journey_user_journeys_path(@journey)) do |f| %>
-    <%= f.submit "S'inscrire au parcours", class:'btn-start' %>
-  <% end %>
-
-  </div>
-
+  
 
   <div class="journey-show">
     <% position = 0 %>
