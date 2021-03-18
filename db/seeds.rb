@@ -23,8 +23,14 @@ puts "Creating 4 users"
 lucas = User.create!(
   email: "bastien@prof.edu.fr",
   password: "123456",
-  name: "Zeprof"
+  name: "Zeprof44 🧑‍🏫🎹"
 )
+#
+# lucas = User.create!(
+#   email: "lucas@example.com",
+#   password: "123456",
+#   name: "lucasdeouf"
+# )
 
 john = User.create!(
   email: "john@example.com",
@@ -276,7 +282,7 @@ music17th_3 = Content.new(
   description: "A la fin de sa vie, Marin Marais, prestigieux violiste de Louis XIV, \
                 se souvient de son apprentissage avec Monsieur de Sainte Colombe, \
                 grand maître de la viole de gambe. Suite au décès de sa femme, le virtuose \
-                a recherché en vain une perfection absolue dans son art, possède son apprenti."
+                a recherché en vain une perfection absolue dans son art."
 )
 
 file = File.open(Rails.root.join('db/media/contents/music17th_3.jpg'))
@@ -659,7 +665,7 @@ UserJourneyContent.create!(
 
 UserJourneyContent.create!(
   rating: 4,
-  review: "C'est une oeuvre extraordinaure de réalisme. La musique crée une atmosphère unique. Très belle réalisation d'Alain Corneau",
+  review: "C'est une oeuvre extraordinaire de réalisme. La musique crée une atmosphère unique. Très belle réalisation d'Alain Corneau",
   user_journey: user_journey_lucas_1,
   content: music17th_3,
   completed: true,
@@ -759,7 +765,7 @@ UserJourneyContent.create!(
 
 UserJourneyContent.create!(
   rating: 5,
-  review: "Très belle réalisation de Alain Corneau",
+  review: "Très belle réalisation d'Alain Corneau",
   user_journey: user_journey_chris_1,
   content: music17th_3,
   completed: true,
