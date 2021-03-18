@@ -1,0 +1,39 @@
+<!-- User Journey cards -->
+<% data.each do |user_journey| %>
+  <div class="card-journey-item <%= @all_journeys_topic[user_journey.journey].downcase %>">
+    <%= link_to user_journey_path(user_journey), class: "card-journey" do %>
+
+      <!-- Text -->
+      <h4><%= user_journey.journey.name %></h4>
+      <p><%= "#{user_journey.journey.summary.split.first(4).join(" ")}..." %></p>
+
+      <!-- Background icon -->
+      <div class="card-bg-icon">
+        <!-- Photo -->
+        <% if "#{@all_journeys_topic[user_journey.journey]}" == "Photographie" %>
+          <%= image_tag("journey-photo.svg") %>
+        <!-- Art -->
+        <% elsif @all_journeys_topic[user_journey.journey] == "Art" %>
+          <%= image_tag("journey-art.svg") %>
+        <!-- Architecture -->
+        <% elsif @all_journeys_topic[user_journey.journey] == "Architecture" %>
+          <%= image_tag("journey-architecture.svg") %>
+        <!-- Music -->
+        <% elsif @all_journeys_topic[user_journey.journey] == "Musique" %>
+          <%= image_tag("journey-music.svg") %>
+        <% end %>
+      </div>
+
+      <!-- Tag progression only fo user_journeys#index -->
+      <div class="tag-progression">
+        <% if data == @user_journeys_started %>
+          ÉTAPE ...
+        <% elsif data == @user_journeys_completed %>
+          <%= "COMPLÉTÉ LE #{user_journey.journey.updated_at.strftime('%d.%m.%Y')}" %>
+        <% end %>
+
+      </div>
+
+    <% end %>
+  </div>
+<% end %>
