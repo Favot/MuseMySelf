@@ -5,7 +5,7 @@
 
       <!-- Text -->
       <h4><%= user_journey.journey.name %></h4>
-      <p><%= "#{user_journey.journey.summary.split.first(4).join(" ")}..." %></p>
+      <p><%= "#{user_journey.journey.summary.split.first(6).join(" ")}..." %></p>
 
       <!-- Background icon -->
       <div class="card-bg-icon">
@@ -26,14 +26,14 @@
 
       <!-- Tag progression only fo user_journeys#index -->
       <div class="tag-progression">
-        <% if data[:user_journeys] %>
+        <% if (data[:tab] == :pending) || (data[:tab] == :favorite) %>
           <%= "#{data[:progress][user_journey][:completed]} / #{data[:progress][user_journey][:total]}" %>
+          <% #raise %>
         <% end %>
         <!-- Tag completed only fo user_journeys#index -->
-        <% if data[:user_journeys] == @user_journeys_completed %>
+        <% if data[:tab] == :completed %>
           <%= "COMPLÉTÉ LE #{user_journey.journey.updated_at.strftime('%d.%m.%Y')}" %>
         <% end %>
-
       </div>
 
     <% end %>
