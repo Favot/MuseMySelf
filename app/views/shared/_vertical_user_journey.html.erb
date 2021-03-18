@@ -1,6 +1,6 @@
 <!-- User Journey cards -->
 <div class="cards-container-vertical">
-  <% data.each do |user_journey| %>
+  <% data[:user_journeys].each do |user_journey| %>
 
     <!-- Photo -->
     <% if @all_journeys_topic[user_journey.journey] == "Photographie" %>
@@ -17,11 +17,11 @@
           </svg>
         </div>
         <!-- Tag progression only fo user_journeys#index -->
-        <% if data == @user_journeys_started %>
-          <div class="tag-progression">ÉTAPE ...</div>
+        <% if data[:user_journeys] %>
+          <div class="tag-progression"> <%= data[:progress][user_journey.journey][:completed] %> </div>
         <% end %>
         <!-- Tag completed only fo user_journeys#index -->
-        <% if data == @user_journeys_completed %>
+        <% if data[:user_journeys] == @user_journeys_completed %>
           <div class="tag-progression"><%= "COMPLÉTÉ LE #{user_journey.journey.updated_at.strftime('%d.%m.%Y')}" %></div>
         <% end %>
         <!-- Icon only for favs -->
@@ -44,11 +44,11 @@
           </svg>
         </div>
         <!-- Tag progression only fo user_journeys#index -->
-        <% if data == @user_journeys_started %>
-          <div class="tag-progression">ÉTAPE ...</div>
+        <% if data[:user_journeys] %>
+          <div class="tag-progression"> <%= data[:progress][user_journey][:completed] %> </div>
         <% end %>
         <!-- Tag completed only fo user_journeys#index -->
-        <% if data == @user_journeys_completed %>
+        <% if data[:user_journeys] == @user_journeys_completed %>
           <div class="tag-progression"><%= "COMPLÉTÉ LE #{user_journey.journey.updated_at.strftime('%d.%m.%Y')}" %></div>
         <% end %>
         <!-- Icon only for favs -->
@@ -69,11 +69,11 @@
           </svg>
         </div>
         <!-- Tag progression only fo user_journeys#index -->
-        <% if data == @user_journeys_started %>
-          <div class="tag-progression">ÉTAPE ...</div>
+        <% if data[:user_journeys] %>
+          <div class="tag-progression"> <%= data[:progress][user_journey][:completed] %> </div>
         <% end %>
         <!-- Tag completed only fo user_journeys#index -->
-        <% if data == @user_journeys_completed %>
+        <% if data[:user_journeys] == @user_journeys_completed %>
           <div class="tag-progression"><%= "COMPLÉTÉ LE #{user_journey.journey.updated_at.strftime('%d.%m.%Y')}" %></div>
         <% end %>
         <!-- Icon only for favs -->
@@ -95,11 +95,11 @@
           </svg>
         </div>
         <!-- Tag progression only fo user_journeys#index -->
-        <% if data == @user_journeys_started %>
-          <div class="tag-progression">ÉTAPE ...</div>
+        <% if data[:user_journeys] %>
+          <div class="tag-progression"> <%= "#{data[:progress][user_journey][:completed]} / #{data[:progress][user_journey][:total]}" %> </div>
         <% end %>
         <!-- Tag completed only fo user_journeys#index -->
-        <% if data == @user_journeys_completed %>
+        <% if data[:user_journeys] == @user_journeys_completed %>
           <div class="tag-progression"><%= "COMPLÉTÉ LE #{user_journey.journey.updated_at.strftime('%d.%m.%Y')}" %></div>
         <% end %>
         <!-- Icon only for favs -->
