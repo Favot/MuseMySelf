@@ -1,5 +1,4 @@
 # require 'faker'
-
 puts "Cleaning all databases..."
 
 UserAnswer.destroy_all
@@ -18,15 +17,13 @@ puts "DB cleared"
 puts "Seeding some data..."
 is_cloudinary_active = true
 
-
-
 # -- USERS
 puts "Creating 4 users"
 
 lucas = User.create!(
-  email: "lucas@example.com",
+  email: "bastien@prof.edu.fr",
   password: "123456",
-  name: "lucasdeouf"
+  name: "Zeprof"
 )
 
 john = User.create!(
@@ -47,8 +44,6 @@ chris = User.create!(
   name: "Chris"
 )
 
-
-
 # -- TOPICS
 puts "Creating 4 topics"
 
@@ -56,8 +51,6 @@ music = Topic.create!(name: "Musique")
 art = Topic.create!(name: "Art")
 architecture = Topic.create!(name: "Architecture")
 photo = Topic.create!(name: "Photographie")
-
-
 
 # -- JOURNEYS without content for MUSIC
 puts "Creating journeys without contents for topic music"
@@ -86,26 +79,24 @@ music_4 = Journey.create!(
   topic: music
 )
 
-music_5 = Journey.create!(
-  name: "Le jazz : la musique, les histoires, les acteurs",
-  summary: "Apprenez ce qui est unique dans le jazz (swing, improvisation, structure et expression) et obtenez le point de vue d'initiés de célèbres musiciens de jazz.",
-  topic: music
-)
-
 music_6 = Journey.create!(
   name: "La musique européenne à l'époque romantique",
   summary: "Une véritable découverte de la culture musicale romantique occidentale depuis le XIXe siècle.",
   topic: music
 )
 
+music_5 = Journey.create!(
+  name: "Le jazz : la musique, les histoires, les acteurs",
+  summary: "Apprenez ce qui est unique dans le jazz (swing, improvisation, structure et expression) et obtenez le point de vue d'initiés de célèbres musiciens de jazz.",
+  topic: music
+)
+puts "Creating demo journey: Musique du XVIIe"
 # -- Journey with content for demo
 music17th = Journey.create!(
   name: "Voyage musical dans la France du XVIIe siècle",
-  summary: "Partez à la découverte des lieux, des musiciens et des repertoires de la musique française du XVIIe siècle.",
+  summary: "Partez à la découverte des lieux, des musiciens et des répertoires de la musique française du XVIIe siècle.",
   topic: music
 )
-
-
 
 # -- JOURNEYS without content for ART
 puts "Creating journeys without contents for topic art"
@@ -134,8 +125,6 @@ art_4 = Journey.create!(
   topic: art
 )
 
-
-
 # -- JOURNEYS without content for ARCHITECTURE
 puts "Creating journeys without contents for topic architecture"
 
@@ -162,8 +151,6 @@ architecture_4 = Journey.create!(
   summary: "Découvrez la riche histoire de l'architecture de l'humanité au cours de ce voyage autour du globe, de 100 000 avant notre ère à environ 1 600 de notre ère.",
   topic: architecture
 )
-
-
 
 # -- JOURNEYS without content for PHOTO
 puts "Creating journeys without contents for topic photo"
@@ -192,8 +179,6 @@ photo_4 = Journey.create!(
   topic: photo
 )
 
-
-
 # -- Last 3 journeys created
 architecture_5 = Journey.create!(
   name: "Le théâtre et ses illusions de perspective",
@@ -212,8 +197,6 @@ art_5 = Journey.create!(
   summary: "Découvrez l’art par une thématique originale : comment les 3 couleurs primaires, le bleu, le jaune et le rouge, se sont imposées parmi les peintres ?",
   topic: art
 )
-
-
 
 # -- CONTENTS + JOURNEY_CONTENTS for demo journey 'music17th'
 puts "Creating 6 contents and linking them to the demo journey music_17th"
@@ -346,12 +329,9 @@ music17th_5 = Content.new(
   category: "Audio",
   duration: 115,
   url: "https://open.spotify.com/album/0S1CTBRIJeF9NOYFYN6UpM?si=QTcE5fmwSLCEkYP5v-87-Q",
-  description: "Cette oeuvre extraite de la série 'Cinq Sens' de Bosse illustre de la façon\
-                la plus typique la production musicale la plus fréquente au XVIIe. En effet, \
-                contrairement aux idées reçues, la musique était surtout pratiquée en petits comités \
-                en musique de salon. Cependant, le caractère religieux est indéniable. Ici deux \
-                musiciens, une jeune femme au luth et un homme à la viole de gambe, accompagnent \
-                les chants religieux de leurs compagnons."
+  description: "Les leçons de ténèbres pour le Mercredi saint ont été écrites par François Couperin \
+  pour les liturgies de la semaine sainte de 1714 à l'abbaye de Longchamp. Dans la tradition catholique, \
+  elles symbolisent la solitude du Christ abandonné par ses apôtres. "
 )
 
 file = File.open(Rails.root.join('db/media/contents/music17th_5.jpg'))
@@ -394,14 +374,12 @@ journey_content_6 = JourneyContent.create!(
   position: 6
 )
 
-
-
 # -- QUIZ for the last content of demo journey 'music17th'
 puts  "Creating 3 questions (with 3 possible answers for each) for music_17th 6th content"
 
 # question 1 jc 6 + answers
 question_1 = QuizQuestion.create!(
-  label: "Qui a composé la musique de scène de la pièce ?",
+  label: "Qui a composé la musique d'accompagnement de la pièce ?",
   journey_content: journey_content_6
 )
 
@@ -698,20 +676,20 @@ UserJourneyContent.create!(
 )
 
 UserJourneyContent.create!(
-  rating: nil,
-  review: nil,
+  rating: 4,
+  review: "Glaçant. On ressent à la fois la dureté de l'époque, la tristesse de l'auteur, et la puissance de la douleur, apportée par une composition poignante.",
   user_journey: user_journey_lucas_1,
   content: music17th_5,
-  completed: false,
+  completed: true,
   position: 5
 )
 
 UserJourneyContent.create!(
-  rating: 2,
-  review: "Une de mes pièces de théâtre préférées ! Mais je ne comprends absolument pas ce qu'elle apporte à ce parcours. Cela n'a rien d'emblématique de la période et se réfère plutôt à l'époque sombre de la fin XIVe.",
+  rating: nil,
+  review: nil,
   user_journey: user_journey_lucas_1,
   content: music17th_6,
-  completed: true,
+  completed: false,
   position: 6
 )
 
