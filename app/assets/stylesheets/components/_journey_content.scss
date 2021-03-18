@@ -122,3 +122,98 @@ section {
     border: 1px solid $pink-audio;
   }
 }
+
+.painting-number-bg-completed {
+  min-width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  background-color: $blue-painting;
+
+  .painting {
+    border: 1px solid $blue-painting;
+  }
+  p{
+    color: $black;
+    margin-top: .3em;
+  }
+}
+
+.theater-number-bg-completed {
+  min-width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  background-color: $purple-theater;
+
+  .theater {
+    border: 1px solid $purple-theater;
+  }
+  p{
+    color: $black;
+    margin-top: .3em;
+  }
+}
+
+.movie-number-bg-completed {
+  min-width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  background-color: $yellow-movie;
+
+  .movie {
+    border: 1px solid $yellow-movie;
+  }
+  p{
+    color: $black;
+    margin-top: .3em;
+  }
+}
+
+.book-number-bg-completed {
+  min-width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  background-color: $lime-book;
+
+  .book {
+    border: 1px solid $lime-book;
+  }
+  p{
+    color: $black;
+    margin-top: .3em;
+  }
+}
+
+.audio-number-bg-completed {
+  min-width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  background-color: $pink-audio;
+
+  .audio {
+    border: 1px solid $pink-audio;
+  }
+  p{
+    color: $black;
+    margin-top: .3em;
+  }
+}

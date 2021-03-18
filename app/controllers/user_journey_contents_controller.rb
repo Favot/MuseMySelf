@@ -2,7 +2,7 @@ class UserJourneyContentsController < ApplicationController
   def show
     @user_journey_content = UserJourneyContent.find(params[:id])
     @content = @user_journey_content.content
-    @current_journey_id = @user_journey_content.user_journey.journey.id
+    @current_journey_id = @user_journey_content.user_journey_id
   end
 
   def edit

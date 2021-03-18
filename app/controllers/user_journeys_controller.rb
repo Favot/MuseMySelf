@@ -62,10 +62,10 @@ class UserJourneysController < ApplicationController
     @count_subscribers = count_subscribers
 
     # calculations about the journey contents
-    @user_journey_contents         = @user_journey.user_journey_contents
+    @user_journey_contents         = @user_journey.user_journey_contents.order(position: :asc)
     @user_journey_contents_by_type = @user_journey_contents.group_by { |ujc| ujc.content.category }
 
-    @contents = @user_journey.contents
+    @contents = @user_journey.contents.order(position: :asc)
     # @contents = this_journey_contents_sorted.to_a # SQL relation => Array
 
     @content_count_by_type = count_by_type
