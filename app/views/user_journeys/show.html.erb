@@ -2,8 +2,6 @@
 <div class="container">
   <div class="text-center">
 
-
-
     <div class="category">
       <span class="tag-topic theater"><%= @journey.topic.name %></span>
     </div>
@@ -52,8 +50,6 @@
     </div>
     </section>
   </div>
-
-
 
   <div class="journey-show">
     <% position = 0 %>
@@ -106,7 +102,6 @@
       <% end %>
     <% end %>
     <% if @user_journey.completed == false %>
-
 
     <div class="button-container">
         <%= button_to "Terminer ce parcours", complete_user_journey_path(@user_journey.id), method: :patch , class: "btn-search form-btn compeleted-button" %>
