@@ -1,11 +1,4 @@
-.container{
-  padding-right: 0;
-  padding-left: 0;
-  margin-right: 0;
-  margin-left: 0;
-}
-
-.bg-content{
+.bg-content {
   background-image: url(image-path("monalisa.jpg"));
   width: 100%;
   background-position: center;
@@ -14,7 +7,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: .6rem 1rem;
+  padding: 0.6rem 1rem;
 
   .tag-topic {
     display: inline-block;
@@ -27,16 +20,16 @@
   }
 }
 
-.description{
+.description {
   margin: 1em;
   font-weight: 300;
 
-  p{
+  p {
     line-height: 1.5em;
   }
 }
 
-.description h2{
+.description h2 {
   font-size: 1em;
   font-family: $body-font;
   color: rgba(255, 255, 255, 0.6);
