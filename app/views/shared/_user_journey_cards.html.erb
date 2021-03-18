@@ -25,15 +25,14 @@
       </div>
 
       <!-- Tag progression only fo user_journeys#index -->
-      <% if data == @user_journeys_started %>
-        <div class="tag-progression">ÉTAPE ...</div>
-      <!-- Tag completed only fo user_journeys#index -->
-      <% elsif data == @user_journeys_completed %>
-        <div class="tag-progression"><%= "COMPLÉTÉ LE #{user_journey.journey.updated_at.strftime('%d.%m.%Y')}" %></div>
-      <!-- Icon only for favs -->
-      <% elsif data == @user_journeys_favorites %>
-        <div class="tag-progression"><i class="fas fa-heart"></i></div>
-      <% end %>
+      <div class="tag-progression">
+        <% if data == @user_journeys_started %>
+          ÉTAPE ...
+        <% elsif data == @user_journeys_completed %>
+          <%= "COMPLÉTÉ LE #{user_journey.journey.updated_at.strftime('%d.%m.%Y')}" %>
+        <% end %>
+
+      </div>
 
     <% end %>
   </div>
