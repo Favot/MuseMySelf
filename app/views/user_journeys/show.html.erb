@@ -1,110 +1,121 @@
-<div class="container text-center mt-5">
-  <div class="category">
-    <span class="tag-topic theater"><%= @journey.topic.name %></span>
-  </div>
-  <div class="journey-name">
-    <h1><%= @journey.name %></h1>
-  </div>
-  <div class="stats">
-    <div class="subscribe"><%= @count_subscribers %>
+
+<div class="container">
+  <div class="text-center">
+
+
+
+    <div class="category">
+      <span class="tag-topic theater"><%= @journey.topic.name %></span>
     </div>
-    <div class="rating"><%= @average_rating %>/5
+    <div class="journey-name">
+      <h1><%= @journey.name %></h1>
     </div>
-    <div class="duration"><%= @duration %>
+    <div class="stats">
+      <div class="subscribe">
+        <%= image_tag('subscribers-icon.svg')%>
+        <%= @count_subscribers %>
+      </div>
+      <div class="rating">
+        <%= image_tag('rating-icon.svg')%>
+        <%= @average_rating %>/5
+      </div>
+      <div class="duration">
+        <%= image_tag('duration-icon.svg')%>
+        <%= @duration %>
+      </div>
     </div>
-  </div>
 
-  <div class="description">
-    <p><%= @journey.summary %></p>
-  </div>
-  <section>
-
-  <div class="content-journey">
-    <% @user_journey_contents_by_type.each do |key, value| %>
-    <div class="card-content">
-      <!-- if completed -->
-      <%= image_tag("#{@tags[key]}-content.svg") %>
-      <% if value.size == value.select{|ujc| ujc.completed}.size %>
-        <div class="counter-completed">
-          <p>
-          <i class="fa fa-check" aria-hidden="true"></i>
-          </p>
-        </div>
-      <!-- if not completed -->
-      <% else %>
-        <div class="counter-todo">
-          <p><%= "#{value.size - value.select{|ujc| ujc.completed}.size}" %></p>
-        </div>
-      <% end %>
+    <div class="description">
+      <p><%= @journey.summary %></p>
     </div>
-    <% end %>
-  </div>
-  </section>
+    <section>
 
-  </div>
-</div>
-
-<div class="container journey-show">
-   <% position = 0 %>
-  <% @contents.each_with_index do |content, index| %>
-    <% position += 1 %>
-    <div class="animated-contend-<%= position % 2 == 0 ? "left"  : "right"  %>">
-
-      <div class="show-content  <%= position % 2 == 0 ? "content-left"  : "content-right"  %>">
-        <% if @user_journey_contents[index].completed  %>
-          <div class="number <%= @tags[content.category] %> <%= @tags[content.category] %>-<%= "number-bg-completed"%>">
+    <div class="content-journey">
+      <% @user_journey_contents_by_type.each do |key, value| %>
+      <div class="card-content">
+        <!-- if completed -->
+        <%= image_tag("#{@tags[key]}-content.svg") %>
+        <% if value.size == value.select{|ujc| ujc.completed}.size %>
+          <div class="counter-completed">
             <p>
-              <i class="fa fa-check" aria-hidden="true"></i>
+            <i class="fa fa-check" aria-hidden="true"></i>
             </p>
           </div>
-        <% else  %>
-          <div class="number <%= @tags[content.category] %>">
-            <%= position  %>
+        <!-- if not completed -->
+        <% else %>
+          <div class="counter-todo">
+            <p><%= "#{value.size - value.select{|ujc| ujc.completed}.size}" %></p>
           </div>
-      <% end %>
-        <div class="topic-and-title-block <%= position % 2 == 0 ? "block-left"  : "block-right"  %>">
-          <div class="icon-topic-<%= @tags[content.category] %>  <%= position % 2 == 0 ? "icon-topic-left"  : "icon-topic-right"  %>">
-            <%= image_tag("#{@tags[content.category]}.svg") %>
-          </div>
-          <div class="tag-topic <%= @tags[content.category] %>">
-            <%= content.category %>
-          </div>
-          <div class="bloc-title">
-            <p><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></p>
-            <p><%= content.title %></p>
-            <p><%= "#{content.author}, #{content.date}" %></p>
-            <%= link_to "Découvrir", user_journey_content_path(id: @user_journey_contents_ids[content]) %>
-          </div>
-        </div>
+        <% end %>
       </div>
-
+      <% end %>
     </div>
-
-    <% if position % 2 == 0 && position < @contents.size  %>
-        <div class="svg-animated svgLeftToRigth">
-          <svg width="305" height="171" viewBox="0 0 305 171" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.00317 171C1.00317 110.368 86.5513 86.9474 180.5 104C274.449 121.053 304 83.3684 304 0" stroke="white" />
-          </svg>
-        </div>
-    <% elsif  position % 2 != 0  && position < @contents.size  %>
-        <div class="svg-animated  svgRigthToLeft">
-          <svg width="305" height="171" viewBox="0 0 305 171" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.00317 171C1.00317 110.368 86.5513 86.9474 180.5 104C274.449 121.053 304 83.3684 304 0" stroke="white" />
-          </svg>
-        </div>
-    <% end %>
-  <% end %>
-  <% if @user_journey.completed == false %>
-
-
-  <div class="button-container">
-      <%= button_to "Terminer ce parcours", complete_user_journey_path(@user_journey.id), method: :patch , class: "btn-search form-btn compeleted-button" %>
+    </section>
   </div>
 
-  <% else %>
 
-    <div>Vous avez complété ce parcours</div>
 
-  <% end %>
+  <div class="journey-show">
+    <% position = 0 %>
+    <% @contents.each_with_index do |content, index| %>
+      <% position += 1 %>
+      <div class="animated-contend-<%= position % 2 == 0 ? "left"  : "right"  %>">
+
+        <div class="show-content  <%= position % 2 == 0 ? "content-left"  : "content-right"  %>">
+          <% if @user_journey_contents[index].completed  %>
+            <div class="number <%= @tags[content.category] %> <%= @tags[content.category] %>-<%= "number-bg-completed"%>">
+              <p>
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </p>
+            </div>
+          <% else  %>
+            <div class="number <%= @tags[content.category] %>">
+              <%= position  %>
+            </div>
+        <% end %>
+          <div class="topic-and-title-block <%= position % 2 == 0 ? "block-left"  : "block-right"  %>">
+            <div class="icon-topic-<%= @tags[content.category] %>  <%= position % 2 == 0 ? "icon-topic-left"  : "icon-topic-right"  %>">
+              <%= image_tag("#{@tags[content.category]}.svg") %>
+            </div>
+            <div class="tag-topic <%= @tags[content.category] %>">
+              <%= content.category %>
+            </div>
+            <div class="bloc-title">
+              <p><%= "#{@contents_durations[content][:hours]} h #{@contents_durations[content][:minutes]} min" %></p>
+              <p><%= content.title %></p>
+              <p class="content-author"><%= "#{content.author}, #{content.date}" %></p>
+              <%= link_to "Découvrir", user_journey_content_path(id: @user_journey_contents_ids[content]) %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <% if position % 2 == 0 && position < @contents.size  %>
+          <div class="svg-animated svgLeftToRigth">
+            <svg width="305" height="171" viewBox="0 0 305 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.00317 171C1.00317 110.368 86.5513 86.9474 180.5 104C274.449 121.053 304 83.3684 304 0" stroke="white" />
+            </svg>
+          </div>
+      <% elsif  position % 2 != 0  && position < @contents.size  %>
+          <div class="svg-animated  svgRigthToLeft">
+            <svg width="305" height="171" viewBox="0 0 305 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.00317 171C1.00317 110.368 86.5513 86.9474 180.5 104C274.449 121.053 304 83.3684 304 0" stroke="white" />
+            </svg>
+          </div>
+      <% end %>
+    <% end %>
+    <% if @user_journey.completed == false %>
+
+
+    <div class="button-container">
+        <%= button_to "Terminer ce parcours", complete_user_journey_path(@user_journey.id), method: :patch , class: "btn-search form-btn compeleted-button" %>
+    </div>
+
+    <% else %>
+
+      <div>Vous avez complété ce parcours</div>
+
+    <% end %>
+  </div>
 </div>
-

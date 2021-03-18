@@ -1,5 +1,10 @@
 .container {
   margin-top: 80px;
+  overflow: hidden;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .journey-show {
@@ -70,19 +75,15 @@
   line-height: 1.7rem;
 }
 
-.subscribe:before {
-  content: url(image-path("subscribers-icon.svg"));
-  margin: 0.4em;
-}
-
-.rating:before {
-  content: url(image-path("rating-icon.svg"));
-  margin: 0.4em;
-}
-
-.duration:before {
-  content: url(image-path("duration-icon.svg"));
-  margin: 0.4em;
+.subscribe,
+.rating,
+.duration {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    margin-right: 8px;
+  }
 }
 
 .svgLeftToRigth {
@@ -130,9 +131,9 @@
     font-size: 1.1em;
   }
 
-  .bloc-title p:last-child {
-    font-size: 0.9em;
-    color: rgba(255, 255, 255, 0.6);
+  .content-author {
+    font-size: 0.9em !important;
+    color: rgba(255, 255, 255, 0.6) !important;
   }
 
   a {
@@ -153,17 +154,31 @@
 
 .animated-contend-left {
   width: 100%;
-  opacity: 1;
+  opacity: 0;
   transition: all 6000ms;
-
+  transition-timing-function: ease-in-out;
   transform: translateX(100%);
   z-index: 1;
+  .number {
+    opacity: 0;
+  }
 }
 
 .animation-contend-left {
-  transform: translateX(0);
-  transition: all 6000ms;
+  opacity: 1;
+  animation: slideIn 2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: 1.2s;
   z-index: 1;
+
+  .number {
+    animation: zoomIn 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+  }
+
   * {
     transition: all 6000ms;
     z-index: 1;
@@ -172,19 +187,57 @@
 
 .animated-contend-right {
   width: 100%;
-  opacity: 1;
-  transition: all 6000ms;
-
+  opacity: 0;
+  transition: all 600ms;
   transform: translateX(-100%);
   z-index: 1;
+
+  .number {
+    opacity: 0;
+  }
 }
+
 .animation-contend-right {
-  transform: translateX(0);
-  transition: all 6000ms;
+  animation: slideIn 2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: 1.2s;
   z-index: 1;
+
+  .number {
+    animation: zoomIn 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+  }
+
   * {
     transition: all 6000ms;
     z-index: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(2);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
