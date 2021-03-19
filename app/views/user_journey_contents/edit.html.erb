@@ -29,10 +29,10 @@
     <br>
 
     <div class="review" id="review">
-      <h3> Mes notes </h3>
+      <h3> Mes pensées </h3>
       <%= simple_form_for @user_journey_content do |f| %> <!-- , defaults: { input_html: { disabled: "disabled"} } -->
-      <%= f.input :rating, label: "Note", input_html: { min: 0, max: 5 } %>
-      <%= f.input :review, label: "Votre avis", placeholder: "J'ai aimé cette oeuvre dans le cadre de ce parcours, parce que..." %>
+      <%= f.input :rating, label: "Note /5", input_html: { min: 0, max: 5 } %>
+      <%= f.input :review, label: "Mon avis", placeholder: "J'ai aimé cette oeuvre dans le cadre de ce parcours, parce que..." %>
       <%= f.input :completed, label: "Je l'ai fini !"%>
       <%= f.button :submit, "Valider", class: "btn-login" %>
       <% end %>

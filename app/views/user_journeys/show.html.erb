@@ -1,33 +1,34 @@
-
 <div class="container">
   <div class="text-center">
 
     <div class="category">
       <span class="tag-topic theater"><%= @journey.topic.name %></span>
     </div>
-    <div class="journey-name">
-      <h1><%= @journey.name %></h1>
-    </div>
+
     <div class="stats">
       <div class="subscribe">
-        <%= image_tag('subscribers-icon.svg')%>
+        <%= image_tag('user-white.svg')%>
         <%= @count_subscribers %>
       </div>
       <div class="rating">
-        <%= image_tag('rating-icon.svg')%>
+        <%= image_tag('star-white.svg')%>
         <%= @average_rating %>/5
       </div>
       <div class="duration">
-        <%= image_tag('duration-icon.svg')%>
+        <%= image_tag('clock-white.svg')%>
         <%= @duration %>
       </div>
     </div>
 
-    <div class="description">
+    <div class="journey-name">
+      <h1><%= @journey.name %></h1>
+    </div>
+
+    <div class="journey-description">
       <p><%= @journey.summary %></p>
     </div>
-    <section>
 
+    <section>
     <div class="content-journey">
       <% @user_journey_contents_by_type.each do |key, value| %>
       <div class="card-content">
