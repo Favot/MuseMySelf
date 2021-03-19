@@ -122,11 +122,59 @@ art_2 = Journey.create!(
   topic: art
 )
 
+# -- MORE SEEDS of Contents but no photo attached
+art_2_1 = Content.new(title: "Podcast club BD", author: "9emeart.fr", date: 2020, category: "Audio", duration: 45,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+art_2_1.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+art_2_1.save!
+
+art_2_2 = Content.new(title: "Les Secrets d'Astérix", author: "Arte", date: 2004, category: "Film", duration: 20,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+art_2_2.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+art_2_2.save!
+
+art_2_3 = Content.new(title: "L'art de la bande dessinée", author: "Thierry Groensteen", date: 2012, category: "Livre", duration: 250,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+art_2_3.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+art_2_3.save!
+
+JourneyContent.create!(journey: art_2, content: art_2_1, position: 1)
+JourneyContent.create!(journey: art_2, content: art_2_2, position: 2)
+JourneyContent.create!(journey: art_2, content: art_2_3, position: 3)
+# -- / MORE SEEDS
+
 art_3 = Journey.create!(
   name: "Louis XIV à Versailles",
   summary: "Fonctionnement du pouvoir, aménagement des jardins, organisation des divertissements et des plaisirs, goût pour l’art… Plongez dans tous les secrets et toute l’organisation de Versailles sous le règne de Louis XIV.",
   topic: art
 )
+
+# -- MORE SEEDS of Contents but no photo attached
+art_3_1 = Content.new(title: "Portrait de Louis XIV en costume de sacre", author: "Hyacinthe Rigaud", date: 1701, category: "Peinture", duration: 20,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+art_3_1.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+art_3_1.save!
+
+art_3_2 = Content.new(title: "Le Versailles de Louis XIV", author: "Mathieu da Vinha", date: 2009, category: "Livre", duration: 240,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+art_3_2.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+art_3_2.save!
+
+art_3_3 = Content.new(title: "Les Jardins du roi", author: "Alan Rickman", date: 2015, category: "Film", duration: 120,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+art_3_3.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+art_3_3.save!
+
+JourneyContent.create!(journey: art_3, content: art_3_1, position: 1)
+JourneyContent.create!(journey: art_3, content: art_3_2, position: 2)
+JourneyContent.create!(journey: art_3, content: art_3_3, position: 3)
+# -- / MORE SEEDS
 
 art_4 = Journey.create!(
   name: "Le Pop Art",
@@ -134,7 +182,29 @@ art_4 = Journey.create!(
   topic: art
 )
 
+# -- MORE SEEDS of Contents but no photo attached
+art_4_1 = Content.new(title: "Le Pop Art", author: "Marco Livingstone", date: 2000, category: "Livre", duration: 150,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+art_4_1.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+art_4_1.save!
 
+art_4_2 = Content.new(title: "Crying Girl", author: "Roy Lichtenstein", date: 1964, category: "Peinture", duration: 15,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+art_4_2.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+art_4_2.save!
+
+art_4_3 = Content.new(title: "Documentaire: L'Univers de Keith Haring", author: "Christina Clausen", date: 2008, category: "Film", duration: 90,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+art_4_3.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+art_4_3.save!
+
+JourneyContent.create!(journey: art_4, content: art_4_1, position: 1)
+JourneyContent.create!(journey: art_4, content: art_4_2, position: 2)
+JourneyContent.create!(journey: art_4, content: art_4_3, position: 3)
+# -- / MORE SEEDS
 
 # -- JOURNEYS without content for ARCHITECTURE
 puts "Creating journeys without contents for topic architecture"
@@ -186,13 +256,35 @@ photo_3 = Journey.create!(
   topic: photo
 )
 
+# -- MORE SEEDS of Contents but no photo attached
+photo_3_1 = Content.new(title: "Andy Warhol. Polaroids 1958-1987", author: "Richard B. Woodward", date: 2017, category: "Livre", duration: 60,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+photo_3_1.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+photo_3_1.save!
+
+photo_3_2 = Content.new(title: "Empire", author: "Andy Warhol", date: 1964, category: "Film", duration: 480,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+photo_3_2.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+photo_3_2.save!
+
+photo_3_3 = Content.new(title: "Warhol on Basquiat", author: "éditions Taschen", date: 2019, category: "Livre", duration: 130,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+photo_3_3.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+photo_3_3.save!
+
+JourneyContent.create!(journey: photo_3, content: photo_3_1, position: 1)
+JourneyContent.create!(journey: photo_3, content: photo_3_2, position: 2)
+JourneyContent.create!(journey: photo_3, content: photo_3_3, position: 3)
+# -- / MORE SEEDS
+
 photo_4 = Journey.create!(
   name: "Photographie par Yasuo Kiyonaga",
   summary: "Découvrez le point de vue exceptionnel et l'imagination passionnée de cet artiste japonais.",
   topic: photo
 )
-
-
 
 # -- Last 3 journeys created
 architecture_5 = Journey.create!(
@@ -200,6 +292,30 @@ architecture_5 = Journey.create!(
   summary: "Découvrez les principes géométriques de base pour concevoir et gérer la réalisation de scènes théâtrales, qui fondent leur expressivité sur les effets de perspective de l'architecture et des espaces illusoires mis en place sur la scène.",
   topic: architecture
 )
+
+# -- MORE SEEDS of Contents but no photo attached
+architecture_5_1 = Content.new(title: "Mise en scène de L'Illusion comique", author: "C. Bérard", date: 1936, category: "Peinture", duration: 10,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+architecture_5_1.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+architecture_5_1.save!
+
+architecture_5_2 = Content.new(title: "Paris et ses théâtres", author: "Béatrice De Andia", date: 1998, category: "Livre", duration: 260,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+architecture_5_2.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+architecture_5_2.save!
+
+architecture_5_3 = Content.new(title: "Électre (adaptation)", author: "Michael Cacoyannis", date: 1962, category: "Film", duration: 120,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+architecture_5_3.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+architecture_5_3.save!
+
+JourneyContent.create!(journey: architecture_5, content: architecture_5_1, position: 1)
+JourneyContent.create!(journey: architecture_5, content: architecture_5_2, position: 2)
+JourneyContent.create!(journey: architecture_5, content: architecture_5_3, position: 3)
+# -- / MORE SEEDS
 
 photo_5 = Journey.create!(
   name: "Héroïnes de la Modernité",
@@ -213,6 +329,29 @@ art_5 = Journey.create!(
   topic: art
 )
 
+# -- MORE SEEDS of Contents but no photo attached
+art_5_1 = Content.new(title: "Dans l'atelier de Mondrian", author: "François Lévy-Kuentz", date: 2010, category: "Film", duration: 52,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+art_5_1.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+art_5_1.save!
+
+art_5_2 = Content.new(title: "Composition en Rouge, Jaune, Bleu et Noir", author: "Piet Mondrian", date: 1930, category: "Peinture", duration: 10,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+art_5_2.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+art_5_2.save!
+
+art_5_3 = Content.new(title: "L'histoire de la couleur dans l'art", author: "Stella Paul", date: 2018, category: "Livre", duration: 200,
+  url: "http://todo.com", description: "Bientôt disponible !")
+file = File.open(Rails.root.join('db/media/photos/culture.jpg'))
+art_5_3.photo.attach(io: file, filename: 'culture.jpg', content_type: 'image/jpeg')
+art_5_3.save!
+
+JourneyContent.create!(journey: art_5, content: art_5_1, position: 1)
+JourneyContent.create!(journey: art_5, content: art_5_2, position: 2)
+JourneyContent.create!(journey: art_5, content: art_5_3, position: 3)
+# -- / MORE SEEDS
 
 
 # -- CONTENTS + JOURNEY_CONTENTS for demo journey 'music17th'
