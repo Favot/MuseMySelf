@@ -1,5 +1,5 @@
 .container {
-  margin-top: 80px;
+  margin-top: 50px;
   overflow: hidden;
   padding-right: 0;
   padding-left: 0;
@@ -59,17 +59,20 @@
 }
 
 .journey-name h1 {
-  font-size: 3rem;
-  margin: 20px;
+  font-size: 2.5rem;
+  margin: 25px 10px;
+  line-height: 36px;
 }
 
 .stats {
   display: flex;
   justify-content: space-evenly;
   opacity: 0.8;
+  margin: 22px 0;
+  font-size: 15px;
 
   img{
-    width: 34px;
+    width: 32px;
     margin-left: 5px;
   }
   .text{
@@ -77,10 +80,13 @@
   }
 }
 
-.description {
+.journey-description {
   text-align: center;
   line-height: 1.7rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
 }
+
 .subscribe,
 .rating,
 .duration {

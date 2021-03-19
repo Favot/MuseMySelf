@@ -35,11 +35,9 @@
     </div>
     <!-- Best rating -->
     <div class="tab-content" id="favorite">
+      <!-- User Journey cards vertical display -->
       <div class="cards-container-vertical">
-        <!-- User Journey cards vertical display -->
-        <div class="cards-container-vertical">
-          <%= render 'shared/user_journey_cards', data: { user_journeys: @user_journeys_favorites, progress: @user_journeys_progress, tab: :favorite } %>
-        </div>
+        <%= render 'shared/user_journey_cards', data: { user_journeys: @user_journeys_favorites, progress: @user_journeys_progress, tab: :favorite } %>
       </div>
     </div>
   </div>
