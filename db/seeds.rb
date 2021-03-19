@@ -23,7 +23,7 @@ puts "Creating 4 users"
 lucas = User.create!(
   email: "bastien@prof.edu.fr",
   password: "123456",
-  name: "Zeprof44 🧑‍🏫🎹"
+  name: "Zeprofdu44 🧑‍🏫🎹"
 )
 #
 # lucas = User.create!(
